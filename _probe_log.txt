@@ -1,0 +1,46 @@
+=== https://www.zujuan.com/robots.txt HTTP 200 ===
+User-agent: *
+Disallow: /api/
+Disallow: /gzyw/
+Disallow: /czlsysh/
+Disallow: /czkx/
+Disallow: /czxxjs/
+Disallow: /xxyw/
+Disallow: /xxsx/
+Disallow: /xxyy/
+Disallow: /xxkx/
+Disallow: /xxzz/
+
+
+=== https://www.jyeoo.com/robots.txt HTTP 200 ===
+User-agent: *
+
+Disallow: /bin*
+Disallow: /views*
+Disallow: /scripts*
+Disallow: /content*
+Disallow: /clientbin*
+Disallow: /seach*
+Disallow: /*/seach*
+Disallow: /*/error*
+Disallow: /*/addcomment*
+Disallow: /account/*
+Disallow: /*/paper/detail*
+Disallow: /*/report/detail*
+Disallow: /resource/detail/*
+Disallow: /*/index$
+Disallow: /*/favorite/userfavorite*
+Disallow: /*/paper/parallelism*
+Disallow: /*/papercircle/myfollowshare*
+Disallow: /*/paperShare/myPublish*
+Disallow: /*starTeacherCenter?no*
+Disallow: /*starteachercenter?no*
+Disallow: /api*
+Disallow: /featuretopic/homeplanlist*
+Disallow: /*/featuretopic/homerecommend*
+Disallow: /*/resource/homerecommend*
+Disallow: /*
+
+=== https://www.xkw.com/robots.txt HTTP 200 ===
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><meta name="Keywords" content="学科网产品中心,免费试用,产品介绍,功能优势,价格,网校通,e卷通,e课堂,e备课,AI研修,升学通,AI学科,区域考试,大联考,学科网开放平台"><meta name="Description" content="学科网xkw.com-门户提供智慧教学、考试测评、教师成长、开放合作等服务,综合教育资源、智能软硬件产品,为中小学智慧教学提供一站式解决方案,致力于让教与学更高效。"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><link rel="icon" href="https://www.zxxk.com/favicon.ico"><title>学科网智慧教学平台(xkw.com) - 让教与学更高效</title><script src="js/fake-aside/xep-fake-aside-bootstrap.js"></script><script defer charset=
+

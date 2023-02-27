@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260928T004413211Z-26400-d88046269308",
+  "runId": "20260928T004413211Z-26400-d88046269308",
+  "runStatus": "completed",
+  "coverage": {
+    "status": "complete",
+    "reasons": []
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": null,
+  "diffHash": "d5a02b5105d677a32c0675fe511784ecf60601efce8eb1eff9269117f25a5de2",
+  "rulesVersion": "unavailable",
+  "sessionHash": "28fd483c2a5062a5db41a886634fd7f3f5f790d6d031b0d6b016dacd8675101d",
+  "reportRef": ".mimosa/reports/task-review-sess_900874f8-3a60-446b-8402-058bea0b7251-20260928T004413211Z-26400-d88046269308.json",
+  "events": [],
+  "observedFindingIds": [],
+  "verifiedFiles": [
+    {
+      "file": "code/app/server/db.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "code/app/server/trade.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "code/app/server/routes/questions.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "code/app/server/routes/admin.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    }
+  ],
+  "recordedAt": "2026-09-28T00:44:13.624Z"
+}
