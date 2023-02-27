@@ -1,0 +1,37 @@
+# ---- ExamForge / 智卷云 ----
+# 构建产物
+node_modules/
+target/
+dist/
+build/
+
+# 题库爬虫数据（1.7GB+，内容资产走独立存储/数据管线，不入代码仓库）
+题库/
+
+# 一次性备份与工具态
+_backup/
+.mimosa/
+.workbuddy/
+.playwright-cli/
+.zcode/
+
+# 日志与临时文件
+*.log
+logs/
+tmp/
+*.tmp
+
+# 本地环境与密钥（生产配置走 CI/CD 注入）
+.env
+.env.*
+*.pem
+*.key
+
+# IDE / 系统
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ---- 题库采集工具（避免被其他会话的 git clean 清掉）----
+crawlers/
