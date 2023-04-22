@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20260929T141947719Z-10828-db5c561649ac",
+  "runStatus": "inconclusive",
+  "errors": [
+    "baseline-read:crawlers/ingest_gaokao_updates.py: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:code/enterprise/examforge-resource/src/main/java/com/examforge/resource/mapper/CreatorContractMapper.java: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:code/enterprise/examforge-resource/src/main/java/com/examforge/resource/domain/CreatorContract.java: baseline_snapshot_unreadable: file is missing from task baseline",
+    "scan:crawlers/ingest_gaokao_updates.py: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-resource/src/test/java/com/examforge/resource/logic/ResourceRulesTest.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-resource/src/main/java/com/examforge/resource/service/ResourceService.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-resource/src/main/java/com/examforge/resource/mapper/CreatorContractMapper.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-resource/src/main/java/com/examforge/resource/logic/ResourceRules.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-resource/src/main/java/com/examforge/resource/domain/CreatorContract.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/CreatorResourceController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/ResourceAdminController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+  ],
+  "target": ".",
+  "revision": "bf867000e3c9e47081a6ac61cb778deb7e2960d7",
+  "diffHash": "5bfe829ab42d6685da4cc1e2e6df7affe0a423d520df5ef5653610d36d295200",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-09-29T14:19:47.719Z",
+  "timing": {
+    "startedAt": "2026-09-29T14:19:42.038Z",
+    "completedAt": "2026-09-29T14:19:47.719Z",
+    "durationMs": 5681
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 0,
+    "bySeverity": {},
+    "byStatus": {}
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "baseline_snapshot_unreadable": 3,
+      "scanner_failed": 8,
+      "project_check_failed": 11
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_ad067c93-5b84-47b7-acf0-ec20064dd75b-20260929T141947719Z-10828-db5c561649ac.json"
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260929T152139319Z-14428-8a369125d879",
+  "runId": "20260929T152139319Z-14428-8a369125d879",
+  "runStatus": "inconclusive",
+  "coverage": {
+    "status": "partial",
+    "reasons": [
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-question/src/test/java/com/examforge/question/logic/LiteracyRulesTest.java",
+        "detail": "file is missing from task baseline",
+        "affectsCompletion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/logic/LiteracyRules.java",
+        "detail": "file is missing from task baseline",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/test/java/com/examforge/question/logic/LiteracyRulesTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/service/QuestionService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/logic/LiteracyRules.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/controller/InternalQuestionController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/controller/QuestionAuditController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/controller/QuestionController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-question/src/test/java/com/examforge/question/logic/LiteracyRulesTest.java",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/logic/LiteracyRules.java",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/test/java/com/examforge/question/logic/LiteracyRulesTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/service/QuestionService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/logic/LiteracyRules.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/controller/InternalQuestionController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/controller/QuestionAuditController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-question/src/main/java/com/examforge/question/controller/QuestionController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      }
+    ]
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": "9550394b536e8fda74295a5b36672bb560f097ba",
+  "diffHash": "8ea0a15c1bfb6ff0d29cbad07a320b6ad9d4df5f59c60f7f0c9d30ca28a14a48",
+  "rulesVersion": "unavailable",
+  "sessionHash": "e414b9af8531360900a74c24f09e5c04b22e30412a3c8b1438653009fb6ff6bb",
+  "reportRef": ".mimosa/reports/task-review-sess_ad067c93-5b84-47b7-acf0-ec20064dd75b-20260929T152139319Z-14428-8a369125d879.json",
+  "events": [],
+  "observedFindingIds": [],
+  "verifiedFiles": [],
+  "recordedAt": "2026-09-29T15:21:39.862Z"
+}

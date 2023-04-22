@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260930T015828755Z-24620-651d6b2d45fb",
+  "runId": "20260930T015828755Z-24620-651d6b2d45fb",
+  "runStatus": "inconclusive",
+  "coverage": {
+    "status": "partial",
+    "reasons": [
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/main/java/com/examforge/ai/logic/PhotoSearchRules.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/test/java/com/examforge/ai/logic/PhotoSearchRulesTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/main/java/com/examforge/ai/provider/MockAiProvider.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/test/java/com/examforge/ai/provider/MockAiProviderTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/main/java/com/examforge/ai/service/AiService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/main/java/com/examforge/ai/controller/AiController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/test/java/com/examforge/resource/logic/ResourceRulesTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/service/ResourceService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/logic/ResourceRules.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/ResourceAdminController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/main/java/com/examforge/ai/logic/PhotoSearchRules.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/test/java/com/examforge/ai/logic/PhotoSearchRulesTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/main/java/com/examforge/ai/provider/MockAiProvider.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/test/java/com/examforge/ai/provider/MockAiProviderTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/main/java/com/examforge/ai/service/AiService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-ai/src/main/java/com/examforge/ai/controller/AiController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/test/java/com/examforge/resource/logic/ResourceRulesTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/service/ResourceService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/logic/ResourceRules.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/ResourceAdminController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      }
+    ]
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": "0f93495201c6b035b3a3d30a1bc4984f15a26915",
+  "diffHash": "fe71cf4a010af5d32b490a20b7270d66593ef80ca92e6f3859d6ca8eb24c3003",
+  "rulesVersion": "unavailable",
+  "sessionHash": "f0231b4f8f04239f010904c46e40129b17e06d302fad8b59c374fa1f355880b3",
+  "reportRef": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20260930T015828755Z-24620-651d6b2d45fb.json",
+  "events": [],
+  "observedFindingIds": [],
+  "verifiedFiles": [],
+  "recordedAt": "2026-09-30T01:58:29.332Z"
+}

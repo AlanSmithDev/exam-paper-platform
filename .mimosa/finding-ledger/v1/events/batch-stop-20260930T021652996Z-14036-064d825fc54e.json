@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260930T021652996Z-14036-064d825fc54e",
+  "runId": "20260930T021652996Z-14036-064d825fc54e",
+  "runStatus": "inconclusive",
+  "coverage": {
+    "status": "partial",
+    "reasons": [
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/logic/WrongBookRules.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/test/java/com/examforge/practice/logic/WrongBookRulesTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/service/WrongBookSync.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/service/AssignmentService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/service/ScanService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/controller/AssignmentController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/logic/WrongBookRules.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/test/java/com/examforge/practice/logic/WrongBookRulesTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/service/WrongBookSync.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/service/AssignmentService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/service/ScanService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-practice/src/main/java/com/examforge/practice/controller/AssignmentController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affectsCompletion": true
+      }
+    ]
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": "e9f448f5ac6604b48ea3b70e3a552a4c53c96e45",
+  "diffHash": "ff9c8e2b0552f7652338cc4a9eda662226a60796066c8363559b46944f3d33ca",
+  "rulesVersion": "unavailable",
+  "sessionHash": "f0231b4f8f04239f010904c46e40129b17e06d302fad8b59c374fa1f355880b3",
+  "reportRef": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20260930T021652996Z-14036-064d825fc54e.json",
+  "events": [],
+  "observedFindingIds": [],
+  "verifiedFiles": [],
+  "recordedAt": "2026-09-30T02:16:53.410Z"
+}

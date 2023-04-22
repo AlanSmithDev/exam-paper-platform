@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20260929T131336938Z-24720-10d7dd35da41",
+  "runStatus": "inconclusive",
+  "errors": [
+    "candidate-select:code/app/server/export/card.js: changed_file_unreadable: observed changed file no longer exists or cannot be read",
+    "baseline:.: baseline_partial: baseline capture had enumeration or snapshot errors",
+    "scan:code/app/server/routes/papers.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+  ],
+  "target": ".",
+  "revision": "fbc905cde0bb204ff020f2b4c1b02d1ff4e94604",
+  "diffHash": "bb7506a3d75fccd05c2b343059182d53459ccae961f97fa565decd652d4043fb",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-09-29T13:13:36.938Z",
+  "timing": {
+    "startedAt": "2026-09-29T13:13:33.795Z",
+    "completedAt": "2026-09-29T13:13:36.938Z",
+    "durationMs": 3143
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 5,
+    "bySeverity": {
+      "high": 5
+    },
+    "byStatus": {
+      "blocked": 5
+    }
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "changed_file_unreadable": 1,
+      "baseline_partial": 1,
+      "scanner_failed": 1,
+      "project_check_failed": 3
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_ad067c93-5b84-47b7-acf0-ec20064dd75b-20260929T131336938Z-24720-10d7dd35da41.json"
+}

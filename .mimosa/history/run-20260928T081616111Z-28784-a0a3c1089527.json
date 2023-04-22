@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20260928T081616111Z-28784-a0a3c1089527",
+  "runStatus": "inconclusive",
+  "errors": [
+    "baseline-read:code/enterprise/frontend/src/utils/math.js: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:code/enterprise/frontend/src/utils/paper.js: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:code/enterprise/frontend/src/composables/workspace.js: baseline_snapshot_unreadable: file is missing from task baseline",
+    "scan:code/app/server/db.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/app/server/message.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/app/server/trade.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/app/server/routes/messages.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/app/server/routes/payments.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/app/server/store.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/app/server/netutil.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/app/server/server.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/frontend/src/mock.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/frontend/src/router.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/frontend/src/utils/math.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/frontend/src/utils/paper.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/frontend/src/composables/workspace.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/app/server/routes/papers.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/app/server/routes/questions.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "supply-chain-check:.: stop_budget_exhausted: focused supply-chain check was not run before the gate budget"
+  ],
+  "target": ".",
+  "revision": null,
+  "diffHash": "95867f52b48bbc2c225aa973e4ed1de0be97853b5ff8866736275e92b21e1287",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-09-28T08:16:16.111Z",
+  "timing": {
+    "startedAt": "2026-09-28T08:16:13.150Z",
+    "completedAt": "2026-09-28T08:16:16.111Z",
+    "durationMs": 2961
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 1,
+    "bySeverity": {
+      "high": 1
+    },
+    "byStatus": {
+      "static_verified": 1
+    }
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "baseline_snapshot_unreadable": 3,
+      "scanner_failed": 15,
+      "stop_budget_exhausted": 1,
+      "project_check_failed": 19
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_900874f8-3a60-446b-8402-058bea0b7251-20260928T081616111Z-28784-a0a3c1089527.json"
+}

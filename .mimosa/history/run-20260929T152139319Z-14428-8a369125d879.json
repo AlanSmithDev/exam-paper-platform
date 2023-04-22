@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20260929T152139319Z-14428-8a369125d879",
+  "runStatus": "inconclusive",
+  "errors": [
+    "baseline-read:code/enterprise/examforge-question/src/test/java/com/examforge/question/logic/LiteracyRulesTest.java: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:code/enterprise/examforge-question/src/main/java/com/examforge/question/logic/LiteracyRules.java: baseline_snapshot_unreadable: file is missing from task baseline",
+    "scan:code/enterprise/examforge-question/src/test/java/com/examforge/question/logic/LiteracyRulesTest.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-question/src/main/java/com/examforge/question/service/QuestionService.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-question/src/main/java/com/examforge/question/logic/LiteracyRules.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-question/src/main/java/com/examforge/question/controller/InternalQuestionController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-question/src/main/java/com/examforge/question/controller/QuestionAuditController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-question/src/main/java/com/examforge/question/controller/QuestionController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+  ],
+  "target": ".",
+  "revision": "9550394b536e8fda74295a5b36672bb560f097ba",
+  "diffHash": "8ea0a15c1bfb6ff0d29cbad07a320b6ad9d4df5f59c60f7f0c9d30ca28a14a48",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-09-29T15:21:39.319Z",
+  "timing": {
+    "startedAt": "2026-09-29T15:21:31.955Z",
+    "completedAt": "2026-09-29T15:21:39.319Z",
+    "durationMs": 7364
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 0,
+    "bySeverity": {},
+    "byStatus": {}
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "baseline_snapshot_unreadable": 2,
+      "scanner_failed": 6,
+      "project_check_failed": 8
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_ad067c93-5b84-47b7-acf0-ec20064dd75b-20260929T152139319Z-14428-8a369125d879.json"
+}
