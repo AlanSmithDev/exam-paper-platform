@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20261001T042643392Z-27212-cc764645f9ca",
+  "runStatus": "inconclusive",
+  "errors": [
+    "scan:code/enterprise/examforge-user/src/main/java/com/examforge/user/domain/User.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/main/java/com/examforge/user/logic/TotpRules.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/test/java/com/examforge/user/logic/TotpRulesTest.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/main/java/com/examforge/user/service/AuthService.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/main/java/com/examforge/user/controller/AuthController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-ai/src/main/java/com/examforge/ai/provider/MockAiProvider.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-ai/src/main/java/com/examforge/ai/service/AiService.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-ai/src/main/java/com/examforge/ai/controller/AiController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-ai/src/test/java/com/examforge/ai/provider/MockAiProviderTest.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+  ],
+  "target": ".",
+  "revision": "1a67e33686e2f44677b8205af9465404af3b34d9",
+  "diffHash": "76f17c4b045eb8aaff3e04b57503d6f122fd304c6e559de8d411885f963a409c",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-10-01T04:26:43.392Z",
+  "timing": {
+    "startedAt": "2026-10-01T04:26:39.276Z",
+    "completedAt": "2026-10-01T04:26:43.392Z",
+    "durationMs": 4116
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 1,
+    "bySeverity": {
+      "high": 1
+    },
+    "byStatus": {
+      "candidate": 1
+    }
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "scanner_failed": 9,
+      "project_check_failed": 9
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20261001T042643392Z-27212-cc764645f9ca.json"
+}

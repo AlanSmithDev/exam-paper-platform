@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20260930T024824063Z-12072-093ccf1886a3",
+  "runStatus": "inconclusive",
+  "errors": [
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/SchoolApplication.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/School.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/SchoolMember.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMapper.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMemberMapper.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/logic/SchoolRules.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/test/java/com/examforge/school/logic/SchoolRulesTest.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/service/SchoolService.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolAdminController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/InternalSchoolController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-api/src/main/java/com/examforge/api/feign/SchoolClient.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-trade/src/main/java/com/examforge/trade/service/TradeService.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/frontend/src/router.js: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-trade/src/main/java/com/examforge/trade/TradeApplication.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "supply-chain-check:.: stop_budget_exhausted: focused supply-chain check was not run before the gate budget"
+  ],
+  "target": ".",
+  "revision": "f7dd2e9286ba1b802e8afec7fe120f9e006fb419",
+  "diffHash": "d8aeac73772f92acedb1d5c2844ca893d97e2115956f7571e0dd3a1e32feb31a",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-09-30T02:48:24.063Z",
+  "timing": {
+    "startedAt": "2026-09-30T02:48:20.208Z",
+    "completedAt": "2026-09-30T02:48:24.063Z",
+    "durationMs": 3855
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 0,
+    "bySeverity": {},
+    "byStatus": {}
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "scanner_failed": 15,
+      "stop_budget_exhausted": 1,
+      "project_check_failed": 16
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20260930T024824063Z-12072-093ccf1886a3.json"
+}

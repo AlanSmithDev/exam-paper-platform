@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20261001T032923998Z-13720-c5ea5f1360d6",
+  "runStatus": "inconclusive",
+  "errors": [
+    "baseline-read:code/enterprise/examforge-user/src/test/java/com/examforge/user/logic/LoginGuardRulesTest.java: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:code/enterprise/examforge-user/src/main/java/com/examforge/user/mapper/LoginAttemptMapper.java: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:code/enterprise/examforge-user/src/main/java/com/examforge/user/logic/LoginGuardRules.java: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:code/enterprise/examforge-user/src/main/java/com/examforge/user/domain/LoginAttempt.java: baseline_snapshot_unreadable: file is missing from task baseline",
+    "scan:code/enterprise/examforge-paper/src/main/java/com/examforge/paper/logic/TemplateRules.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-paper/src/test/java/com/examforge/paper/logic/TemplateRulesTest.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-paper/src/main/java/com/examforge/paper/domain/PaperTemplate.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-paper/src/main/java/com/examforge/paper/mapper/PaperTemplateMapper.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-paper/src/main/java/com/examforge/paper/service/PaperTemplateService.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/test/java/com/examforge/user/logic/LoginGuardRulesTest.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/main/java/com/examforge/user/service/AuthService.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/main/java/com/examforge/user/mapper/LoginAttemptMapper.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/main/java/com/examforge/user/logic/LoginGuardRules.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/main/java/com/examforge/user/domain/LoginAttempt.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-user/src/main/java/com/examforge/user/controller/AuthController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-paper/src/main/java/com/examforge/paper/controller/PaperController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+  ],
+  "target": ".",
+  "revision": "3b37e6d821d63522dc2aa0fc5af5b3ee37c1b687",
+  "diffHash": "adae7d0fc48c928741693707bdad75482ed9984420fb9e0162b06701de291ebc",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-10-01T03:29:23.998Z",
+  "timing": {
+    "startedAt": "2026-10-01T03:29:21.216Z",
+    "completedAt": "2026-10-01T03:29:23.998Z",
+    "durationMs": 2782
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 0,
+    "bySeverity": {},
+    "byStatus": {}
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "baseline_snapshot_unreadable": 4,
+      "scanner_failed": 12,
+      "project_check_failed": 16
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20261001T032923998Z-13720-c5ea5f1360d6.json"
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20260930T031635355Z-14960-f03516d5d294",
+  "runStatus": "inconclusive",
+  "errors": [
+    "scan:code/enterprise/examforge-common/src/test/java/com/examforge/common/monitor/MonitoringConfigStructureTest.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-paper/src/main/java/com/examforge/paper/logic/ExportRules.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-paper/src/main/java/com/examforge/paper/service/ExportService.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-paper/src/main/java/com/examforge/paper/controller/ExportController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-paper/src/test/java/com/examforge/paper/logic/ExportRulesTest.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/TradeController.java: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "supply-chain-check:.: stop_budget_exhausted: focused supply-chain check was not run before the gate budget"
+  ],
+  "target": ".",
+  "revision": "f25f88fe6cef6f5cd1fcdfd6284b46fd8ffd446f",
+  "diffHash": "ac6006ad674ff0586f506c2de1607aeb750c4fe8d4f818ed890913c5fe029701",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-09-30T03:16:35.355Z",
+  "timing": {
+    "startedAt": "2026-09-30T03:16:31.427Z",
+    "completedAt": "2026-09-30T03:16:35.355Z",
+    "durationMs": 3928
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 0,
+    "bySeverity": {},
+    "byStatus": {}
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "scanner_failed": 6,
+      "stop_budget_exhausted": 1,
+      "project_check_failed": 7
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20260930T031635355Z-14960-f03516d5d294.json"
+}

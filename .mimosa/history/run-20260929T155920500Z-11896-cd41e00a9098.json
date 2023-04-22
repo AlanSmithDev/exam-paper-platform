@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20260929T155920500Z-11896-cd41e00a9098",
+  "runStatus": "inconclusive",
+  "errors": [
+    "candidate-select:crawlers/zujuan/src/lib/scraper.ts: candidate_limit_exceeded: 17 changed reviewable file(s) were not scanned because the limit is 20",
+    "baseline-read:crawlers/convert_numina.py: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/ingest_gaokao_updates.py: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/ingest_tal.py: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/routenum.sh: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/CLAUDE.md: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/package-lock.json: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/package.json: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/tests/markdown-to-html.test.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/tests/url-builder.test.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/index.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/types/index.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/lib/browser-detect.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/lib/browser-state.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/lib/browser.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/lib/config.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/lib/discord-notifier.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/lib/errors.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/lib/knowledge-tree-sqlite.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/lib/logger.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "baseline-read:crawlers/zujuan/src/lib/mappings.ts: baseline_snapshot_unreadable: file is missing from task baseline",
+    "scan:crawlers/convert_numina.py: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/ingest_gaokao_updates.py: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/ingest_tal.py: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/routenum.sh: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/tests/markdown-to-html.test.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/tests/url-builder.test.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/index.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/types/index.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/lib/browser-detect.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/lib/browser-state.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/lib/browser.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/lib/config.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/lib/discord-notifier.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/lib/errors.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/lib/knowledge-tree-sqlite.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/lib/logger.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "scan:crawlers/zujuan/src/lib/mappings.ts: scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+    "supply-chain-check:.: stop_budget_exhausted: focused supply-chain check was not run before the gate budget",
+    "agent-check:.: stop_budget_exhausted: focused agent configuration check was not run before the gate budget"
+  ],
+  "target": ".",
+  "revision": "45a59665433c71ffdee73987e2c99c84ce426087",
+  "diffHash": "646fdd6c5f0b1fda3d87fda088a0f75657c7a8059476fe511d764999b2371cf2",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-09-29T15:59:20.500Z",
+  "timing": {
+    "startedAt": "2026-09-29T15:59:13.420Z",
+    "completedAt": "2026-09-29T15:59:20.500Z",
+    "durationMs": 7080
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 0,
+    "bySeverity": {},
+    "byStatus": {}
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "candidate_limit_exceeded": 1,
+      "baseline_snapshot_unreadable": 20,
+      "scanner_failed": 17,
+      "stop_budget_exhausted": 2,
+      "project_check_failed": 40
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_ad067c93-5b84-47b7-acf0-ec20064dd75b-20260929T155920500Z-11896-cd41e00a9098.json"
+}
