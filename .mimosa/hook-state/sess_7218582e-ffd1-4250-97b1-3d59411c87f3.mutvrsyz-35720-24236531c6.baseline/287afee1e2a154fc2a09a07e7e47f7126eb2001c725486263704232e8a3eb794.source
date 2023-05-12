@@ -1,0 +1,77 @@
+package com.zhijuan.paper.controller;
+
+import com.zhijuan.api.feign.QuestionClient;
+import com.zhijuan.common.web.Result;
+import com.zhijuan.paper.domain.Paper;
+import com.zhijuan.paper.domain.PaperQuestion;
+import com.zhijuan.paper.mapper.PaperMapper;
+import com.zhijuan.paper.mapper.PaperQuestionMapper;
+import com.zhijuan.paper.service.PaperGenerateEngine;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+/** 智能组卷 + 试卷管理 */
+@RestController
+@RequestMapping("/api/v1/papers")
+public class PaperController {
+
+    private final PaperGenerateEngine engine;
+    private final PaperMapper paperMapper;
+    private final PaperQuestionMapper paperQuestionMapper;
+
+    public PaperController(QuestionClient questionClient, PaperMapper paperMapper,
+                           PaperQuestionMapper paperQuestionMapper) {
+        // 组卷引擎的取题通道 = Feign 契约（跨服务调用题库服务）
+        this.engine = new PaperGenerateEngine(questionClient::listByType);
+        this.paperMapper = paperMapper;
+        this.paperQuestionMapper = paperQuestionMapper;
+    }
+
+    @PostMapping("/generate")
+    public Result<Map<String, Object>> generate(@RequestHeader("X-User-Id") String uid,
+                                                @RequestBody Map<String, Object> body) {
+        Long subjectId = body.get("subjectId") == null ? null : Long.valueOf(String.valueOf(body.get("subjectId")));
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> structure = (List<Map<String, Object>>) body.getOrDefault("structure", List.of());
+        Integer target = body.get("difficultyTarget") == null ? null : Integer.valueOf(String.valueOf(body.get("difficultyTarget")));
+        @SuppressWarnings("unchecked")
+        List<Long> exclude = body.get("excludeIds") == null ? List.of()
+                : ((List<Object>) body.get("excludeIds")).stream().map(x -> Long.valueOf(String.valueOf(x))).toList();
+
+        // 引擎通过 Feign 拉取候选题
+        PaperGenerateEngine.Outcome out = engine.generate(subjectId, structure, target, exclude);
+        List<Map<String, Object>> questions = out.questions().stream()
+                .map(p -> Map.<String, Object>of("id", p.id(), "type", p.type(), "difficulty", p.difficulty(),
+                        "coefficient", p.coefficient(), "stem", p.stem(), "score", p.score()))
+                .toList();
+
+        Paper paper = new Paper();
+        paper.setUserId(Long.valueOf(uid));
+        paper.setTitle(String.valueOf(body.getOrDefault("title", "智能组卷")));
+        paper.setTotalScore(out.totalScore());
+        paper.setStatus(0);
+        paperMapper.insert(paper);
+
+        // 保存卷面结构（导出/二次编辑依据）
+        List<com.zhijuan.paper.domain.PaperQuestion> rows = out.questions().stream()
+                .map(p -> { com.zhijuan.paper.domain.PaperQuestion pq = new com.zhijuan.paper.domain.PaperQuestion();
+                    pq.setPaperId(paper.getId()); pq.setQuestionId(p.id()); pq.setScore(p.score()); return pq; })
+                .toList();
+        for (int i = 0; i < rows.size(); i++) { rows.get(i).setSort(i + 1); paperQuestionMapper.insert(rows.get(i)); }
+
+        return Result.ok(Map.of(
+                "paperId", paper.getId(), "totalScore", out.totalScore(),
+                "count", out.questions().size(), "difficultyFit", out.difficultyFit(),
+                "warnings", out.warnings(), "questions", questions));
+    }
+
+    @GetMapping("/{id}")
+    public Result<Paper> get(@RequestHeader("X-User-Id") String uid, @PathVariable Long id) {
+        Paper p = paperMapper.selectById(id);
+        if (p == null || !p.getUserId().equals(Long.valueOf(uid))) return Result.fail(Result.NOT_FOUND, "试卷不存在");
+        return Result.ok(p);
+    }
+}
