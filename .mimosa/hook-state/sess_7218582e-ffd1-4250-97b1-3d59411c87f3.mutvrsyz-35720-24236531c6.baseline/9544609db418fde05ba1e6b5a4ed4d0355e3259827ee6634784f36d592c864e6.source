@@ -1,0 +1,42 @@
+package com.zhijuan.trade.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.zhijuan.common.web.Result;
+import com.zhijuan.trade.domain.TradeOrder;
+import com.zhijuan.trade.logic.OrderRules;
+import com.zhijuan.trade.mapper.TradeOrderMapper;
+import com.zhijuan.trade.service.TradeService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+/** 服务间内部接口（仅内网可达，网关不路由 /internal/**；docs/12 SSRF 与安全约束同样适用） */
+@RestController
+@RequestMapping("/internal/trade")
+@RequiredArgsConstructor
+public class InternalTradeController {
+
+    private final TradeService tradeService;
+    private final TradeOrderMapper orderMapper;
+
+    /** 纠错采纳等奖励发放：question 服务 Feign 调用 */
+    @PostMapping("/points/reward")
+    public Result<Map<String, Object>> reward(@RequestHeader("X-User-Id") String uid,
+                                              @RequestBody Map<String, Object> body) {
+        int points = Integer.parseInt(String.valueOf(body.getOrDefault("points", "0")));
+        if (points <= 0 || points > 100) return Result.fail(Result.BAD_REQUEST, "奖励点数非法");
+        return Result.ok(tradeService.reward(Long.valueOf(uid), points,
+                String.valueOf(body.getOrDefault("reason", "REWARD")),
+                String.valueOf(body.getOrDefault("ref", ""))));
+    }
+
+    /** 统计（看板聚合） */
+    @GetMapping("/stats")
+    public Result<Map<String, Object>> stats() {
+        return Result.ok(Map.of(
+                "orders", orderMapper.selectCount(null),
+                "paidOrders", orderMapper.selectCount(new LambdaQueryWrapper<TradeOrder>()
+                        .eq(TradeOrder::getStatus, OrderRules.PAID))));
+    }
+}
