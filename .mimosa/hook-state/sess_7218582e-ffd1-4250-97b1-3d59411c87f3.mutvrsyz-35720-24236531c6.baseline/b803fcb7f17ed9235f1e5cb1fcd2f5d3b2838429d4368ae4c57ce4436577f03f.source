@@ -1,0 +1,51 @@
+name: ExamForge CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  mvp-smoke:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: code/app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+      - name: MVP smoke tests
+        run: npm run smoke
+
+  enterprise-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: code/enterprise
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+      - name: Enterprise backend tests (12 modules)
+        run: mvn -B test
+
+  frontend-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dir: [ code/enterprise/frontend, code/enterprise/frontend-admin ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+        working-directory: ${{ matrix.dir }}
+      - run: npm run build
+        working-directory: ${{ matrix.dir }}
