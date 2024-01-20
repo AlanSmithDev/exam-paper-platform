@@ -1,0 +1,44 @@
+name: 智卷云 CI（MVP + 企业版）
+
+on:
+  push: { branches: [ main ] }
+  pull_request:
+
+jobs:
+  mvp-smoke:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: code/app } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: npm install
+      - name: MVP 冒烟测试（78+ 断言）
+        run: npm run smoke
+
+  enterprise-backend:
+    # 企业版代码尚未落库（docs/22 任务书 G1，M3 里程碑）：目录存在才执行，避免 CI 空跑失败
+    if: ${{ hashFiles('code/enterprise/pom.xml') != '' }}
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: code/enterprise } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: "17", cache: maven }
+      - name: 微服务全量编译 + 单测（组卷/交易/判分/AI）
+        run: mvn -B test
+
+  frontend:
+    # 同上：企业版前端目录存在才执行
+    if: ${{ hashFiles('code/enterprise/frontend/package.json') != '' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: { dir: [ code/enterprise/frontend, code/enterprise/frontend-admin ] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: npm install
+        working-directory: ${{ matrix.dir }}
+      - run: npm run build
+        working-directory: ${{ matrix.dir }}
