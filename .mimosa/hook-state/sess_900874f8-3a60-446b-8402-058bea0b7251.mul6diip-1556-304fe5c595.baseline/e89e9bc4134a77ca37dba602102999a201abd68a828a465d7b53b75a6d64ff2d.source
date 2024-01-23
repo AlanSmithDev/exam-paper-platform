@@ -1,0 +1,7 @@
+package com.zhijuan.practice.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zhijuan.practice.domain.Practice;
+
+public interface PracticeMapper extends BaseMapper<Practice> {
+}
