@@ -1,0 +1,151 @@
+# -*- coding: utf-8 -*-
+"""
+NuminaMath-CoT (hf-mirror 本地 parquet) → cn_k12 子集 → 初/高中数学题 JSONL（stdout 标记流）
+用法: python convert_numina.py   # 只打印，不写文件；由 shell/awk 按标记路由落盘
+注意: 实测 NuminaMath-CoT 的 cn_k12 子集绝大多数已被翻译为英文（CJK 过滤后仅剩百余条），
+原始中文 cn_k12 需从 OpenDataLab 获取（需注册账号）。本脚本保留备用。
+输出流格式:
+  @@Q|<学段>|<分片号>   后跟题目行(JSONL 全字段)
+  @@A|<学段>|<分片号>   后跟答案行(JSONL: qid/answer/analysis)
+"""
+import os, re, sys, io, glob, hashlib, json
+import pandas as pd
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+STAGE_DIR = r'E:\code\business\zujuan-platform\crawlers\_staging\numina'
+PART_SIZE = 10000
+NOW = '2026-09-29'
+# 分片号偏移：高中数学已有 part_0001(旧)~0003，初中已有 part_0001~0002
+PART_OFFSET = {'高中': 3, '初中': 2}
+
+# 高中强特征（出现即倾向高中）
+HIGH_KW = ['导数', '圆锥曲线', '椭圆', '双曲线', '抛物线', '三角函数', '正弦定理', '余弦定理',
+           '平面向量', '空间向量', '排列', '组合', '二项式', '复数', '充要条件', '充分必要',
+           '定义域', '值域', '单调区间', '奇偶性', '对数函数', '指数函数', '幂函数', '斜率',
+           '离心率', '准线', '渐近线', '极坐标', '参数方程', '立体几何', '二面角', '异面直线',
+           '等差数列', '等比数列', '通项公式', '前n项和', '前 n 项和', '正态分布', '线性回归', '古典概型']
+# 初中强特征（出现即倾向初中）
+MIDDLE_KW = ['一元二次方程', '一元一次方程', '二元一次方程', '分式方程', '不等式组', '因式分解',
+             '全等三角形', '相似三角形', '勾股定理', '反比例函数', '一次函数', '二次函数',
+             '有理数', '无理数', '实数', '科学记数法', '平方根', '立方根', '二次根式',
+             '平行四边形', '菱形', '矩形', '正方形', '圆周角', '圆心角', '切线', '三视图',
+             '反证法', '平均数', '中位数', '众数', '必然事件', '随机事件']
+
+OPT_MARK = re.compile(r'(?:^|\n|\t)([A-D])\s*[.．、·]\s*')
+
+
+def norm(s):
+    return re.sub(r'\s+', '', s or '')
+
+
+def classify_stage(problem):
+    h = sum(problem.count(k) for k in HIGH_KW)
+    m = sum(problem.count(k) for k in MIDDLE_KW)
+    if h > m:
+        return '高中'
+    if m > h:
+        return '初中'
+    return '高中' if len(problem) > 120 else '初中'  # 无特征时按篇幅粗判，标记 raw 待审
+
+
+def parse_options(problem):
+    marks = list(OPT_MARK.finditer(problem))
+    valid, expect = [], 'A'
+    for mk in marks:
+        if mk.group(1) == expect:
+            valid.append(mk)
+            expect = chr(ord(expect) + 1)
+        else:
+            break
+    if len(valid) < 4:
+        return problem, []
+    stem = problem[:valid[0].start()].strip()
+    opts = []
+    for i, mk in enumerate(valid):
+        end = valid[i + 1].start() if i + 1 < len(valid) else len(problem)
+        opts.append({'label': mk.group(1), 'content': re.sub(r'\s+', ' ', problem[mk.end():end].strip())})
+    return stem, opts
+
+
+def extract_answer(solution):
+    if not solution:
+        return ''
+    ms = re.findall(r'\\boxed\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}', solution)
+    if ms:
+        return ms[-1].strip()
+    lines = [l.strip() for l in solution.strip().splitlines() if l.strip()]
+    return lines[-1][:500] if lines else ''
+
+
+def qtype_of(stem, opts):
+    if len(opts) >= 4:
+        return '单选题'
+    s = stem
+    if re.search(r'证明', s):
+        return '证明题'
+    if re.search(r'求|计算|化简|解(方程|不等式)', s):
+        return '解答题' if len(s) > 80 else '计算题'
+    return '解答题'
+
+
+def main():
+    files = sorted(glob.glob(os.path.join(STAGE_DIR, 'train-*.parquet')))
+    if not files:
+        raise SystemExit('未找到 parquet 文件')
+    frames = []
+    for f in files:
+        df = pd.read_parquet(f, columns=['source', 'problem', 'solution'])
+        frames.append(df[df['source'] == 'cn_k12'])
+    df = pd.concat(frames, ignore_index=True).drop_duplicates(subset=['problem'])
+    print(f'# cn_k12 rows: {len(df)}', file=sys.stderr)
+
+    counters = {'高中': 0, '初中': 0}
+    seen = set()
+    n_lang = n_bad = 0
+    for problem, solution in zip(df['problem'], df['solution']):
+        problem = str(problem).strip()
+        solution = str(solution).strip()
+        if not problem or len(problem) < 8:
+            continue
+        # 只保留中文题（中文题库平台口径；cn_k12 子集混有翻译英文题）
+        if len(re.findall(r'[\u4e00-\u9fff]', problem)) < 6:
+            n_lang += 1
+            continue
+        stage = classify_stage(problem)
+        n = counters[stage]
+        qid = hashlib.sha256(f'cn_k12|{norm(problem)[:400]}'.encode()).hexdigest()
+        if qid in seen:
+            continue
+        seen.add(qid)
+        stem, opts = parse_options(problem)
+        if not stem:
+            n_bad += 1
+            continue
+        qtype = qtype_of(stem, opts) if opts else qtype_of(problem, [])
+        answer = extract_answer(solution) if not opts else ''
+        # 无选项却抽出单字母答案 → 视为解析失败，置空（解析里保留了完整过程）
+        if not opts and re.fullmatch(r'[A-Ea-e]', answer or ''):
+            answer = ''
+            qtype = qtype_of(problem, [])
+        counters[stage] = n + 1
+        part_q = n // PART_SIZE + 1 + PART_OFFSET[stage]
+        row = {
+            'qid': qid, 'stage': stage, 'subject': '数学',
+            'grade': '高中' if stage == '高中' else '初中',
+            'type': qtype, 'difficulty': 2,
+            'stem': stem, 'options': opts, 'answer': answer,
+            'analysis': solution[:6000],
+            'knowledge': ['NuminaMath-CoT:cn_k12'], 'images': [],
+            'source': 'cn_k12开源数据集(NuminaMath-CoT)',
+            'source_url': 'https://huggingface.co/datasets/AI-MO/NuminaMath-CoT',
+            'year': 0, 'region': '', 'score': 0, 'created_at': NOW,
+        }
+        print(f'@@Q|{stage}|{part_q:04d}')
+        print(json.dumps(row, ensure_ascii=False))
+        print(f'@@A|{stage}|{part_q:04d}')
+        print(json.dumps({'qid': qid, 'answer': answer, 'analysis': solution[:6000]}, ensure_ascii=False))
+    print(f'# 高中 {counters["高中"]} / 初中 {counters["初中"]} / 过滤英文 {n_lang} / 脏行 {n_bad}', file=sys.stderr)
+
+
+if __name__ == '__main__':
+    main()
