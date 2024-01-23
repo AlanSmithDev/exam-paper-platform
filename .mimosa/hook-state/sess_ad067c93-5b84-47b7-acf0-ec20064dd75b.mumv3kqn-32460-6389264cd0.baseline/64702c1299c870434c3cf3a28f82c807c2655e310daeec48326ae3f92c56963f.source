@@ -1,0 +1,168 @@
+# -*- coding: utf-8 -*-
+"""
+GAOKAO-Bench-Updates (2023/2024 高考真题) → stdout 输出器
+用法:
+  python ingest_gaokao_updates.py <学科中文名> <q|a>
+    q → 打印题目行(JSONL, 全字段)
+    a → 打印答案行(JSONL, qid/answer/analysis)
+仅打印不写文件，落盘由调用方 shell 重定向完成。
+"""
+import json, os, re, glob, hashlib, sys, io
+from datetime import datetime
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+ROOT = r'E:\code\business\zujuan-platform'
+DATA = os.path.join(ROOT, 'crawlers', 'GAOKAO-Bench-Updates', 'Data')
+BANK = os.path.join(ROOT, '题库')
+NOW = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+SUBJECT_MAP = {
+    'Biology_MCQs': '生物', 'Chemistry_MCQs': '化学',
+    'Chinese_Lang_and_Usage_MCQs': '语文',
+    'Chinese_Modern_Lit': '语文', 'English_Cloze_Test': '英语',
+    'English_Fill_in_Blanks': '英语', 'English_Reading_Comp': '英语',
+    'Geography_MCQs': '地理', 'History_MCQs': '历史', 'Math_MCQs': '数学',
+    'Physics_MCQs': '物理', 'Political_Science_MCQs': '政治',
+}
+
+OPT_MARK = re.compile(r'(?:^|\n|\t)([A-H])\s*[.．、·]\s*')
+NUM_MARK = re.compile(r'(?m)^(\d{1,2})\s*[.．、]\s*')
+
+
+def norm(s):
+    return re.sub(r'\s+', '', s or '')
+
+
+def parse_options(text):
+    """从文本中解析 A-H 选项，返回 (stem, options)；解析失败返回 (原文, [])"""
+    marks = list(OPT_MARK.finditer(text))
+    valid = []
+    expect = 'A'
+    for m in marks:
+        if m.group(1) == expect:
+            valid.append(m)
+            expect = chr(ord(expect) + 1)
+        elif m.group(1) < expect:
+            continue
+        else:
+            return text, []
+    if len(valid) < 2:
+        return text, []
+    stem = text[:valid[0].start()].strip()
+    opts = []
+    for i, m in enumerate(valid):
+        end = valid[i + 1].start() if i + 1 < len(valid) else len(text)
+        seg = re.sub(r'\s+', ' ', text[m.end():end].strip())
+        opts.append({'label': m.group(1), 'content': seg})
+    return stem, opts
+
+
+def split_subq(text):
+    """按行首编号拆小题，返回 (material, [(编号, 小题文本)])；无编号时返回 (text, [])"""
+    ms = list(NUM_MARK.finditer(text))
+    if len(ms) < 2:
+        return text, []
+    material = text[:ms[0].start()].strip()
+    subs = []
+    for i, m in enumerate(ms):
+        end = ms[i + 1].start() if i + 1 < len(ms) else len(text)
+        subs.append((m.group(1), text[m.start():end].strip()))
+    return material, subs
+
+
+def build_rows(subject, dskey, ex):
+    """把一条 example 拆成若干行（材料题拆小题，其余单题）"""
+    year = int(ex['year'])
+    region = (ex.get('category') or '').strip()
+    score = ex.get('score', 5)
+    answers = [str(a).strip() for a in ex.get('answer', [])]
+    analysis = (ex.get('analysis') or '').strip()
+    q = (ex.get('question') or '').strip()
+
+    material, subs = split_subq(q)
+    rows = []
+    if subs and len(answers) == len(subs):
+        # 材料组题：材料 + 每小题独立一行
+        for (num, sub), ans in zip(subs, answers):
+            stem, opts = parse_options(sub)
+            full_stem = (material + '\n' + stem).strip() if material else stem
+            rows.append((full_stem, opts, ans, score))
+    else:
+        stem, opts = parse_options(q)
+        rows.append((stem, opts, ''.join(answers), score))
+
+    out = []
+    for stem, opts, ans, sc in rows:
+        if not stem:
+            continue
+        qid = hashlib.sha256(f'{subject}|{year}|{region}|{norm(stem)[:300]}'.encode()).hexdigest()
+        if re.fullmatch(r'[A-H]', ans):
+            qtype = '单选题'
+        elif re.fullmatch(r'[A-H]{2,4}', ans):
+            qtype = '多选题'
+        else:
+            qtype = '选择题'
+        out.append({
+            'qid': qid, 'stage': '高中', 'subject': subject, 'grade': '高三',
+            'type': qtype, 'difficulty': 3,
+            'stem': stem, 'options': opts, 'answer': ans, 'analysis': analysis,
+            'knowledge': [dskey], 'images': [],
+            'source': 'GAOKAO-Bench-Updates(高考真题)',
+            'source_url': 'https://github.com/OpenLMLab/GAOKAO-Bench-Updates',
+            'year': year, 'region': region, 'score': sc, 'created_at': NOW,
+        })
+    return out
+
+
+def main():
+    subject = sys.argv[1] if len(sys.argv) > 1 else ''
+    mode = sys.argv[2] if len(sys.argv) > 2 else 'q'
+    if subject not in set(SUBJECT_MAP.values()):
+        raise SystemExit(f'未知学科: {subject}')
+
+    existing_qids, existing_stems = set(), set()
+    for p in glob.glob(os.path.join(BANK, '高中', '*', '题目', '*.jsonl')):
+        for line in open(p, encoding='utf-8'):
+            try:
+                r = json.loads(line)
+                existing_qids.add(r.get('qid'))
+                existing_stems.add(norm(r.get('stem')))
+            except Exception:
+                pass
+
+    n_new, n_skip = 0, 0
+    for f in sorted(glob.glob(os.path.join(DATA, '*', '*.json'))):
+        dskey = os.path.splitext(os.path.basename(f))[0]
+        key = dskey.split('_', 1)[1]
+        if SUBJECT_MAP.get(key) != subject:
+            continue
+        data = json.load(open(f, encoding='utf-8'))
+        for ex in data.get('example', []):
+            for row in build_rows(subject, dskey, ex):
+                if row['qid'] in existing_qids or norm(row['stem']) in existing_stems:
+                    n_skip += 1
+                    continue
+                existing_qids.add(row['qid'])
+                existing_stems.add(norm(row['stem']))
+                if key == 'English_Cloze_Test':
+                    row['type'] = '七选五'
+                elif key == 'English_Fill_in_Blanks':
+                    row['type'] = '完形填空'
+                elif key == 'English_Reading_Comp':
+                    row['type'] = '阅读理解'
+                elif key == 'Chinese_Modern_Lit':
+                    row['type'] = '现代文阅读'
+                elif key == 'Chinese_Lang_and_Usage':
+                    row['type'] = '语言文字运用'
+                n_new += 1
+                if mode == 'a':
+                    print(json.dumps({'qid': row['qid'], 'answer': row['answer'],
+                                      'analysis': row['analysis']}, ensure_ascii=False))
+                else:
+                    print(json.dumps(row, ensure_ascii=False))
+    print(f'# {subject} mode={mode} 新增 {n_new} 去重 {n_skip}', file=sys.stderr)
+
+
+if __name__ == '__main__':
+    main()
