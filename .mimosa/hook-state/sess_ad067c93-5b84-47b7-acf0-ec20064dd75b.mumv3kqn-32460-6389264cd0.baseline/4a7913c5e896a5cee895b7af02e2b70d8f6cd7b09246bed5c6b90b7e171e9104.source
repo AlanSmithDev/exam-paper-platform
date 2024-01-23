@@ -1,0 +1,9 @@
+#!/bin/bash
+# 将 convert_numina.py 的标记流路由到题库分片文件（覆盖前需确认分片号为全新分片）
+BANK="E:/code/business/zujuan-platform/题库"
+python "$(dirname "$0")/convert_numina.py" | awk -v bank="$BANK" '
+/^@@Q\|/ { gsub(/\r/,""); split($0,a,"|"); out = bank "/" a[2] "/数学/题目/part_" a[3] ".jsonl"; next }
+/^@@A\|/ { gsub(/\r/,""); split($0,a,"|"); out = bank "/" a[2] "/数学/答案/part_" a[3] "_答案.jsonl"; next }
+{ if (out != "") print >> out }
+'
+echo ROUTED
