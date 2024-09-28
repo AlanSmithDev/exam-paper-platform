@@ -1,0 +1,100 @@
+# -*- coding: utf-8 -*-
+"""
+TAL-SCQ5K-CN (好未来开源中文数学选择题, MIT) → stdout 输出器
+用法: python ingest_tal.py <高中|初中>   # 只打印不写文件，落盘由 shell 重定向完成
+规则: 来源含小学竞赛标记→跳过；知识点/来源含高中特征→高中；含初中特征→初中；其余跳过。
+"""
+import json, os, re, sys, io, hashlib
+from datetime import datetime
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+SRC_DIR = r'E:\code\business\zujuan-platform\crawlers\_staging\TAL-SCQ5K\TAL-SCQ5K-CN'
+NOW = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+HIGH_KW = ['导数', '圆锥曲线', '椭圆', '双曲线', '抛物线', '三角函数', '正弦定理', '余弦定理',
+           '向量', '排列', '组合', '二项式', '复数', '集合', '立体几何', '二面角', '异面直线',
+           '等差数列', '等比数列', '对数', '指数函数', '幂函数', '正态分布', '古典概型', '概率',
+           '立体几何', '球', '棱锥', '棱柱', '圆锥', '圆柱']
+MID_KW = ['一元二次', '一元一次', '分式', '因式分解', '全等', '相似', '勾股', '反比例函数',
+          '二次函数', '有理数', '实数', '平行四边形', '菱形', '不等式', '整式', '分式方程',
+          '三角形', '轴对称', '平移', '旋转', '圆', '一次函数', '概率初步']
+PRIM_RE = re.compile(r'小学|小升初|[一二三四五六]年级|华杯|迎春杯|希望杯|亚太杯|创新杯|YMO|羊排赛|新希望|世界少年')
+
+
+def norm(s):
+    return re.sub(r'\s+', '', s or '')
+
+
+def classify(src, kp):
+    text = src + kp
+    if PRIM_RE.search(src):
+        return None
+    if any(k in text for k in HIGH_KW):
+        return '高中'
+    if any(k in text for k in MID_KW):
+        return '初中'
+    return None
+
+
+def diff_map(d):
+    try:
+        v = int(d)
+    except Exception:
+        return 2
+    return 1 if v <= 1 else (2 if v == 2 else 3)
+
+
+def strip_html(s):
+    if not isinstance(s, str):
+        return ''
+    return re.sub(r'<[^>]+>', '', s).strip()
+
+
+def main():
+    target = sys.argv[1] if len(sys.argv) > 1 else '高中'
+    n_new = n_skip = 0
+    for name in ['TAL-SCQ5K-CN_train.jsonl', 'TAL-SCQ5K-CN_test.jsonl']:
+        path = os.path.join(SRC_DIR, name)
+        for l in open(path, encoding='utf-8'):
+            r = json.loads(l)
+            srcs = ' '.join(r.get('competition_source_list') or [])
+            kps = ' | '.join(re.sub(r'^知识标签->', '', k)
+                             for k in (r.get('knowledge_point_routes') or []))
+            stage = classify(srcs, kps)
+            if stage != target:
+                n_skip += 1
+                continue
+            problem = (r.get('problem') or '').strip()
+            if not problem:
+                n_skip += 1
+                continue
+            opts = []
+            for grp in (r.get('answer_option_list') or []):
+                if isinstance(grp, list) and grp:
+                    o = grp[0]
+                    opts.append({'label': o.get('aoVal', ''), 'content': str(o.get('content', '')).strip()})
+            qtype = {'single_choice': '单选题', 'multi_choice': '多选题'}.get(
+                r.get('qtype', ''), '填空题')
+            m = re.search(r'(\d+)分', srcs)
+            score = int(m.group(1)) if m else 0
+            qid = hashlib.sha256(f'TAL-SCQ5K|{norm(problem)[:400]}'.encode()).hexdigest()
+            row = {
+                'qid': qid, 'stage': stage, 'subject': '数学',
+                'grade': '高中' if stage == '高中' else '初中',
+                'type': qtype, 'difficulty': diff_map(r.get('difficulty', '2')),
+                'stem': problem, 'options': opts,
+                'answer': str(r.get('answer_value') or '').strip(),
+                'analysis': strip_html(r.get('answer_analysis') or ''),
+                'knowledge': [k for k in [s.strip() for s in kps.split('|')] if k],
+                'images': [],
+                'source': 'TAL-SCQ5K(好未来开源题库,MIT)',
+                'source_url': 'https://modelscope.cn/datasets/AI-ModelScope/TAL-SCQ5K',
+                'year': 0, 'region': '', 'score': score, 'created_at': NOW,
+            }
+            n_new += 1
+            print(json.dumps(row, ensure_ascii=False))
+    print(f'# {target} 新增 {n_new} / 跳过 {n_skip}', file=sys.stderr)
+
+
+if __name__ == '__main__':
+    main()
