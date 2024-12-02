@@ -1,0 +1,410 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260928T083600610Z-1276-846763389ebd",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "baseline-read",
+      "target": "server/message.js",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "baseline-read",
+      "target": "server/netutil.js",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "baseline-read",
+      "target": "server/routes/messages.js",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 20,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 7
+    },
+    "change_tracking": {
+      "touched_observed": 0,
+      "touched_retained": 0,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 10,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 10,
+      "selected_files": 10,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 10,
+      "scanned_files": 10,
+      "skipped_files": 0,
+      "failed_files": 0,
+      "project_checks_required": 0,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "baseline_snapshot_unreadable": 3,
+      "project_check_failed": 3
+    },
+    "reasons": [
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "server/message.js",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "server/netutil.js",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "server/routes/messages.js",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "server/message.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "server/netutil.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "server/routes/messages.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-28T08:36:00.610Z",
+  "session_id": "sess_900874f8-3a60-446b-8402-058bea0b7251",
+  "target": ".",
+  "revision": null,
+  "rules_version": "unavailable",
+  "diff_hash": "a7ce9c4d4f285c35189ffd90fde5fc6d232a43972b84a3f91d0f5f8c9365fdb7",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 10,
+    "changed_files": [
+      {
+        "file": "server/db.js",
+        "ranges": [
+          {
+            "start": 12,
+            "end": 15
+          },
+          {
+            "start": 223,
+            "end": 248
+          },
+          {
+            "start": 252,
+            "end": 294
+          },
+          {
+            "start": 449,
+            "end": 470
+          }
+        ],
+        "before_hash": "d758f2373ec5854d5a7aa4f89d6f0899cb1f5dc223a3a36967c3700eb34dfafe",
+        "after_hash": "64d5a2a1abc4dce2e38eb88181288ab3899ae6b2b2b08ec3e44c6c2f8b8e843a"
+      },
+      {
+        "file": "server/message.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 37
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "e989ed18e9d47160136be476bff2132303ad0c72297b22a3814e3ed5690b6373"
+      },
+      {
+        "file": "server/netutil.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 9
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "69b33006233c9388ee8db4da9055bf4ba51d9320e7f9e03853c59f9f5daa4ccd"
+      },
+      {
+        "file": "server/routes/messages.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 37
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "5452f04b33f13f9dd4a0704bb894e2faf021ce6ba39f34a8ae4efa3e0b47e7ad"
+      },
+      {
+        "file": "server/routes/papers.js",
+        "ranges": [
+          {
+            "start": 80,
+            "end": 121
+          },
+          {
+            "start": 124,
+            "end": 127
+          }
+        ],
+        "before_hash": "8badd1a0b447741a1ce614d95230cf2ba62958d88a695b74ced27be07e0171b2",
+        "after_hash": "1b37ed5b5197a3fd6a5896050183a9ff0b25d8541995cd7d2a5c3bfad0f067c7"
+      },
+      {
+        "file": "server/routes/payments.js",
+        "ranges": [
+          {
+            "start": 15,
+            "end": 15
+          },
+          {
+            "start": 17,
+            "end": 17
+          }
+        ],
+        "before_hash": "c98cd90d76cf98e16d9c6c5afe456bfd376235d213efe02ec96238c5cb201ca0",
+        "after_hash": "27977e5e3d35ca3e5da04ec216ff03f5a928525b3d56e6d96a34110ae8e999ee"
+      },
+      {
+        "file": "server/routes/questions.js",
+        "ranges": [
+          {
+            "start": 19,
+            "end": 23
+          }
+        ],
+        "before_hash": "b507017c2e97610a369504dc5e88fde85320850f4169542dea210643c7d96fff",
+        "after_hash": "48baee03b682713159bcbc179474b8292088b43170bb38397c43ea9895ca4802"
+      },
+      {
+        "file": "server/server.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 2
+          },
+          {
+            "start": 6,
+            "end": 6
+          },
+          {
+            "start": 11,
+            "end": 11
+          },
+          {
+            "start": 17,
+            "end": 24
+          },
+          {
+            "start": 27,
+            "end": 43
+          },
+          {
+            "start": 61,
+            "end": 61
+          },
+          {
+            "start": 68,
+            "end": 68
+          },
+          {
+            "start": 73,
+            "end": 73
+          },
+          {
+            "start": 80,
+            "end": 80
+          },
+          {
+            "start": 85,
+            "end": 85
+          },
+          {
+            "start": 87,
+            "end": 92
+          },
+          {
+            "start": 105,
+            "end": 105
+          },
+          {
+            "start": 119,
+            "end": 119
+          },
+          {
+            "start": 121,
+            "end": 122
+          },
+          {
+            "start": 127,
+            "end": 139
+          }
+        ],
+        "before_hash": "1bc3e44488e6eec40ea5b6530d4b21ffa7fe6db9e1def8685b256f07a6021d25",
+        "after_hash": "a7924893949caabafd65c5bb706dd6d56e51b500d9a78421c7f7c28ab91d14fc"
+      },
+      {
+        "file": "server/store.js",
+        "ranges": [
+          {
+            "start": 95,
+            "end": 151
+          },
+          {
+            "start": 162,
+            "end": 195
+          },
+          {
+            "start": 246,
+            "end": 246
+          },
+          {
+            "start": 293,
+            "end": 297
+          },
+          {
+            "start": 299,
+            "end": 300
+          },
+          {
+            "start": 302,
+            "end": 303
+          }
+        ],
+        "before_hash": "13d6a4899fddd0f6089dd240c8d612f5f931bfc3667774993158607802174416",
+        "after_hash": "5c2f455a10690a65e402911dc2995e1430b51eba104b5209a02a1c29dbba9f63"
+      },
+      {
+        "file": "server/trade.js",
+        "ranges": [
+          {
+            "start": 329,
+            "end": 330
+          },
+          {
+            "start": 334,
+            "end": 334
+          },
+          {
+            "start": 346,
+            "end": 348
+          },
+          {
+            "start": 352,
+            "end": 352
+          },
+          {
+            "start": 354,
+            "end": 354
+          },
+          {
+            "start": 399,
+            "end": 400
+          },
+          {
+            "start": 626,
+            "end": 627
+          },
+          {
+            "start": 671,
+            "end": 677
+          }
+        ],
+        "before_hash": "e15d2d1785fb440b09855b0b6470839fb4ed6eddb2435a419ba0f24ed2fee68a",
+        "after_hash": "ec3ea3d0a31c2a5dbd1602a0b5a53121ae5b916911df1e45156bbf67496cc18b"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-28T08:35:58.194Z",
+    "completed_at": "2026-09-28T08:36:00.610Z",
+    "duration_ms": 2416,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 2416,
+    "peakMemoryBytes": 141643776,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 10,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_900874f8-3a60-446b-8402-058bea0b7251-20260928T083600610Z-1276-846763389ebd.json",
+    "latest_report": ".mimosa/reports/task-review-sess_900874f8-3a60-446b-8402-058bea0b7251.json",
+    "history_summary": ".mimosa/history/run-20260928T083600610Z-1276-846763389ebd.json"
+  }
+}

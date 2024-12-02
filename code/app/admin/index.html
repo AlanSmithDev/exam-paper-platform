@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智卷云 · 超级管理后台</title>
+<link rel="stylesheet" href="/prototype/assets/style.css">
+<link rel="stylesheet" href="/prototype/assets/placeholders.css">
+<style>
+  body { background: #0f172a; }
+  .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+  .login-card { width: 400px; background: #fff; border-radius: 16px; padding: 34px; box-shadow: var(--shadow-lg); }
+  .shell { display: none; min-height: 100vh; grid-template-columns: 220px 1fr; }
+  .shell.on { display: grid; }
+  .side { background: #0f172a; color: #cbd5e1; padding: 18px 12px; }
+  .side .brand { color: #fff; font-weight: 800; padding: 8px 12px 18px; font-size: 17px; }
+  .side a { display: block; padding: 10px 14px; border-radius: 10px; font-size: 14px; cursor: pointer; }
+  .side a:hover { background: #1e293b; }
+  .side a.on { background: var(--primary); color: #fff; }
+  .main { background: var(--bg); padding: 22px 26px; overflow: auto; }
+  .pane { display: none; } .pane.on { display: block; }
+  table.t { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; font-size: 13.5px; box-shadow: var(--shadow); }
+  table.t th, table.t td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+  table.t th { background: #f8fafc; color: var(--text-2); font-size: 12.5px; }
+  .kpi { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 18px; }
+  .kpi .card { padding: 16px; }
+  .kpi b { font-size: 24px; color: var(--primary); }
+  .form { background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .form label { display: block; font-size: 13px; color: var(--text-2); margin: 10px 0 4px; }
+  .form input, .form select, .form textarea { width: 100%; border: 1px solid var(--line); border-radius: 9px; padding: 9px 12px; font-size: 14px; }
+  .toast { position: fixed; bottom: 24px; right: 24px; background: #0f172a; color: #fff; border-radius: 12px; padding: 12px 20px; display: none; z-index: 99; }
+  .toast.show { display: block; }
+  h2.pt { font-size: 19px; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+
+<!-- 登录 -->
+<div class="login-wrap" id="loginView">
+  <div class="login-card">
+    <h2 style="margin-bottom:4px">智卷云 · 管理后台</h2>
+    <p style="color:var(--text-3);font-size:13px;margin-bottom:14px">超级管理员 / 运营 / 学科编辑 专用入口</p>
+    <div class="form" style="box-shadow:none;padding:0">
+      <label>手机号</label><input id="lgMobile" value="13000000000">
+      <label>密码</label><input id="lgPass" type="password" value="Admin@123456">
+      <button class="btn btn-primary" style="width:100%;margin-top:16px" onclick="login()">登录</button>
+    </div>
+    <p style="font-size:12px;color:var(--text-3);margin-top:12px">种子账号：13000000000 / Admin@123456（SUPER_ADMIN）</p>
+  </div>
+</div>
+
+<!-- 主界面 -->
+<div class="shell" id="shell">
+  <div class="side">
+    <div class="brand">智卷云 · 后台</div>
+    <a class="on" data-pane="dash">📊 数据看板</a>
+    <a data-pane="ads">📢 广告位管理</a>
+    <a data-pane="ques">📝 题目管理</a>
+    <a data-pane="users">👥 用户管理</a>
+    <a data-pane="notices">📣 公告推送</a>
+    <a data-pane="trade">💰 商业化运营</a>
+    <a data-pane="settings">⚙️ 系统设置</a>
+    <a data-pane="audit">🛡 操作审计</a>
+    <a onclick="logout()" style="margin-top:16px;color:#f87171">退出登录</a>
+  </div>
+  <div class="main">
+    <!-- 看板 -->
+    <div class="pane on" id="pane-dash">
+      <h2 class="pt">数据看板</h2>
+      <div class="kpi" id="kpi"></div>
+      <div class="form">提示：所有超管/运营/编辑的写操作均已写入「操作审计」，可随时追溯（谁·何时·改了什么）。</div>
+    </div>
+    <!-- 广告位 -->
+    <div class="pane" id="pane-ads">
+      <h2 class="pt">广告位管理（教师端 / 学生端全域）</h2>
+      <div class="form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px">
+          <label>位置</label><label>标题</label>
+          <select id="adPos">
+            <option value="home_hero">home_hero 首页轮播</option>
+            <option value="home_banner">home_banner 首页横幅</option>
+            <option value="sidebar_teacher">sidebar_teacher 教师侧栏</option>
+            <option value="sidebar_student">sidebar_student 学生侧栏</option>
+            <option value="list_inline">list_inline 列表信息流</option>
+            <option value="detail_footer">detail_footer 详情页底部</option>
+            <option value="login_promo">login_promo 登录页</option>
+          </select>
+          <input id="adTitle" placeholder="广告标题（内部备注）">
+          <label>素材图片 URL（留空则前台显示占位框）</label><label>跳转链接</label>
+          <input id="adImg" placeholder="https://cdn.example.com/banner.png">
+          <input id="adLink" placeholder="https://example.com/activity">
+          <label>投放端</label><label>排序 / 状态</label>
+          <select id="adAud"><option value="ALL">全部</option><option value="TEACHER">教师端</option><option value="STUDENT">学生端</option></select>
+          <div style="display:flex;gap:10px;align-items:center">
+            <input id="adSort" type="number" value="0" style="width:80px">
+            <select id="adStatus"><option value="1">上线</option><option value="0">下线</option></select>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:14px" onclick="createAd()">创建广告（SSRF 校验：内网/环回地址会被拒绝）</button>
+      </div>
+      <table class="t" id="adTable"><thead><tr><th>ID</th><th>位置</th><th>标题</th><th>素材</th><th>端</th><th>状态</th><th>操作</th></tr></thead><tbody></tbody></table>
+    </div>
+    <!-- 题目管理 -->
+    <div class="pane" id="pane-ques">
+      <h2 class="pt">题目管理（编辑/上下架，全部操作入审计）</h2>
+      <table class="t" id="qTable"><thead><tr><th>ID</th><th>题型</th><th>难度</th><th>系数</th><th>知识点</th><th>来源</th><th>状态</th><th>操作</th></tr></thead><tbody></tbody></table>
+    </div>
+    <!-- 用户 -->
+    <div class="pane" id="pane-users">
+      <h2 class="pt">用户管理（封禁 / 教师认证 / 赠送会员）</h2>
+      <table class="t" id="uTable"><thead><tr><th>ID</th><th>手机号</th><th>昵称</th><th>角色</th><th>认证</th><th>会员至</th><th>状态</th><th>操作</th></tr></thead><tbody></tbody></table>
+    </div>
+    <!-- 公告 -->
+    <div class="pane" id="pane-notices">
+      <h2 class="pt">公告推送</h2>
+      <div class="form">
+        <label>标题</label><input id="nTitle">
+        <label>内容</label><textarea id="nContent" rows="3"></textarea>
+        <button class="btn btn-primary" style="margin-top:10px" onclick="createNotice()">发布公告</button>
+      </div>
+      <table class="t" id="nTable"><thead><tr><th>ID</th><th>标题</th><th>内容</th><th>发布时间</th><th>操作</th></tr></thead><tbody></tbody></table>
+    </div>
+    <!-- 设置 -->
+    <div class="pane" id="pane-settings">
+      <h2 class="pt">系统设置（Logo / 站名 / 备案号 —— 前台占位自动替换）</h2>
+      <div class="form">
+        <label>站名</label><input id="setSite">
+        <label>Logo 图片 URL（留空 = 前台显示 Logo 占位框）</label><input id="setLogo" placeholder="https://cdn.example.com/logo.png">
+        <label>备案号</label><input id="setBeian">
+        <label>客服电话</label><input id="setPhone">
+        <button class="btn btn-primary" style="margin-top:14px" onclick="saveSettings()">保存设置</button>
+      </div>
+    </div>
+    <!-- 商业化运营 -->
+    <div class="pane" id="pane-trade">
+      <h2 class="pt">商业化运营（优惠券 / 订单 / 点数 —— 全部操作入审计）</h2>
+      <div class="form">
+        <b style="font-size:14px">创建优惠券模板</b>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0 14px">
+          <label>模板编码</label><label>名称</label><label>类型</label><label>发放总量（0=不限）</label>
+          <input id="cCode" placeholder="SPRING10"><input id="cName" placeholder="春季促销券">
+          <select id="cType"><option value="FULL_REDUCTION">满减券</option><option value="DISCOUNT">折扣券</option><option value="POINTS">点数券</option></select>
+          <input id="cTotal" type="number" value="100">
+          <label>面额（分）/ 点数券点数</label><label>折扣率（90=9折）</label><label>折扣封顶（分）</label><label>使用门槛（分）</label>
+          <input id="cAmount" type="number" value="1000"><input id="cRate" type="number" value="0"><input id="cMax" type="number" value="0"><input id="cThreshold" type="number" value="0">
+          <label>每人限领（0=不限）</label><label>领后有效天数</label><label>适用范围</label><label>备注</label>
+          <input id="cPerLimit" type="number" value="1"><input id="cDays" type="number" value="7">
+          <select id="cScope"><option value="ALL">全部商品</option><option value="MEMBER">仅会员</option><option value="POINTS">仅充值</option></select>
+          <input id="cNote" placeholder="内部备注">
+        </div>
+        <button class="btn btn-primary" style="margin-top:14px" onclick="createCoupon()">创建模板</button>
+      </div>
+      <table class="t" id="cTable"><thead><tr><th>ID</th><th>编码</th><th>名称</th><th>类型</th><th>面额/折扣</th><th>门槛</th><th>已领/总量</th><th>状态</th><th>操作</th></tr></thead><tbody></tbody></table>
+
+      <h2 class="pt" style="margin-top:22px">交易订单（状态机 CREATED→PAID→REFUNDED / CREATED→CLOSED）</h2>
+      <div class="form" style="display:flex;gap:10px;align-items:center">
+        <select id="oStatus" onchange="loadOrders()" style="width:160px">
+          <option value="ALL">全部状态</option><option>CREATED</option><option>PAID</option><option>CLOSED</option><option>REFUNDED</option>
+        </select>
+        <span class="muted">退款按固定顺序回滚：券返还 → 点数回收（流水去重）→ 会员天数回收（不追讨已享受）</span>
+      </div>
+      <table class="t" id="oTable"><thead><tr><th>订单号</th><th>用户</th><th>商品</th><th>原价/实付</th><th>状态</th><th>支付</th><th>创建时间</th><th>操作</th></tr></thead><tbody></tbody></table>
+
+      <h2 class="pt" style="margin-top:22px">纠错处理（采纳奖励 +5 点入流水，仅首次发放）</h2>
+      <div class="form" style="display:flex;gap:10px;align-items:center">
+        <select id="fbStatus" onchange="loadFeedback()" style="width:160px">
+          <option value="PENDING">待处理</option><option value="ACCEPTED">已采纳</option><option value="REJECTED">已驳回</option><option value="ALL">全部</option>
+        </select>
+        <span class="muted">编辑/运营/超管均可处理；全部动作入审计</span>
+      </div>
+      <table class="t" id="fbTable"><thead><tr><th>ID</th><th>题目</th><th>用户</th><th>类型</th><th>说明</th><th>状态</th><th>处理时间</th><th>操作</th></tr></thead><tbody></tbody></table>
+
+      <h2 class="pt" style="margin-top:22px">限时免费（K-4：窗口内指定试卷判价直接免费）</h2>
+      <div class="form" style="display:flex;gap:10px;align-items:end;flex-wrap:wrap">
+        <div><label>试卷 ID 列表（逗号分隔）</label><input id="lfIds" placeholder="9,12,15" style="width:200px"></div>
+        <div><label>开始时间</label><input id="lfStart" placeholder="2026-09-28 00:00:00" style="width:180px"></div>
+        <div><label>结束时间</label><input id="lfEnd" placeholder="2026-10-08 23:59:59" style="width:180px"></div>
+        <button class="btn btn-primary" onclick="saveLimitedFree()">保存配置</button>
+        <button class="btn btn-ghost" onclick="saveLimitedFree(true)">停用</button>
+      </div>
+
+      <h2 class="pt" style="margin-top:22px">点数人工调整（仅超管，双向入流水+审计）</h2>
+      <div class="form" style="display:flex;gap:10px;align-items:end">
+        <div><label>用户 ID</label><input id="adjUid" type="number" style="width:110px"></div>
+        <div><label>变动点数（正增负减）</label><input id="adjDelta" type="number" style="width:140px"></div>
+        <div style="flex:1"><label>原因（入审计）</label><input id="adjNote" placeholder="误充回收等"></div>
+        <button class="btn btn-primary" onclick="adjustPoints()">执行调整</button>
+      </div>
+    </div>
+    <!-- 审计 -->
+    <div class="pane" id="pane-audit">
+      <h2 class="pt">操作审计（只读，不可篡改）</h2>
+      <table class="t" id="aTable"><thead><tr><th>ID</th><th>操作人</th><th>动作</th><th>详情</th><th>IP</th><th>时间</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+const API = '/api/v1';
+let token = localStorage.getItem('zj_admin_token') || '';
+
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2600);}
+async function api(path, opts={}) {
+  const r = await fetch(API + path, { ...opts, headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token, ...(opts.headers||{}) } });
+  const j = await r.json().catch(() => ({ code: 50010, message: '响应异常' }));
+  if (j.code !== 0) throw new Error(j.message || ('HTTP ' + r.status));
+  return j.data;
+}
+async function login() {
+  try {
+    const d = await api('/auth/admin-login', { method: 'POST', body: JSON.stringify({ mobile: lgMobile.value, password: lgPass.value }) });
+    token = d.accessToken; localStorage.setItem('zj_admin_token', token);
+    enter();
+  } catch (e) { toast('❌ ' + e.message); }
+}
+function logout() { token = ''; localStorage.removeItem('zj_admin_token'); location.reload(); }
+function enter() {
+  document.getElementById('loginView').style.display = 'none';
+  document.getElementById('shell').classList.add('on');
+  loadDash(); loadAds(); loadQ(); loadUsers(); loadNotices(); loadAudit(); loadSettings(); loadCoupons(); loadOrders(); loadFeedback();
+}
+document.querySelectorAll('.side a[data-pane]').forEach(a => a.onclick = () => {
+  document.querySelectorAll('.side a').forEach(x => x.classList.remove('on'));
+  document.querySelectorAll('.pane').forEach(x => x.classList.remove('on'));
+  a.classList.add('on'); document.getElementById('pane-' + a.dataset.pane).classList.add('on');
+});
+
+async function loadDash() {
+  const d = await api('/admin/dashboard');
+  const items = [['用户数', d.users], ['题库总量', d.questions], ['上架题', d.questionsOn], ['试卷数', d.papers], ['在投广告', d.ads], ['审计记录', d.audits]];
+  document.getElementById('kpi').innerHTML = items.map(([k, v]) => `<div class="card"><b>${v}</b><div style="font-size:12.5px;color:var(--text-3)">${k}</div></div>`).join('');
+}
+async function loadAds() {
+  const d = await api('/admin/ads');
+  document.querySelector('#adTable tbody').innerHTML = d.list.map(a => `<tr>
+    <td>${a.id}</td><td>${a.position}</td><td>${a.title || '-'}</td><td>${a.image_url ? '<a href="'+a.image_url+'" target="_blank">查看</a>' : '<span style="color:var(--text-3)">占位中</span>'}</td>
+    <td>${a.audience}</td><td>${a.status ? '✅ 在投' : '⏸ 下线'}</td>
+    <td><button class="btn btn-ghost btn-sm" onclick="toggleAd(${a.id},${a.status ? 0 : 1})">${a.status ? '下线' : '上线'}</button>
+        <button class="btn btn-ghost btn-sm" onclick="delAd(${a.id})">删除</button></td></tr>`).join('') || '<tr><td colspan="7" style="text-align:center;color:var(--text-3)">暂无广告 —— 前台对应位置显示占位框</td></tr>';
+}
+async function createAd() {
+  try {
+    await api('/admin/ads', { method: 'POST', body: JSON.stringify({ position: adPos.value, title: adTitle.value, image_url: adImg.value, link_url: adLink.value, audience: adAud.value, sort: Number(adSort.value), status: Number(adStatus.value) }) });
+    toast('✅ 已创建'); loadAds();
+  } catch (e) { toast('❌ ' + e.message); }
+}
+async function toggleAd(id, s) { await api('/admin/ads/' + id, { method: 'PUT', body: JSON.stringify({ position: 'home_banner', title: '', status: s }) }); loadAds(); }
+async function delAd(id) { await api('/admin/ads/' + id, { method: 'DELETE' }); loadAds(); }
+async function loadQ() {
+  const d = await api('/admin/questions?pageNo=1&pageSize=20');
+  document.querySelector('#qTable tbody').innerHTML = d.rows.map(q => `<tr>
+    <td>${q.id}</td><td>${q.type}</td><td>${q.difficulty}</td><td>${q.coefficient}</td><td>${q.kp_names}</td><td>${q.source || '-'}</td>
+    <td>${['草稿','审核中','上架','下架'][q.status] || q.status}</td>
+    <td>${q.status === 1
+      ? `<button class="btn btn-ghost btn-sm" onclick="reviewQ(${q.id},2)">上架+20点</button><button class="btn btn-ghost btn-sm" style="color:#dc2626" onclick="reviewQ(${q.id},3)">驳回</button>`
+      : `<button class="btn btn-ghost btn-sm" onclick="qStatus(${q.id},${q.status === 2 ? 3 : 2})">${q.status === 2 ? '下架' : '上架'}</button>`}</td></tr>`).join('');
+}
+async function qStatus(id, s) { await api('/admin/questions/' + id + '/status', { method: 'PUT', body: JSON.stringify({ status: s }) }); loadQ(); }
+async function reviewQ(id, s) {
+  if (s === 3 && !confirm('驳回该录题？（不发奖励）')) return;
+  try { const d = await api('/admin/questions/' + id + '/review', { method: 'POST', body: JSON.stringify({ status: s }) });
+    toast(s === 2 ? `✅ 已上架${d.rewarded ? `，作者奖励 ${d.rewarded} 点` : ''}` : '已驳回'); loadQ();
+  } catch (e) { toast('❌ ' + e.message); }
+}
+async function loadUsers() {
+  const d = await api('/admin/users');
+  document.querySelector('#uTable tbody').innerHTML = d.list.map(u => `<tr>
+    <td>${u.id}</td><td>${u.mobile}</td><td>${u.nickname}</td><td>${u.role}</td><td>${u.certify ? '✅' : '—'}</td><td>${u.member_until || '—'}</td>
+    <td>${u.status ? '正常' : '⛔ 封禁'}</td>
+    <td><button class="btn btn-ghost btn-sm" onclick="uPatch(${u.id},{status:${u.status ? 0 : 1}})">${u.status ? '封禁' : '解封'}</button>
+        <button class="btn btn-ghost btn-sm" onclick="uPatch(${u.id},{member_until:'2028-12-31'})">赠会员一年</button></td></tr>`).join('');
+}
+async function uPatch(id, patch) { await api('/admin/users/' + id, { method: 'PUT', body: JSON.stringify(patch) }); loadUsers(); }
+async function loadNotices() {
+  const d = await api('/admin/notices');
+  document.querySelector('#nTable tbody').innerHTML = d.list.map(n => `<tr><td>${n.id}</td><td>${n.title}</td><td>${n.content}</td><td>${n.created_at}</td>
+    <td><button class="btn btn-ghost btn-sm" onclick="delNotice(${n.id})">删除</button></td></tr>`).join('');
+}
+async function createNotice() { await api('/admin/notices', { method: 'POST', body: JSON.stringify({ title: nTitle.value, content: nContent.value }) }); loadNotices(); toast('✅ 已发布'); }
+async function delNotice(id) { await api('/admin/notices/' + id, { method: 'DELETE' }); loadNotices(); }
+async function loadSettings() {
+  const d = await api('/settings');
+  setSite.value = d.site_name || ''; setLogo.value = d.logo_url || ''; setBeian.value = d.beian || ''; setPhone.value = d.service_phone || '';
+}
+async function saveSettings() {
+  await api('/admin/settings', { method: 'PUT', body: JSON.stringify({ site_name: setSite.value, logo_url: setLogo.value, beian: setBeian.value, service_phone: setPhone.value }) });
+  toast('✅ 已保存：前台 Logo 槽将自动替换');
+}
+async function loadAudit() {
+  const d = await api('/admin/audit?limit=50');
+  document.querySelector('#aTable tbody').innerHTML = d.list.map(a => `<tr><td>${a.id}</td><td>${a.actor}</td><td>${a.action}</td><td style="max-width:320px;overflow:hidden;text-overflow:ellipsis">${a.detail}</td><td>${a.ip}</td><td>${a.created_at}</td></tr>`).join('');
+}
+
+// ---- 商业化运营 ----
+const C_TYPE = { FULL_REDUCTION: '满减', DISCOUNT: '折扣', POINTS: '点数券' };
+const yuan = c => '¥' + (Number(c || 0) / 100).toFixed(2);
+async function loadCoupons() {
+  try {
+    const d = await api('/admin/coupons');
+    document.querySelector('#cTable tbody').innerHTML = d.rows.map(c => `<tr>
+      <td>${c.id}</td><td>${c.code}</td><td>${c.name}</td><td>${C_TYPE[c.type] || c.type}</td>
+      <td>${c.type === 'FULL_REDUCTION' ? yuan(c.amountCents) : c.type === 'DISCOUNT' ? (c.discountRate / 10) + '折·封顶' + yuan(c.maxDiscountCents) : c.amountCents + '点'}</td>
+      <td>${c.thresholdCents ? '满' + yuan(c.thresholdCents) : '无门槛'}</td>
+      <td>${c.claimed}/${c.total || '∞'}</td>
+      <td>${({ 0: '⏸ 下架', 1: '✅ 上架', 2: '🚫 已作废' })[c.status]}</td>
+      <td>${c.status !== 2 ? `<button class="btn btn-ghost btn-sm" onclick="couponStatus(${c.id},${c.status === 1 ? 0 : 1})">${c.status === 1 ? '下架' : '上架'}</button>
+        <button class="btn btn-ghost btn-sm" style="color:#dc2626" onclick="couponStatus(${c.id},2)">作废</button>` : '-'}</td></tr>`).join('');
+  } catch (_) { /* 无权限角色静默 */ }
+}
+async function createCoupon() {
+  try {
+    await api('/admin/coupons', { method: 'POST', body: JSON.stringify({
+      code: cCode.value.trim(), name: cName.value.trim(), type: cType.value, total: Number(cTotal.value),
+      amountCents: Number(cAmount.value), discountRate: Number(cRate.value), maxDiscountCents: Number(cMax.value),
+      thresholdCents: Number(cThreshold.value), perLimit: Number(cPerLimit.value), validDays: Number(cDays.value) || null,
+      scope: cScope.value, note: cNote.value }) });
+    toast('✅ 模板已创建'); loadCoupons();
+  } catch (e) { toast('❌ ' + e.message); }
+}
+async function couponStatus(id, s) {
+  if (s === 2 && !confirm('作废后全部未使用用户券将一并作废（CLOSED），确认？')) return;
+  await api('/admin/coupons/' + id + '/status', { method: 'PUT', body: JSON.stringify({ status: s }) }); loadCoupons();
+}
+const O_STATUS = { CREATED: '⏳ 待支付', PAID: '✅ 已支付', CLOSED: '⏹ 已关闭', REFUNDED: '↩ 已退款' };
+async function loadOrders() {
+  try {
+    const d = await api('/admin/orders?status=' + oStatus.value + '&pageNo=1&pageSize=20');
+    document.querySelector('#oTable tbody').innerHTML = d.rows.map(o => `<tr>
+      <td style="font-family:monospace">${o.orderNo}</td><td>${o.userId}</td><td>${o.title}</td>
+      <td>${yuan(o.originCents)} / <b>${yuan(o.payCents)}</b>${o.discountCents ? `<span class="muted">（券抵${yuan(o.discountCents)}）</span>` : ''}</td>
+      <td>${O_STATUS[o.status] || o.status}</td><td>${o.payChannel || '-'}</td><td>${o.createdAt}</td>
+      <td>${o.status === 'CREATED' ? `<button class="btn btn-ghost btn-sm" onclick="closeOrder('${o.orderNo}')">关单</button>` : ''}
+          ${o.status === 'PAID' ? `<button class="btn btn-ghost btn-sm" style="color:#dc2626" onclick="refundOrder('${o.orderNo}')">退款</button>` : ''}</td></tr>`).join('')
+      || '<tr><td colspan="8" style="text-align:center;color:var(--text-3)">暂无订单</td></tr>';
+  } catch (_) { /* 无权限角色静默 */ }
+}
+async function closeOrder(no) { await api('/admin/orders/' + no + '/close', { method: 'POST' }); toast('✅ 已关单并返还券'); loadOrders(); }
+async function refundOrder(no) {
+  if (!confirm('确认退款？将按顺序回滚：券返还→点数回收→会员天数回收。')) return;
+  try { const d = await api('/payments/refund/' + no, { method: 'POST' });
+    toast('✅ 已退款：券' + (d.returned.couponId ? '已返还' : '未返还') + ' · 回收点数 ' + d.returned.points); loadOrders();
+  } catch (e) { toast('❌ ' + e.message); }
+}
+async function adjustPoints() {
+  try { const d = await api('/trade/points/adjust', { method: 'POST', body: JSON.stringify({ userId: Number(adjUid.value), delta: Number(adjDelta.value), note: adjNote.value }) });
+    toast('✅ 调整后余额：' + d.balance);
+  } catch (e) { toast('❌ ' + e.message); }
+}
+// 纠错处理
+const FB_STS = { PENDING: '⏳ 待处理', ACCEPTED: '✅ 已采纳', REJECTED: '❌ 已驳回' };
+async function loadFeedback() {
+  try {
+    const d = await api('/admin/feedback?status=' + fbStatus.value);
+    document.querySelector('#fbTable tbody').innerHTML = d.rows.map(f => `<tr>
+      <td>${f.id}</td><td>#${f.question_id}</td><td>${f.user_id}</td><td>${f.type}</td>
+      <td style="max-width:280px;overflow:hidden;text-overflow:ellipsis">${f.content}</td>
+      <td>${FB_STS[f.status] || f.status}${f.reward_points ? ` · +${f.reward_points}点` : ''}</td><td>${f.handled_at || '-'}</td>
+      <td>${f.status === 'PENDING' ? `<button class="btn btn-ghost btn-sm" onclick="reviewFeedback(${f.id},'ACCEPTED')">采纳</button>
+        <button class="btn btn-ghost btn-sm" style="color:#dc2626" onclick="reviewFeedback(${f.id},'REJECTED')">驳回</button>` : '-'}</td></tr>`).join('')
+      || '<tr><td colspan="8" style="text-align:center;color:var(--text-3)">暂无反馈</td></tr>';
+  } catch (_) { /* 无权限角色静默 */ }
+}
+async function reviewFeedback(id, s) {
+  if (s === 'REJECTED' && !confirm('驳回该纠错？（不发放奖励）')) return;
+  try { const d = await api('/admin/feedback/' + id + '/review', { method: 'POST', body: JSON.stringify({ status: s }) });
+    toast(s === 'ACCEPTED' ? '✅ 已采纳，奖励 5 点已入账' : '已驳回'); loadFeedback();
+  } catch (e) { toast('❌ ' + e.message); }
+}
+// 限时免费配置（K-4）
+async function saveLimitedFree(off) {
+  try {
+    const body = off ? { limited_free_papers: '' } : { limited_free_papers: JSON.stringify({
+      paperIds: lfIds.value.split(/[,，\s]+/).filter(Boolean).map(Number).filter(Number.isInteger),
+      start: lfStart.value.trim() || null, end: lfEnd.value.trim() || null }) };
+    await api('/admin/settings', { method: 'PUT', body: JSON.stringify(body) });
+    toast(off ? '✅ 限时免费已停用' : '✅ 限时免费配置已生效');
+  } catch (e) { toast('❌ ' + e.message); }
+}
+if (token) { enter().catch(() => logout()); }
+</script>
+</body>
+</html>
