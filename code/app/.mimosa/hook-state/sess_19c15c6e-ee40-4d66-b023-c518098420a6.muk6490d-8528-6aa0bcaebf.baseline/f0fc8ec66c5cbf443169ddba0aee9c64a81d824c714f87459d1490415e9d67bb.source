@@ -1,0 +1,124 @@
+// WP-4: 超管后台 API（SUPER_ADMIN / OP / EDITOR 分权 + 审计 + SSRF 校验）
+const express = require('express');
+const store = require('../store');
+const { required, requireRole, audit } = require('../auth');
+
+const r = express.Router();
+r.use(required);
+
+const ADMIN_ROLES = ['SUPER_ADMIN', 'OP'];
+const CONTENT_ROLES = ['SUPER_ADMIN', 'EDITOR'];
+
+// SSRF 防护（实现验收条件）：仅允许 http/https，且 host 不得解析到内网/环回/保留地址
+const dns = require('dns').promises;
+const net = require('net');
+async function assertSafeUrl(u) {
+  if (!u) return; // 空素材合法（前台占位）
+  let parsed;
+  try { parsed = new URL(String(u)); } catch (_) { throw Object.assign(new Error('URL 格式非法'), { code: 42200 }); }
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+    throw Object.assign(new Error('仅允许 http/https 协议'), { code: 42200 });
+  }
+  const host = parsed.hostname;
+  const isPrivateIp = (ip) => ip === '::1' || ip.startsWith('127.') || ip.startsWith('10.') ||
+    ip.startsWith('192.168.') || /^172\.(1[6-9]|2\d|3[01])\./.test(ip) || ip.startsWith('169.254.') ||
+    ip === '0.0.0.0' || ip.endsWith('.local');
+  if (net.isIP(host)) {
+    if (isPrivateIp(host)) throw Object.assign(new Error('禁止访问内网/环回地址'), { code: 42200 });
+    return;
+  }
+  let addrs;
+  try { addrs = await dns.lookup(host, { all: true }); } catch (_) {
+    throw Object.assign(new Error('域名无法解析'), { code: 42200 });
+  }
+  for (const a of addrs) {
+    if (isPrivateIp(a.address)) throw Object.assign(new Error('禁止访问解析到内网的域名'), { code: 42200 });
+  }
+}
+
+// —— 数据看板 ——
+r.get('/dashboard', requireRole(...ADMIN_ROLES, 'EDITOR'), (req, res) => {
+  audit(req, 'VIEW_DASHBOARD', {});
+  res.json({ code: 0, message: 'ok', data: store.dashboard() });
+});
+
+// —— 广告位管理（超管/运营）——
+r.get('/ads', requireRole(...ADMIN_ROLES), (_req, res) => {
+  res.json({ code: 0, message: 'ok', data: { list: store.allAds() } });
+});
+r.post('/ads', requireRole(...ADMIN_ROLES), async (req, res) => {
+  const b = req.body || {};
+  try { await assertSafeUrl(b.image_url); await assertSafeUrl(b.link_url); }
+  catch (e) { return res.status(422).json({ code: e.code || 42200, message: e.message, data: null }); }
+  const id = store.adCreate(b);
+  audit(req, 'AD_CREATE', { id, position: b.position });
+  res.json({ code: 0, message: 'ok', data: { id } });
+});
+r.put('/ads/:id', requireRole(...ADMIN_ROLES), async (req, res) => {
+  const b = req.body || {};
+  try { await assertSafeUrl(b.image_url); await assertSafeUrl(b.link_url); }
+  catch (e) { return res.status(422).json({ code: e.code || 42200, message: e.message, data: null }); }
+  const changes = store.adUpdate(req.params.id, b);
+  audit(req, 'AD_UPDATE', { id: Number(req.params.id), changes });
+  res.json({ code: 0, message: 'ok', data: { changes } });
+});
+r.delete('/ads/:id', requireRole(...ADMIN_ROLES), (req, res) => {
+  const changes = store.adDelete(req.params.id);
+  audit(req, 'AD_DELETE', { id: Number(req.params.id), changes });
+  res.json({ code: 0, message: 'ok', data: { changes } });
+});
+
+// —— 题目管理（超管/编辑）——
+r.get('/questions', requireRole(...CONTENT_ROLES), (req, res) => {
+  const pageNo = Math.max(1, parseInt(req.query.pageNo || '1', 10) || 1);
+  const pageSize = Math.min(50, Math.max(1, parseInt(req.query.pageSize || '20', 10) || 20));
+  res.json({ code: 0, message: 'ok', data: store.adminQuestions(pageNo, pageSize) });
+});
+r.put('/questions/:id', requireRole(...CONTENT_ROLES), (req, res) => {
+  const changes = store.adminQuestionUpdate(req.params.id, req.body || {});
+  audit(req, 'QUESTION_UPDATE', { id: Number(req.params.id), changes });
+  res.json({ code: 0, message: 'ok', data: { changes } });
+});
+r.put('/questions/:id/status', requireRole(...CONTENT_ROLES), (req, res) => {
+  const status = Number((req.body || {}).status) || 0;
+  const changes = store.adminQuestionStatus(req.params.id, status);
+  audit(req, 'QUESTION_STATUS', { id: Number(req.params.id), status, changes });
+  res.json({ code: 0, message: 'ok', data: { changes } });
+});
+
+// —— 用户管理（仅超管）——
+r.get('/users', requireRole('SUPER_ADMIN'), (_req, res) => {
+  res.json({ code: 0, message: 'ok', data: { list: store.adminUsers() } });
+});
+r.put('/users/:id', requireRole('SUPER_ADMIN'), (req, res) => {
+  const changes = store.adminUserPatch(req.params.id, req.body || {});
+  audit(req, 'USER_PATCH', { id: Number(req.params.id), patch: req.body, changes });
+  res.json({ code: 0, message: 'ok', data: { changes } });
+});
+
+// —— 公告 ——
+r.get('/notices', requireRole(...ADMIN_ROLES), (_req, res) => {
+  res.json({ code: 0, message: 'ok', data: { list: store.noticeList() } });
+});
+r.post('/notices', requireRole(...ADMIN_ROLES), (req, res) => {
+  const id = store.noticeCreate(req.body || {});
+  audit(req, 'NOTICE_CREATE', { id });
+  res.json({ code: 0, message: 'ok', data: { id } });
+});
+r.delete('/notices/:id', requireRole(...ADMIN_ROLES), (req, res) => {
+  res.json({ code: 0, message: 'ok', data: { changes: store.noticeDelete(req.params.id) } });
+});
+
+// —— 系统设置（仅超管）——
+r.put('/settings', requireRole('SUPER_ADMIN'), (req, res) => {
+  const n = store.settingsPut(req.body || {});
+  audit(req, 'SETTINGS_PUT', { keys: Object.keys(req.body || {}) });
+  res.json({ code: 0, message: 'ok', data: { updated: n } });
+});
+
+// —— 审计日志（只读，仅超管）——
+r.get('/audit', requireRole('SUPER_ADMIN'), (req, res) => {
+  res.json({ code: 0, message: 'ok', data: { list: store.auditList(req.query.limit) } });
+});
+
+module.exports = r;

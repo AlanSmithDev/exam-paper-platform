@@ -1,0 +1,77 @@
+// WP-3: 组卷 —— 规则引擎智能组卷（题型数量 + 难度分布 + 去重 + 由易到难）
+const express = require('express');
+const store = require('../store');
+const { required } = require('../auth');
+
+const r = express.Router();
+r.use(required);
+
+// 生成试卷：{ subjectId, title, structure:[{type,count,score}], difficultyTarget(1-5), excludeIds:[] }
+r.post('/generate', (req, res) => {
+  const b = req.body || {};
+  const structure = Array.isArray(b.structure) ? b.structure : [];
+  if (!structure.length) return res.status(422).json({ code: 42200, message: 'structure 不能为空', data: null });
+
+  const exclude = new Set((Array.isArray(b.excludeIds) ? b.excludeIds : []).map(Number).filter(Number.isInteger));
+  const paper = [];
+  const used = new Set();
+  let totalScore = 0;
+
+  for (const sec of structure) {
+    const want = Math.max(0, Math.min(30, Number(sec.count) || 0));
+    const type = String(sec.type || '');
+    // 按难度优先级选取：以目标难度为中心，向两侧扩展
+    const target = Math.max(1, Math.min(5, Number(b.difficultyTarget) || 3));
+    const order = [target, target - 1, target + 1, target - 2, target + 2, target - 3, target + 3, target - 4, target + 4]
+      .filter(d => d >= 1 && d <= 5);
+    let picked = 0;
+    for (const d of order) {
+      if (picked >= want) break;
+      const filter = { subjectId: b.subjectId, type, difficulty: d };
+      const candidates = store.qList(filter, want * 3, 0);
+      for (const q of candidates) {
+        if (picked >= want) break;
+        if (used.has(q.id) || exclude.has(q.id)) continue;
+        used.add(q.id);
+        const score = Number(sec.score) || 5;
+        totalScore += score;
+        paper.push({ id: q.id, type: q.type, difficulty: q.difficulty, coefficient: q.coefficient, stem: q.stem, score });
+        picked++;
+      }
+    }
+    // 若该题型题量不足，继续用不带难度约束的候选补齐
+    if (picked < want) {
+      const candidates = store.qList({ subjectId: b.subjectId, type }, want * 3, 0);
+      for (const q of candidates) {
+        if (picked >= want) break;
+        if (used.has(q.id) || exclude.has(q.id)) continue;
+        used.add(q.id);
+        const score = Number(sec.score) || 5;
+        totalScore += score;
+        paper.push({ id: q.id, type: q.type, difficulty: q.difficulty, coefficient: q.coefficient, stem: q.stem, score });
+        picked++;
+      }
+    }
+  }
+
+  // 难度曲线：由易到难排序
+  paper.sort((a, b2) => a.difficulty - b2.difficulty);
+  const fit = paper.length
+    ? Math.round(100 - Math.min(100, paper.reduce((s, q) => s + Math.abs(q.difficulty - (b.difficultyTarget || 3)), 0) / paper.length * 25)) / 100
+    : 0;
+
+  const blueprintJson = JSON.stringify({ subjectId: b.subjectId || null, structure, difficultyTarget: b.difficultyTarget || 3 });
+  const pid = store.savePaper(req.user.uid, b.title || '智能组卷', blueprintJson, totalScore, paper);
+  res.json({
+    code: 0, message: 'ok',
+    data: { paperId: pid, totalScore, count: paper.length, difficultyFit: fit, questions: paper }
+  });
+});
+
+r.get('/:id', (req, res) => {
+  const paper = store.paperById(Number(req.params.id));
+  if (!paper || paper.user_id !== req.user.uid) return res.status(404).json({ code: 40400, message: '试卷不存在', data: null });
+  res.json({ code: 0, message: 'ok', data: paper });
+});
+
+module.exports = r;
