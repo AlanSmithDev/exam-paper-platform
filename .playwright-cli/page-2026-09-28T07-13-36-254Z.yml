@@ -1,0 +1,453 @@
+- generic [ref=e1]:
+  - generic [ref=e227]:
+    - complementary [ref=e228]:
+      - generic [ref=e229] [cursor=pointer]:
+        - generic [ref=e230]: ZJ
+        - generic [ref=e231]:
+          - strong [ref=e232]: 智卷云
+          - generic [ref=e233]: 高中教研工作台
+      - generic [ref=e234]: 高中数学 · 教师空间 ⌄
+      - generic [ref=e236]: 工作台
+      - menubar [ref=e237]:
+        - menuitem "⌂ 工作台首页" [ref=e238] [cursor=pointer]:
+          - generic [ref=e239]: ⌂
+          - text: 工作台首页
+        - menuitem "⌕ 题库选题 168万+" [active] [ref=e240] [cursor=pointer]:
+          - generic [ref=e241]: ⌕
+          - text: 题库选题
+          - emphasis [ref=e242]: 168万+
+        - menuitem "▤ 智能组卷" [ref=e243] [cursor=pointer]:
+          - generic [ref=e244]: ▤
+          - text: 智能组卷
+        - menuitem "✓ 练习与错题" [ref=e245] [cursor=pointer]:
+          - generic [ref=e246]: ✓
+          - text: 练习与错题
+      - generic [ref=e247]: 内容与服务
+      - menubar [ref=e248]:
+        - menuitem "✦ AI 教研助手 NEW" [ref=e249] [cursor=pointer]:
+          - generic [ref=e250]: ✦
+          - text: AI 教研助手
+          - generic [ref=e251]: NEW
+        - menuitem "♢ 会员与点数" [ref=e252] [cursor=pointer]:
+          - generic [ref=e253]: ♢
+          - text: 会员与点数
+      - generic [ref=e254]:
+        - generic [ref=e255]:
+          - generic [ref=e256]: 本月导出额度
+          - generic [ref=e257]: 12 / 30
+        - progressbar [ref=e258]
+        - generic [ref=e262] [cursor=pointer]:
+          - text: 升级会员，获得不限次导出
+          - generic [ref=e263]: →
+    - generic [ref=e264]:
+      - generic [ref=e265]:
+        - generic [ref=e266]:
+          - text: 教师工作台/
+          - strong [ref=e267]: 工作台首页
+        - generic [ref=e268]:
+          - button "⌘ 快捷键" [ref=e269] [cursor=pointer]
+          - button "♧" [ref=e270] [cursor=pointer]
+          - button "试题篮 0" [ref=e272] [cursor=pointer]
+          - generic [ref=e273] [cursor=pointer]:
+            - generic [ref=e274]: 林
+            - generic [ref=e275]: 林老师
+            - generic [ref=e276]: ⌄
+      - main [ref=e277]:
+        - generic [ref=e446]:
+          - generic [ref=e447]:
+            - generic [ref=e448]:
+              - heading "题库选题" [level=1] [ref=e449]
+              - paragraph [ref=e450]: 从 168.2 万道高中数学题中，找到最适合你课堂的题目
+            - generic [ref=e451]:
+              - button "我的收藏 86" [ref=e452] [cursor=pointer]:
+                - generic [ref=e453]:
+                  - text: 我的收藏
+                  - generic [ref=e454]: "86"
+              - button "进入组卷工作台 →" [ref=e455] [cursor=pointer]
+          - generic [ref=e457]:
+            - button "章节选题" [ref=e458] [cursor=pointer]
+            - button "知识点选题" [ref=e459] [cursor=pointer]
+            - button "试卷选题" [ref=e460] [cursor=pointer]
+            - button "智能组卷" [ref=e461] [cursor=pointer]
+            - generic [ref=e462]: ⌘ 选题帮助
+          - generic [ref=e463]:
+            - complementary [ref=e464]:
+              - generic [ref=e465]:
+                - text: 筛选题目
+                - button "重置" [ref=e466] [cursor=pointer]
+              - generic [ref=e467]: 教材版本
+              - generic [ref=e469] [cursor=pointer]:
+                - generic:
+                  - combobox [ref=e471]
+                  - generic [ref=e472]: 人教A版（2019）
+              - generic [ref=e477]: 章节目录
+              - generic [ref=e478]:
+                - button "⌄ 集合与常用逻辑用语 128" [ref=e479] [cursor=pointer]:
+                  - generic [ref=e480]: ⌄
+                  - text: 集合与常用逻辑用语
+                  - emphasis [ref=e481]: "128"
+                - button "› 函数与导数 186" [ref=e482] [cursor=pointer]:
+                  - generic [ref=e483]: ›
+                  - text: 函数与导数
+                  - emphasis [ref=e484]: "186"
+                - button "⌄ 三角函数 94" [ref=e485] [cursor=pointer]:
+                  - generic [ref=e486]: ⌄
+                  - text: 三角函数
+                  - emphasis [ref=e487]: "94"
+                - button "⌄ 数列 112" [ref=e488] [cursor=pointer]:
+                  - generic [ref=e489]: ⌄
+                  - text: 数列
+                  - emphasis [ref=e490]: "112"
+                - button "⌄ 空间向量与立体几何 75" [ref=e491] [cursor=pointer]:
+                  - generic [ref=e492]: ⌄
+                  - text: 空间向量与立体几何
+                  - emphasis [ref=e493]: "75"
+                - button "⌄ 概率统计 98" [ref=e494] [cursor=pointer]:
+                  - generic [ref=e495]: ⌄
+                  - text: 概率统计
+                  - emphasis [ref=e496]: "98"
+              - generic [ref=e497]: 题目场景
+              - generic [ref=e498]:
+                - generic [ref=e499]:
+                  - checkbox "同步教学" [ref=e500]
+                  - text: 同步教学
+                - generic [ref=e501]:
+                  - checkbox "课堂检测" [ref=e502]
+                  - text: 课堂检测
+                - generic [ref=e503]:
+                  - checkbox "阶段检测" [ref=e504]
+                  - text: 阶段检测
+                - generic [ref=e505]:
+                  - checkbox "高考备考" [ref=e506]
+                  - text: 高考备考
+                - generic [ref=e507]:
+                  - checkbox "寒暑假作业" [ref=e508]
+                  - text: 寒暑假作业
+              - generic [ref=e509]:
+                - generic [ref=e510]: ✦
+                - generic [ref=e511]:
+                  - generic [ref=e512]: 试试 AI 搜题
+                  - paragraph [ref=e513]: 用自然语言描述你想找的题目
+                  - button "立即体验 →" [ref=e514] [cursor=pointer]
+            - main [ref=e515]:
+              - generic [ref=e516]:
+                - generic [ref=e518]:
+                  - generic: ⌕
+                  - textbox "搜索题干、知识点、题源或粘贴公式…" [ref=e521]
+                - button "搜索" [ref=e522] [cursor=pointer]
+              - generic [ref=e524]:
+                - generic [ref=e525]: 已选条件：
+                - generic [ref=e526]:
+                  - generic [ref=e527]: 函数与导数
+                  - button "Close this tag" [ref=e528]:
+                    - generic [ref=e529] [cursor=pointer]
+                - generic [ref=e532]: 共 4 道题
+              - generic [ref=e533]:
+                - generic [ref=e534]:
+                  - button "全部题型" [ref=e535] [cursor=pointer]
+                  - button "选择题" [ref=e536] [cursor=pointer]
+                  - button "填空题" [ref=e537] [cursor=pointer]
+                  - button "解答题" [ref=e538] [cursor=pointer]
+                - generic [ref=e539]:
+                  - generic [ref=e540]: 难度
+                  - generic [ref=e542] [cursor=pointer]:
+                    - generic:
+                      - combobox [ref=e544]
+                      - generic [ref=e545]: 全部
+                  - generic [ref=e551] [cursor=pointer]:
+                    - generic:
+                      - combobox [ref=e553]
+                      - generic [ref=e554]: 综合排序
+              - generic [ref=e559]:
+                - article [ref=e560]:
+                  - generic [ref=e561]:
+                    - generic [ref=e562]: 解答题拔高2026 · 全国甲卷 · 压轴精选
+                    - button "♡" [ref=e563] [cursor=pointer]
+                  - generic [ref=e564]:
+                    - generic [ref=e565]: "31"
+                    - generic [ref=e567]:
+                      - text: 已知函数
+                      - generic [ref=e568]:
+                        - math [ref=e570]:
+                          - generic [ref=e572]:
+                            - generic [ref=e573]: f
+                            - generic [ref=e574]: (
+                            - generic [ref=e575]: x
+                            - generic [ref=e576]: )
+                            - generic [ref=e577]: =
+                            - generic [ref=e578]:
+                              - generic [ref=e579]: x
+                              - generic [ref=e580]: "3"
+                            - generic [ref=e581]: −
+                            - generic [ref=e582]: "3"
+                            - generic [ref=e583]:
+                              - generic [ref=e584]: x
+                              - generic [ref=e585]: "2"
+                            - generic [ref=e586]: +
+                            - generic [ref=e587]: a
+                            - generic [ref=e588]: x
+                        - generic [aria-hidden] [ref=e589]:
+                          - generic [ref=e590]: f(x) =
+                          - generic [ref=e591]:
+                            - generic [ref=e592]:
+                              - text: x
+                              - generic [ref=e593]: "3"
+                            - text: −
+                          - generic [ref=e598]:
+                            - text: "3"
+                            - generic [ref=e599]:
+                              - text: x
+                              - generic [ref=e600]: "2"
+                            - text: +
+                          - generic [ref=e605]: ax
+                      - text: 在区间
+                      - generic [ref=e606]:
+                        - math [ref=e608]:
+                          - generic [ref=e610]:
+                            - generic [ref=e611]: "["
+                            - generic [ref=e612]: "0"
+                            - generic [ref=e613]: ","
+                            - generic [ref=e614]: "3"
+                            - generic [ref=e615]: "]"
+                        - generic [ref=e617]: "[0, 3]"
+                      - text: 上的最大值为
+                      - generic [ref=e618]:
+                        - math [ref=e620]:
+                          - generic [ref=e621]: "4"
+                        - generic [ref=e625]: "4"
+                      - text: ，求实数
+                      - generic [ref=e626]:
+                        - math [ref=e628]:
+                          - generic [ref=e629]: a
+                        - generic [ref=e633]: a
+                      - text: 的取值范围。
+                  - generic [ref=e634]:
+                    - generic [ref=e635]:
+                      - generic [ref=e636]: 导数及其应用
+                      - generic [ref=e637]: 函数与方程
+                      - generic [ref=e638]: 压轴题
+                      - generic [ref=e639]: ↗ 182 次组卷 · 今天
+                    - generic [ref=e640]:
+                      - button "＋ 加入试题篮" [ref=e641] [cursor=pointer]
+                      - button "查看解析 →" [ref=e642] [cursor=pointer]
+                      - button "纠错" [ref=e643] [cursor=pointer]
+                - article [ref=e644]:
+                  - generic [ref=e645]:
+                    - generic [ref=e646]: 选择题较易2025 · 人教A版 · 同步练习
+                    - button "♡" [ref=e647] [cursor=pointer]
+                  - generic [ref=e648]:
+                    - generic [ref=e649]: "32"
+                    - generic [ref=e650]:
+                      - generic [ref=e651]:
+                        - text: 若集合
+                        - generic [ref=e652]:
+                          - math [ref=e654]:
+                            - generic [ref=e656]:
+                              - generic [ref=e657]: A
+                              - generic [ref=e658]: =
+                              - generic [ref=e659]: "{"
+                              - generic [ref=e660]: x
+                              - generic [ref=e661]: ∣
+                              - generic [ref=e662]:
+                                - generic [ref=e663]: x
+                                - generic [ref=e664]: "2"
+                              - generic [ref=e665]: −
+                              - generic [ref=e666]: "4"
+                              - generic [ref=e667]: x
+                              - generic [ref=e668]: +
+                              - generic [ref=e669]: "3"
+                              - generic [ref=e670]: ≤
+                              - generic [ref=e671]: "0"
+                              - generic [ref=e672]: "}"
+                          - generic [aria-hidden] [ref=e673]:
+                            - generic [ref=e674]: A =
+                            - generic [ref=e675]: "{x ∣"
+                            - generic [ref=e676]:
+                              - generic [ref=e677]:
+                                - text: x
+                                - generic [ref=e678]: "2"
+                              - text: −
+                            - generic [ref=e683]: 4x +
+                            - generic [ref=e684]: 3 ≤
+                            - generic [ref=e685]: "0}"
+                        - text: ，则
+                        - generic [ref=e686]:
+                          - math [ref=e688]:
+                            - generic [ref=e689]: A
+                          - generic [ref=e693]: A
+                        - text: 等于（ ）
+                      - generic [ref=e694]:
+                        - generic [ref=e695]:
+                          - text: A.
+                          - generic [ref=e696]:
+                            - math [ref=e698]:
+                              - generic [ref=e700]:
+                                - generic [ref=e701]: (
+                                - generic [ref=e702]: −
+                                - generic [ref=e703]: ∞
+                                - generic [ref=e704]: ","
+                                - generic [ref=e705]: "1"
+                                - generic [ref=e706]: "]"
+                            - generic [ref=e708]: (−∞, 1]
+                        - generic [ref=e709]:
+                          - text: B.
+                          - generic [ref=e710]:
+                            - math [ref=e712]:
+                              - generic [ref=e714]:
+                                - generic [ref=e715]: "["
+                                - generic [ref=e716]: "1"
+                                - generic [ref=e717]: ","
+                                - generic [ref=e718]: "3"
+                                - generic [ref=e719]: "]"
+                            - generic [ref=e721]: "[1, 3]"
+                        - generic [ref=e722]:
+                          - text: C.
+                          - generic [ref=e723]:
+                            - math [ref=e725]:
+                              - generic [ref=e727]:
+                                - generic [ref=e728]: "["
+                                - generic [ref=e729]: "3"
+                                - generic [ref=e730]: ","
+                                - generic [ref=e731]: +
+                                - generic [ref=e732]: ∞
+                                - generic [ref=e733]: )
+                            - generic [ref=e735]: "[3, +∞)"
+                        - generic [ref=e736]:
+                          - text: D.
+                          - generic [ref=e737]:
+                            - math [ref=e739]:
+                              - generic [ref=e741]:
+                                - generic [ref=e742]: (
+                                - generic [ref=e743]: "1"
+                                - generic [ref=e744]: ","
+                                - generic [ref=e745]: "3"
+                                - generic [ref=e746]: )
+                            - generic [ref=e748]: (1, 3)
+                  - generic [ref=e749]:
+                    - generic [ref=e750]:
+                      - generic [ref=e751]: 集合与常用逻辑用语
+                      - generic [ref=e752]: 基础题
+                      - generic [ref=e753]: ↗ 96 次组卷 · 昨天
+                    - generic [ref=e754]:
+                      - button "＋ 加入试题篮" [ref=e755] [cursor=pointer]
+                      - button "查看解析 →" [ref=e756] [cursor=pointer]
+                      - button "纠错" [ref=e757] [cursor=pointer]
+                - article [ref=e758]:
+                  - generic [ref=e759]:
+                    - generic [ref=e760]: 填空题中档2026 · 华东师大附中 · 月考
+                    - button "♡" [ref=e761] [cursor=pointer]
+                  - generic [ref=e762]:
+                    - generic [ref=e763]: "33"
+                    - generic [ref=e764]:
+                      - generic [ref=e765]:
+                        - text: 在正方体
+                        - generic [ref=e766]:
+                          - math [ref=e768]:
+                            - generic [ref=e770]:
+                              - generic [ref=e771]: A
+                              - generic [ref=e772]: B
+                              - generic [ref=e773]: C
+                              - generic [ref=e774]: D
+                              - generic [ref=e775]: −
+                              - generic [ref=e776]:
+                                - generic [ref=e777]: A
+                                - generic [ref=e778]: "1"
+                              - generic [ref=e779]:
+                                - generic [ref=e780]: B
+                                - generic [ref=e781]: "1"
+                              - generic [ref=e782]:
+                                - generic [ref=e783]: C
+                                - generic [ref=e784]: "1"
+                              - generic [ref=e785]:
+                                - generic [ref=e786]: D
+                                - generic [ref=e787]: "1"
+                          - generic [aria-hidden] [ref=e788]:
+                            - generic [ref=e789]: ABCD −
+                            - generic [ref=e790]:
+                              - generic [ref=e791]:
+                                - text: A
+                                - generic [ref=e792]: "1"
+                              - generic [ref=e800]:
+                                - text: B
+                                - generic [ref=e801]: "1"
+                              - generic [ref=e809]:
+                                - text: C
+                                - generic [ref=e810]: "1"
+                              - generic [ref=e818]:
+                                - text: D
+                                - generic [ref=e819]: "1"
+                        - text: 中，异面直线
+                        - generic [ref=e827]:
+                          - math [ref=e829]:
+                            - generic [ref=e831]:
+                              - generic [ref=e832]: A
+                              - generic [ref=e833]: B
+                          - generic [ref=e835]: AB
+                        - text: 与
+                        - generic [ref=e836]:
+                          - math [ref=e838]:
+                            - generic [ref=e840]:
+                              - generic [ref=e841]:
+                                - generic [ref=e842]: B
+                                - generic [ref=e843]: "1"
+                              - generic [ref=e844]: D
+                          - generic [ref=e846]:
+                            - generic [ref=e847]:
+                              - text: B
+                              - generic [ref=e848]: "1"
+                            - text: D
+                        - text: 所成角的余弦值为 ______。
+                      - generic [ref=e856]:
+                        - img "空间几何图形" [ref=e857]:
+                          - generic [ref=e860]: A₁
+                          - generic [ref=e861]: D
+                          - generic [ref=e862]: A
+                        - generic [ref=e863]: 图形 · 可编辑
+                  - generic [ref=e864]:
+                    - generic [ref=e865]:
+                      - generic [ref=e866]: 空间向量与立体几何
+                      - generic [ref=e867]: 图形题
+                      - generic [ref=e868]: ↗ 74 次组卷 · 3 天前
+                    - generic [ref=e869]:
+                      - button "＋ 加入试题篮" [ref=e870] [cursor=pointer]
+                      - button "查看解析 →" [ref=e871] [cursor=pointer]
+                      - button "纠错" [ref=e872] [cursor=pointer]
+                - article [ref=e873]:
+                  - generic [ref=e874]:
+                    - generic [ref=e875]: 多选题中档2026 · 新高考模拟 · 一模
+                    - button "♡" [ref=e876] [cursor=pointer]
+                  - generic [ref=e877]:
+                    - generic [ref=e878]: "34"
+                    - generic [ref=e879]:
+                      - generic [ref=e880]: 下列说法正确的是（ ）
+                      - generic [ref=e881]:
+                        - generic [ref=e882]: A. 样本数据的中位数一定存在
+                        - generic [ref=e883]: B. 两个随机变量线性相关则相关系数为 1
+                        - generic [ref=e884]: C. 正态分布曲线关于均值对称
+                        - generic [ref=e885]: D. 频率分布直方图中小矩形面积等于频率
+                  - generic [ref=e886]:
+                    - generic [ref=e887]:
+                      - generic [ref=e888]: 概率统计
+                      - generic [ref=e889]: 核心素养
+                      - generic [ref=e890]: ↗ 133 次组卷 · 5 天前
+                    - generic [ref=e891]:
+                      - button "＋ 加入试题篮" [ref=e892] [cursor=pointer]
+                      - button "查看解析 →" [ref=e893] [cursor=pointer]
+                      - button "纠错" [ref=e894] [cursor=pointer]
+              - generic [ref=e895]:
+                - generic [ref=e896]: 已展示 4 / 1,286 道题
+                - generic [ref=e897]:
+                  - button "Go to previous page" [disabled] [ref=e898]
+                  - list [ref=e899]:
+                    - listitem "page 1" [ref=e900]: "1"
+                    - listitem "page 2" [ref=e901] [cursor=pointer]: "2"
+                    - listitem "page 3" [ref=e902] [cursor=pointer]: "3"
+                    - listitem "page 4" [ref=e903] [cursor=pointer]: "4"
+                    - listitem "page 5" [ref=e904] [cursor=pointer]: "5"
+                    - listitem "page 6" [ref=e905] [cursor=pointer]: "6"
+                    - listitem "Next 5 pages" [ref=e906] [cursor=pointer]
+                    - listitem "page 129" [ref=e907] [cursor=pointer]: "129"
+                  - button "Go to next page" [ref=e908] [cursor=pointer]
+      - generic [ref=e445]: 智卷云 · 内容由教研团队审核 · 反馈与帮助
+  - alert [ref=e909]:
+    - paragraph [ref=e913]: 请求失败

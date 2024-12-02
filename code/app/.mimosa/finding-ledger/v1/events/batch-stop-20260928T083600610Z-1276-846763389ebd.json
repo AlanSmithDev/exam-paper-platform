@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260928T083600610Z-1276-846763389ebd",
+  "runId": "20260928T083600610Z-1276-846763389ebd",
+  "runStatus": "inconclusive",
+  "coverage": {
+    "status": "partial",
+    "reasons": [
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "server/message.js",
+        "detail": "file is missing from task baseline",
+        "affectsCompletion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "server/netutil.js",
+        "detail": "file is missing from task baseline",
+        "affectsCompletion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "server/routes/messages.js",
+        "detail": "file is missing from task baseline",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "server/message.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "server/netutil.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "server/routes/messages.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affectsCompletion": true
+      }
+    ]
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": null,
+  "diffHash": "a7ce9c4d4f285c35189ffd90fde5fc6d232a43972b84a3f91d0f5f8c9365fdb7",
+  "rulesVersion": "unavailable",
+  "sessionHash": "28fd483c2a5062a5db41a886634fd7f3f5f790d6d031b0d6b016dacd8675101d",
+  "reportRef": ".mimosa/reports/task-review-sess_900874f8-3a60-446b-8402-058bea0b7251-20260928T083600610Z-1276-846763389ebd.json",
+  "events": [],
+  "observedFindingIds": [
+    "mimosa-f43195ad1b7626aa1336ff21"
+  ],
+  "verifiedFiles": [
+    {
+      "file": "server/db.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "server/message.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "server/netutil.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "server/server.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "server/store.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "server/trade.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "server/routes/messages.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "server/routes/papers.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "server/routes/payments.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "server/routes/questions.js",
+      "direct": "complete",
+      "projectContext": "partial"
+    }
+  ],
+  "recordedAt": "2026-09-28T08:36:01.060Z"
+}

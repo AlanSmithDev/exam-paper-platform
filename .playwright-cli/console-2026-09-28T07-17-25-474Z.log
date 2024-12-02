@@ -1,0 +1,25 @@
+[     103ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/api/v1/settings:0
+[     130ms] [ERROR] Error: <path> attribute d: Expected path command, "…33 95l91 0 56 26\\". @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:11709
+[  970639ms] [WARNING] [Vue warn]: Property "feedbackOpen" was accessed during render but is not defined on instance. 
+  at <QuestionDetail onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< null > > 
+  at <RouterView> 
+  at <ElMain class="content-area" > 
+  at <ElContainer> 
+  at <ElContainer class="app-shell" > 
+  at <App> @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:2277
+[  970642ms] [ERROR] Error: <path> attribute d: Expected path command, "…33 95l91 0 56 26\\". @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:11709
+[  995149ms] [ERROR] Error: <path> attribute d: Expected path command, "…33 95l91 0 56 26\\". @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:11709
+[ 1140340ms] [ERROR] Error: <path> attribute d: Expected path command, "…33 95l91 0 56 26\\". @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:11709
+[ 1140429ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/api/v1/settings:0
+[ 1140438ms] [ERROR] Error: <path> attribute d: Expected path command, "…33 95l91 0 56 26\\". @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:11709
+[ 1257097ms] [ERROR] Error: <path> attribute d: Expected path command, "…33 95l91 0 56 26\\". @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:11709
+[ 1257114ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/api/v1/settings:0
+[ 1270590ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:5173/src/views/QuestionDetail.vue?t=1790581116053:0
+[ 1270594ms] [ERROR] [hmr] Failed to reload /src/views/QuestionDetail.vue. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:5173/@vite/client:175
+[ 1880892ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/src/router.js?t=1790581726201:0
+[ 1932918ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/src/router.js?t=1790581778281:0
+[ 1966610ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:5173/src/App.vue?t=1790581811998:0
+[ 1966633ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/src/router.js?t=1790581812004:0
+[ 2103615ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/src/router.js?t=1790581948929:0
+[ 2104574ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/src/router.js?t=1790581948929:0
+[ 2149704ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/src/router.js?t=1790581995072:0

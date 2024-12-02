@@ -1,0 +1,41 @@
+[     429ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/api/v1/settings:0
+[     432ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:5173/favicon.ico:0
+[   15120ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/api/v1/settings:0
+[   45654ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/api/v1/questions?book=%E4%BA%BA%E6%95%99A%E7%89%88%EF%BC%882019%EF%BC%89&chapter=%E5%87%BD%E6%95%B0%E4%B8%8E%E5%AF%BC%E6%95%B0&keyword=:0
+[   64668ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/api/v1/questions?book=%E4%BA%BA%E6%95%99A%E7%89%88%EF%BC%882019%EF%BC%89&chapter=%E5%87%BD%E6%95%B0%E4%B8%8E%E5%AF%BC%E6%95%B0&keyword=:0
+[   64670ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/api/v1/settings:0
+[   64670ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/api/v1/questions?book=%E4%BA%BA%E6%95%99A%E7%89%88%EF%BC%882019%EF%BC%89&chapter=%E5%87%BD%E6%95%B0%E4%B8%8E%E5%AF%BC%E6%95%B0&keyword=:0
+[   82480ms] [WARNING] [Vue warn]: Unhandled error during execution of render function 
+  at <ElHeader class="topbar" > 
+  at <ElContainer> 
+  at <ElContainer class="app-shell" > 
+  at <App> @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:2277
+[   82480ms] [ERROR] ReferenceError: route is not defined
+    at ComputedRefImpl.fn (http://127.0.0.1:5173/src/App.vue?t=1790579652377:15:156)
+    at refreshComputed (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:732:29)
+    at get value (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:1989:5)
+    at unref (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:1844:30)
+    at Object.get (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:1850:64)
+    at http://127.0.0.1:5173/src/App.vue?t=1790579652377:177:77
+    at renderFnWithContext (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:2941:13)
+    at renderSlot (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:5597:55)
+    at Proxy.<anonymous> (http://127.0.0.1:5173/node_modules/.vite/deps/element-plus.js?v=b1215870:39342:11)
+    at renderComponentRoot (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:6927:17) @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:2801
+[   82481ms] [WARNING] [HMR] Something went wrong during Vue component hot-reload. Full reload required. @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:2802
+[   94677ms] [WARNING] [Vue warn]: Unhandled error during execution of render function 
+  at <ElHeader class="topbar" > 
+  at <ElContainer> 
+  at <ElContainer class="app-shell" > 
+  at <App> @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:2277
+[   94678ms] [ERROR] ReferenceError: route is not defined
+    at ComputedRefImpl.fn (http://127.0.0.1:5173/src/App.vue?t=1790579652377:15:156)
+    at refreshComputed (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:732:29)
+    at get value (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:1989:5)
+    at unref (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:1844:30)
+    at Object.get (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:1850:64)
+    at http://127.0.0.1:5173/src/App.vue?t=1790579652377:177:77
+    at renderFnWithContext (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:2941:13)
+    at renderSlot (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:5597:55)
+    at Proxy.<anonymous> (http://127.0.0.1:5173/node_modules/.vite/deps/element-plus.js?v=b1215870:39342:11)
+    at renderComponentRoot (http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:6927:17) @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:2801
+[   94678ms] [WARNING] [HMR] Something went wrong during Vue component hot-reload. Full reload required. @ http://127.0.0.1:5173/node_modules/.vite/deps/chunk-JXURMMZ5.js?v=4dba4a48:2802

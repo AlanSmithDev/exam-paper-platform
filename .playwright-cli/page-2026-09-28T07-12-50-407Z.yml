@@ -1,0 +1,206 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5] [cursor=pointer]:
+      - generic [ref=e6]: ZJ
+      - generic [ref=e7]:
+        - strong [ref=e8]: 智卷云
+        - generic [ref=e9]: 高中教研工作台
+    - generic [ref=e10]: 高中数学 · 教师空间 ⌄
+    - generic [ref=e12]: 工作台
+    - menubar [ref=e13]:
+      - menuitem "⌂ 工作台首页" [ref=e14] [cursor=pointer]:
+        - generic [ref=e15]: ⌂
+        - text: 工作台首页
+      - menuitem "⌕ 题库选题 168万+" [ref=e16] [cursor=pointer]:
+        - generic [ref=e17]: ⌕
+        - text: 题库选题
+        - emphasis [ref=e18]: 168万+
+      - menuitem "▤ 智能组卷" [ref=e19] [cursor=pointer]:
+        - generic [ref=e20]: ▤
+        - text: 智能组卷
+      - menuitem "✓ 练习与错题" [ref=e21] [cursor=pointer]:
+        - generic [ref=e22]: ✓
+        - text: 练习与错题
+    - generic [ref=e23]: 内容与服务
+    - menubar [ref=e24]:
+      - menuitem "✦ AI 教研助手 NEW" [ref=e25] [cursor=pointer]:
+        - generic [ref=e26]: ✦
+        - text: AI 教研助手
+        - generic [ref=e27]: NEW
+      - menuitem "♢ 会员与点数" [ref=e28] [cursor=pointer]:
+        - generic [ref=e29]: ♢
+        - text: 会员与点数
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e32]: 本月导出额度
+        - generic [ref=e33]: 12 / 30
+      - progressbar [ref=e34]
+      - generic [ref=e38] [cursor=pointer]:
+        - text: 升级会员，获得不限次导出
+        - generic [ref=e39]: →
+  - generic [ref=e40]:
+    - generic [ref=e41]:
+      - generic [ref=e42]:
+        - text: 教师工作台/
+        - strong [ref=e43]: 工作台首页
+      - generic [ref=e44]:
+        - button "⌘ 快捷键" [ref=e45] [cursor=pointer]
+        - button "♧" [ref=e46] [cursor=pointer]
+        - button "试题篮 0" [ref=e48] [cursor=pointer]
+        - generic [ref=e49] [cursor=pointer]:
+          - generic [ref=e50]: 林
+          - generic [ref=e51]: 林老师
+          - generic [ref=e52]: ⌄
+    - main [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - heading "早上好，林老师 ✦" [level=1] [ref=e57]
+            - paragraph [ref=e58]: 今天是 2026 年 9 月 28 日，继续完成你的教研计划吧。
+          - generic [ref=e59]:
+            - button "浏览题库" [ref=e60] [cursor=pointer]
+            - button "＋ 新建试卷" [ref=e62] [cursor=pointer]
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - generic [ref=e67]: 累计组卷
+              - generic [ref=e68]: ▤
+            - strong [ref=e69]: "128"
+            - generic [ref=e70]: ↑ 18% 较上月
+          - generic [ref=e71]:
+            - generic [ref=e72]:
+              - generic [ref=e73]: 本周使用题目
+              - generic [ref=e74]: ⌕
+            - strong [ref=e75]: "342"
+            - generic [ref=e76]: ↑ 12% 较上周
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - generic [ref=e79]: 学生平均正确率
+              - generic [ref=e80]: ◒
+            - strong [ref=e81]: 78.6%
+            - generic [ref=e82]: ↑ 3.2% 较上月
+          - generic [ref=e83]:
+            - generic [ref=e84]:
+              - generic [ref=e85]: 收藏题目
+              - generic [ref=e86]: ♡
+            - strong [ref=e87]: "86"
+            - generic [ref=e88]: — 保持稳定
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - heading "组卷趋势" [level=2] [ref=e93]
+                - paragraph [ref=e94]: 近 7 天你的试卷产出
+              - generic [ref=e96] [cursor=pointer]:
+                - generic:
+                  - combobox [ref=e98]
+                  - generic [ref=e99]: 近 7 天
+            - generic [ref=e104]:
+              - generic [ref=e105]:
+                - generic [ref=e106]: "30"
+                - generic [ref=e107]: "20"
+                - generic [ref=e108]: "10"
+                - generic [ref=e109]: "0"
+              - generic [ref=e110]:
+                - generic [ref=e111]: 周一
+                - generic [ref=e113]: 周二
+                - generic [ref=e115]: 周三
+                - generic [ref=e117]: 周四
+                - generic [ref=e119]: 周五
+                - generic [ref=e121]: 周六
+                - generic [ref=e123]: 周日
+            - generic [ref=e125]:
+              - strong [ref=e126]: "18"
+              - generic [ref=e127]: 份试卷
+              - generic [ref=e128]: 已完成
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - generic [ref=e132]:
+                - heading "考试日历" [level=2] [ref=e133]
+                - paragraph [ref=e134]: 重要日期提醒
+              - button "查看全部 →" [ref=e135] [cursor=pointer]
+            - generic [ref=e136]:
+              - generic [ref=e137]:
+                - generic [ref=e138]: "28"
+                - text: SEP
+              - generic [ref=e139]:
+                - strong [ref=e140]: 高三第一次月考
+                - paragraph [ref=e141]: 还有 12 天 · 已准备 68%
+            - generic [ref=e143]:
+              - generic [ref=e144]:
+                - generic [ref=e145]: "12"
+                - text: OCT
+              - generic [ref=e146]:
+                - strong [ref=e147]: 期中考试周
+                - paragraph [ref=e148]: 还有 26 天 · 暂未开始
+            - generic [ref=e149]:
+              - generic [ref=e150]:
+                - generic [ref=e151]: "03"
+                - text: NOV
+              - generic [ref=e152]:
+                - strong [ref=e153]: 高考报名开始
+                - paragraph [ref=e154]: 还有 48 天
+        - generic [ref=e155]:
+          - generic [ref=e156]:
+            - generic [ref=e158]:
+              - heading "快速开始" [level=2] [ref=e159]
+              - paragraph [ref=e160]: 常用功能，一键直达
+            - generic [ref=e161]:
+              - button "✦ 智能组卷 按条件快速生成试卷 →" [ref=e162] [cursor=pointer]:
+                - generic [ref=e163]: ✦
+                - generic [ref=e164]: 智能组卷
+                - generic [ref=e165]: 按条件快速生成试卷
+                - generic [ref=e166]: →
+              - button "⌕ 章节选题 从题库中精确筛选 →" [ref=e167] [cursor=pointer]:
+                - generic [ref=e168]: ⌕
+                - generic [ref=e169]: 章节选题
+                - generic [ref=e170]: 从题库中精确筛选
+                - generic [ref=e171]: →
+              - button "✓ 错题再练 巩固薄弱知识点 →" [ref=e172] [cursor=pointer]:
+                - generic [ref=e173]: ✓
+                - generic [ref=e174]: 错题再练
+                - generic [ref=e175]: 巩固薄弱知识点
+                - generic [ref=e176]: →
+              - button "⌘ AI 教研助手 让备课更高效 →" [ref=e177] [cursor=pointer]:
+                - generic [ref=e178]: ⌘
+                - generic [ref=e179]: AI 教研助手
+                - generic [ref=e180]: 让备课更高效
+                - generic [ref=e181]: →
+          - generic [ref=e182]:
+            - generic [ref=e183]:
+              - generic [ref=e184]:
+                - heading "最近使用" [level=2] [ref=e185]
+                - paragraph [ref=e186]: 你最近编辑过的试卷
+              - button "全部试卷 →" [ref=e187] [cursor=pointer]
+            - generic [ref=e188]:
+              - generic [ref=e189]: ▤
+              - generic [ref=e190]:
+                - strong [ref=e191]: 高三数学 · 导数专题训练
+                - generic [ref=e192]: 18 道题 · 最后编辑 2 小时前
+              - generic [ref=e193]: 已保存
+              - button "→" [ref=e194] [cursor=pointer]
+            - generic [ref=e195]:
+              - generic [ref=e196]: ▤
+              - generic [ref=e197]:
+                - strong [ref=e198]: 2026 届高考一轮复习 · 函数
+                - generic [ref=e199]: 25 道题 · 最后编辑昨天
+              - generic [ref=e200]: 草稿
+              - button "→" [ref=e201] [cursor=pointer]
+            - generic [ref=e202]:
+              - generic [ref=e203]: ▤
+              - generic [ref=e204]:
+                - strong [ref=e205]: 高二上学期期中模拟卷
+                - generic [ref=e206]: 22 道题 · 最后编辑 3 天前
+              - generic [ref=e207]: 已导出
+              - button "→" [ref=e208] [cursor=pointer]
+        - generic [ref=e209]:
+          - generic [ref=e210]:
+            - text: AI 教研助手 · 全新升级
+            - heading "把备课时间，留给真正重要的事" [level=2] [ref=e211]
+            - paragraph [ref=e212]: 智能分析学情，自动生成高质量题目与解析
+            - button "立即体验 AI 助手 →" [ref=e213] [cursor=pointer]
+          - generic [ref=e215]:
+            - generic [ref=e218]: ✦
+            - generic [ref=e219]: 题目生成中
+            - generic [ref=e220]: 难度已匹配
+    - generic [ref=e221]: 智卷云 · 内容由教研团队审核 · 反馈与帮助

@@ -1,0 +1,249 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260928T010213196Z-4188-30cfc4389f35",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "baseline",
+      "target": ".",
+      "reason": "baseline_partial: baseline capture had enumeration or snapshot errors"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": false,
+      "captured_files": 2,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 2
+    },
+    "change_tracking": {
+      "touched_observed": 1,
+      "touched_retained": 1,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 2,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 2,
+      "selected_files": 2,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 2,
+      "scanned_files": 2,
+      "skipped_files": 0,
+      "failed_files": 0,
+      "project_checks_required": 0,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "baseline_partial": 1,
+      "project_check_failed": 1
+    },
+    "reasons": [
+      {
+        "code": "baseline_partial",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline capture had enumeration or snapshot errors",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline_partial: baseline capture had enumeration or snapshot errors",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-28T01:02:13.196Z",
+  "session_id": "sess_fe32723a-1a3b-4b7f-8560-5058fcc393a8",
+  "target": ".",
+  "revision": null,
+  "rules_version": "unavailable",
+  "diff_hash": "eb705f1f1af0e7e292756dc87a29d9644c1574ae2bac5f0507e3ec3ed13806ab",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 2,
+    "changed_files": [
+      {
+        "file": "code/crawler/dedup_sim.py",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 186
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "80e80141de75a9cd8d30e5883a3fd0448fbf97ccf3c4b44c5b1b04c26871bb61"
+      },
+      {
+        "file": "code/crawler/export_db.py",
+        "ranges": [
+          {
+            "start": 244,
+            "end": 244
+          },
+          {
+            "start": 251,
+            "end": 251
+          },
+          {
+            "start": 253,
+            "end": 264
+          },
+          {
+            "start": 267,
+            "end": 276
+          }
+        ],
+        "before_hash": "50ea103780a116347ac65c72c695dc98b5ae7185e18ab0dbb5dc7427622032df",
+        "after_hash": "607ecd711bac65f37a6030e7d16877cfc30c0d411b06ac492dcc524249738bb5"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-28T01:02:11.658Z",
+    "completed_at": "2026-09-28T01:02:13.196Z",
+    "duration_ms": 1538,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 1538,
+    "peakMemoryBytes": 118312960,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 2,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [
+    {
+      "finding_id": "mimosa-194fdec6fef77bb68c5d8743",
+      "file": "code/crawler/dedup_sim.py",
+      "line": 209,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "路径穿越",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-28T00:11:56.634Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "15bbf8f1b41d9e09c5d9b1bddddec432384077faa5e1ecbbc259539ac41640fd",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-22b4deb859dd1da4ed503939",
+      "file": "code/crawler/dedup_sim.py",
+      "line": 226,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "路径穿越",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-28T00:11:56.634Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "8f1daa3de663a7098126bf01db5f8fd10784b14e57c98c4ab7e0f896cd4d065d",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-194fdec6fef77bb68c5d8743",
+      "file": "code/crawler/dedup_sim.py",
+      "line": 210,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "路径穿越",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-28T00:13:31.829Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "15bbf8f1b41d9e09c5d9b1bddddec432384077faa5e1ecbbc259539ac41640fd",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-22b4deb859dd1da4ed503939",
+      "file": "code/crawler/dedup_sim.py",
+      "line": 225,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "路径穿越",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-28T00:13:31.829Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "8f1daa3de663a7098126bf01db5f8fd10784b14e57c98c4ab7e0f896cd4d065d",
+        "runtime_oracle": false
+      }
+    }
+  ],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_fe32723a-1a3b-4b7f-8560-5058fcc393a8-20260928T010213196Z-4188-30cfc4389f35.json",
+    "latest_report": ".mimosa/reports/task-review-sess_fe32723a-1a3b-4b7f-8560-5058fcc393a8.json",
+    "history_summary": ".mimosa/history/run-20260928T010213196Z-4188-30cfc4389f35.json"
+  }
+}
