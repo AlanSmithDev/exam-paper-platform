@@ -1,0 +1,246 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260929T154407078Z-1840-727a36553fbe",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "baseline",
+      "target": ".",
+      "reason": "baseline_partial: baseline capture had enumeration or snapshot errors"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": false,
+      "captured_files": 4,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 4
+    },
+    "change_tracking": {
+      "touched_observed": 4,
+      "touched_retained": 4,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 4,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 4,
+      "selected_files": 4,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 4,
+      "scanned_files": 4,
+      "skipped_files": 0,
+      "failed_files": 0,
+      "project_checks_required": 0,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "baseline_partial": 1,
+      "project_check_failed": 1
+    },
+    "reasons": [
+      {
+        "code": "baseline_partial",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline capture had enumeration or snapshot errors",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline_partial: baseline capture had enumeration or snapshot errors",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-29T15:44:07.078Z",
+  "session_id": "sess_7218582e-ffd1-4250-97b1-3d59411c87f3",
+  "target": ".",
+  "revision": "4f7180eea217f2f5069e5921e06466e76fc8d66b",
+  "rules_version": "unavailable",
+  "diff_hash": "a69255a8cab9ed875249338222bb97ce9b4090f9e16f9943953477b81b276a28",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 4,
+    "changed_files": [
+      {
+        "file": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/controller/ExportController.java",
+        "ranges": [
+          {
+            "start": 12,
+            "end": 12
+          },
+          {
+            "start": 38,
+            "end": 39
+          },
+          {
+            "start": 49,
+            "end": 51
+          },
+          {
+            "start": 60,
+            "end": 63
+          },
+          {
+            "start": 65,
+            "end": 66
+          },
+          {
+            "start": 75,
+            "end": 75
+          },
+          {
+            "start": 79,
+            "end": 81
+          },
+          {
+            "start": 84,
+            "end": 85
+          }
+        ],
+        "before_hash": "bae0be9bcceb9005fd1fe30957be3bd673fe1b65a3123aac5107b7d8913616ae",
+        "after_hash": "1780ef6c3d924b5a7178e9e30fe20e240f78b9de316622038a25c16dd4ab7fc1"
+      },
+      {
+        "file": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/logic/ExportRules.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 60
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "465370396d813e348dbaf504ac744ba3cd55fcc4dc6e01fd2e10033ed7919c73"
+      },
+      {
+        "file": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/service/ExportService.java",
+        "ranges": [
+          {
+            "start": 6,
+            "end": 6
+          },
+          {
+            "start": 34,
+            "end": 34
+          },
+          {
+            "start": 36,
+            "end": 44
+          },
+          {
+            "start": 46,
+            "end": 46
+          },
+          {
+            "start": 56,
+            "end": 61
+          },
+          {
+            "start": 64,
+            "end": 67
+          },
+          {
+            "start": 76,
+            "end": 76
+          },
+          {
+            "start": 78,
+            "end": 78
+          },
+          {
+            "start": 83,
+            "end": 83
+          },
+          {
+            "start": 89,
+            "end": 90
+          }
+        ],
+        "before_hash": "be8919aca7633411d1a5ec7d96a89ab0eff737d659f639005ce71dd744810377",
+        "after_hash": "443f5ae4eab70c90286e0a097d0acf542412ebdbfc6837f54e46a57d381e0474"
+      },
+      {
+        "file": "code/enterprise/examforge-paper/src/test/java/com/examforge/paper/logic/ExportRulesTest.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 74
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "38cbb9a2921a8f11765841502f86378ffaf171d67fbca264d250d483d5d4eed9"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-29T15:44:05.253Z",
+    "completed_at": "2026-09-29T15:44:07.078Z",
+    "duration_ms": 1825,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 1825,
+    "peakMemoryBytes": 121630720,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 4,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20260929T154407078Z-1840-727a36553fbe.json",
+    "latest_report": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3.json",
+    "history_summary": ".mimosa/history/run-20260929T154407078Z-1840-727a36553fbe.json"
+  }
+}

@@ -1,0 +1,944 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260928T081616111Z-28784-a0a3c1089527",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "baseline-read",
+      "target": "code/enterprise/frontend/src/utils/math.js",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "baseline-read",
+      "target": "code/enterprise/frontend/src/utils/paper.js",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "baseline-read",
+      "target": "code/enterprise/frontend/src/composables/workspace.js",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/db.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/message.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/trade.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/routes/messages.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/routes/payments.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/store.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/netutil.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/server.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/frontend/src/mock.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/frontend/src/router.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/frontend/src/utils/math.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/frontend/src/utils/paper.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/frontend/src/composables/workspace.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/routes/papers.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/routes/questions.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "supply-chain-check",
+      "target": ".",
+      "reason": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 170,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 14
+    },
+    "change_tracking": {
+      "touched_observed": 8,
+      "touched_retained": 8,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 17,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 17,
+      "selected_files": 17,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 15,
+      "scanned_files": 0,
+      "skipped_files": 0,
+      "failed_files": 15,
+      "project_checks_required": 1,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "baseline_snapshot_unreadable": 3,
+      "scanner_failed": 15,
+      "stop_budget_exhausted": 1,
+      "project_check_failed": 19
+    },
+    "reasons": [
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/enterprise/frontend/src/utils/math.js",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/enterprise/frontend/src/utils/paper.js",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/enterprise/frontend/src/composables/workspace.js",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/db.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/message.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/trade.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/messages.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/payments.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/store.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/netutil.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/server.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/mock.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/router.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/utils/math.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/utils/paper.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/composables/workspace.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/papers.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/questions.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "stop_budget_exhausted",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/enterprise/frontend/src/utils/math.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/enterprise/frontend/src/utils/paper.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/enterprise/frontend/src/composables/workspace.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/db.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/message.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/trade.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/messages.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/payments.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/store.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/netutil.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/server.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/mock.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/router.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/utils/math.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/utils/paper.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/composables/workspace.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/papers.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/questions.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-28T08:16:16.111Z",
+  "session_id": "sess_900874f8-3a60-446b-8402-058bea0b7251",
+  "target": ".",
+  "revision": null,
+  "rules_version": "unavailable",
+  "diff_hash": "95867f52b48bbc2c225aa973e4ed1de0be97853b5ff8866736275e92b21e1287",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 17,
+    "changed_files": [
+      {
+        "file": "code/app/server/db.js",
+        "ranges": [
+          {
+            "start": 12,
+            "end": 15
+          },
+          {
+            "start": 223,
+            "end": 248
+          },
+          {
+            "start": 252,
+            "end": 283
+          }
+        ],
+        "before_hash": "d758f2373ec5854d5a7aa4f89d6f0899cb1f5dc223a3a36967c3700eb34dfafe",
+        "after_hash": "939688ab6508e5d7bfeefb456d0ac1841bfe49c1dba9b3ae4fb40d4789d0aca0"
+      },
+      {
+        "file": "code/app/server/message.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 37
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "e989ed18e9d47160136be476bff2132303ad0c72297b22a3814e3ed5690b6373"
+      },
+      {
+        "file": "code/app/server/netutil.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 9
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "69b33006233c9388ee8db4da9055bf4ba51d9320e7f9e03853c59f9f5daa4ccd"
+      },
+      {
+        "file": "code/app/server/routes/messages.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 37
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "5452f04b33f13f9dd4a0704bb894e2faf021ce6ba39f34a8ae4efa3e0b47e7ad"
+      },
+      {
+        "file": "code/app/server/routes/papers.js",
+        "ranges": [
+          {
+            "start": 80,
+            "end": 106
+          }
+        ],
+        "before_hash": "8badd1a0b447741a1ce614d95230cf2ba62958d88a695b74ced27be07e0171b2",
+        "after_hash": "618629f76313e935d572b0b5d9b5ca534c92931d295fe2996086179ab7741468"
+      },
+      {
+        "file": "code/app/server/routes/payments.js",
+        "ranges": [
+          {
+            "start": 15,
+            "end": 15
+          },
+          {
+            "start": 17,
+            "end": 17
+          }
+        ],
+        "before_hash": "c98cd90d76cf98e16d9c6c5afe456bfd376235d213efe02ec96238c5cb201ca0",
+        "after_hash": "27977e5e3d35ca3e5da04ec216ff03f5a928525b3d56e6d96a34110ae8e999ee"
+      },
+      {
+        "file": "code/app/server/routes/questions.js",
+        "ranges": [
+          {
+            "start": 19,
+            "end": 23
+          }
+        ],
+        "before_hash": "b507017c2e97610a369504dc5e88fde85320850f4169542dea210643c7d96fff",
+        "after_hash": "48baee03b682713159bcbc179474b8292088b43170bb38397c43ea9895ca4802"
+      },
+      {
+        "file": "code/app/server/server.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 2
+          },
+          {
+            "start": 6,
+            "end": 6
+          },
+          {
+            "start": 11,
+            "end": 11
+          },
+          {
+            "start": 17,
+            "end": 24
+          },
+          {
+            "start": 27,
+            "end": 43
+          },
+          {
+            "start": 61,
+            "end": 61
+          },
+          {
+            "start": 68,
+            "end": 68
+          },
+          {
+            "start": 73,
+            "end": 73
+          },
+          {
+            "start": 80,
+            "end": 80
+          },
+          {
+            "start": 85,
+            "end": 85
+          },
+          {
+            "start": 87,
+            "end": 92
+          },
+          {
+            "start": 105,
+            "end": 105
+          },
+          {
+            "start": 119,
+            "end": 119
+          },
+          {
+            "start": 121,
+            "end": 122
+          },
+          {
+            "start": 127,
+            "end": 139
+          }
+        ],
+        "before_hash": "1bc3e44488e6eec40ea5b6530d4b21ffa7fe6db9e1def8685b256f07a6021d25",
+        "after_hash": "a7924893949caabafd65c5bb706dd6d56e51b500d9a78421c7f7c28ab91d14fc"
+      },
+      {
+        "file": "code/app/server/store.js",
+        "ranges": [
+          {
+            "start": 95,
+            "end": 151
+          },
+          {
+            "start": 212,
+            "end": 212
+          },
+          {
+            "start": 259,
+            "end": 263
+          },
+          {
+            "start": 265,
+            "end": 266
+          },
+          {
+            "start": 268,
+            "end": 268
+          }
+        ],
+        "before_hash": "13d6a4899fddd0f6089dd240c8d612f5f931bfc3667774993158607802174416",
+        "after_hash": "aaeff8fa0bb9e0c88fd0dc3d6535bf1ec894ae59aeb7951f41e6e2618d1aea5e"
+      },
+      {
+        "file": "code/app/server/trade.js",
+        "ranges": [
+          {
+            "start": 329,
+            "end": 330
+          },
+          {
+            "start": 334,
+            "end": 334
+          },
+          {
+            "start": 346,
+            "end": 348
+          },
+          {
+            "start": 352,
+            "end": 352
+          },
+          {
+            "start": 354,
+            "end": 354
+          },
+          {
+            "start": 399,
+            "end": 400
+          },
+          {
+            "start": 626,
+            "end": 627
+          },
+          {
+            "start": 671,
+            "end": 677
+          }
+        ],
+        "before_hash": "e15d2d1785fb440b09855b0b6470839fb4ed6eddb2435a419ba0f24ed2fee68a",
+        "after_hash": "ec3ea3d0a31c2a5dbd1602a0b5a53121ae5b916911df1e45156bbf67496cc18b"
+      },
+      {
+        "file": "code/enterprise/frontend/package-lock.json",
+        "ranges": [
+          {
+            "start": 11,
+            "end": 11
+          },
+          {
+            "start": 14,
+            "end": 14
+          },
+          {
+            "start": 16,
+            "end": 16
+          },
+          {
+            "start": 59,
+            "end": 67
+          },
+          {
+            "start": 1162,
+            "end": 1174
+          },
+          {
+            "start": 1204,
+            "end": 1209
+          },
+          {
+            "start": 1355,
+            "end": 1360
+          },
+          {
+            "start": 1403,
+            "end": 1415
+          },
+          {
+            "start": 1541,
+            "end": 1558
+          },
+          {
+            "start": 1616,
+            "end": 1638
+          },
+          {
+            "start": 1807,
+            "end": 1812
+          },
+          {
+            "start": 1822,
+            "end": 1836
+          }
+        ],
+        "before_hash": "ec1f86ccd22ed6d17ea3c1ecf89ee0ba7b9a47d7a9ba4387dfd5340279ee6a45",
+        "after_hash": "7524b7b6282fbc1e4934160c98be42da5809bd892ebeb2dc786c35abb3238c57"
+      },
+      {
+        "file": "code/enterprise/frontend/package.json",
+        "ranges": [
+          {
+            "start": 5,
+            "end": 9
+          },
+          {
+            "start": 11,
+            "end": 11
+          },
+          {
+            "start": 14,
+            "end": 14
+          },
+          {
+            "start": 16,
+            "end": 16
+          },
+          {
+            "start": 21,
+            "end": 24
+          }
+        ],
+        "before_hash": "9765d2d782e79e6ea60885a5e9651398101406551c8f204ab7cee1de1b0e5f3e",
+        "after_hash": "d892076bdf36b677505c1a20b78e5dea350982ee64844586ca3e5fff86ea22ec"
+      },
+      {
+        "file": "code/enterprise/frontend/src/composables/workspace.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 42
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "b6455cffe3638ac5fe03d23582523ec1ab4f7cbd275873c5a1c3f89c1d5cab77"
+      },
+      {
+        "file": "code/enterprise/frontend/src/mock.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 18
+          },
+          {
+            "start": 20,
+            "end": 27
+          },
+          {
+            "start": 29,
+            "end": 30
+          },
+          {
+            "start": 32,
+            "end": 37
+          }
+        ],
+        "before_hash": "12e848448556db65bd14c7491309264ffea4884ffb5c3350be044f96ef70a098",
+        "after_hash": "3f3665c3a1061741df09e6edf8afe9060ec8a42e946693c56c3e019db0402aa3"
+      },
+      {
+        "file": "code/enterprise/frontend/src/router.js",
+        "ranges": [
+          {
+            "start": 13,
+            "end": 18
+          }
+        ],
+        "before_hash": "c31098084bd0382c5f6b7f9b208e77156bb86258e3eb38ffd0676724a8bf9d77",
+        "after_hash": "5b81d0c4c8221ebd1554b0cff3ff96d22aa693254a967aeffb34bd0845a2c58c"
+      },
+      {
+        "file": "code/enterprise/frontend/src/utils/math.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 9
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "142af641617e577995cc155fb35dee0454c0e0edcd28fa951543c5dba0843b9d"
+      },
+      {
+        "file": "code/enterprise/frontend/src/utils/paper.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 16
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "71421f02a9a513272650897b6970d94e5ade01e5a2b010342aedeac2001df879"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-28T08:16:13.150Z",
+    "completed_at": "2026-09-28T08:16:16.111Z",
+    "duration_ms": 2961,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 2961,
+    "peakMemoryBytes": 85311488,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 0,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [
+    {
+      "finding_id": "mimosa-68bbf4d28daf2a8e2fad574a",
+      "file": "code/app/server/server.js",
+      "line": 31,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "SSRF 服务端请求伪造",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-28T07:33:00.144Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "c205ece013c1898466a96a6d78bcd185bb3e40065236bb051c25b8df5d022830",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-68bbf4d28daf2a8e2fad574a",
+      "file": "code/app/server/server.js",
+      "line": 31,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "服务端请求伪造",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-28T07:33:00.145Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "c205ece013c1898466a96a6d78bcd185bb3e40065236bb051c25b8df5d022830",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-68bbf4d28daf2a8e2fad574a",
+      "file": "code/app/server/server.js",
+      "line": 31,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "服务端请求伪造",
+      "status": "fixed_candidate",
+      "decision": "repair_observed",
+      "at": "2026-09-28T07:34:08.762Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "c205ece013c1898466a96a6d78bcd185bb3e40065236bb051c25b8df5d022830",
+        "candidate_before_evidence_hash": "c205ece013c1898466a96a6d78bcd185bb3e40065236bb051c25b8df5d022830",
+        "post_change_evidence_hash_at_previous_location": "2f261468e42d1413df3a7281f55ff42273e5f736ed3aeae03fa7a82c2cecd418",
+        "runtime_oracle": false,
+        "verification": {
+          "method": "mimosa-posttool-static-rescan",
+          "finding_absent": true,
+          "runtime_oracle": false
+        }
+      }
+    },
+    {
+      "finding_id": "mimosa-68bbf4d28daf2a8e2fad574a",
+      "file": "code/app/server/server.js",
+      "line": 31,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "服务端请求伪造",
+      "status": "static_verified",
+      "decision": "static_rescan_passed",
+      "at": "2026-09-28T07:34:08.762Z",
+      "evidence": {
+        "kind": "static_scan",
+        "boundary": "observed",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "c205ece013c1898466a96a6d78bcd185bb3e40065236bb051c25b8df5d022830",
+        "candidate_before_evidence_hash": "c205ece013c1898466a96a6d78bcd185bb3e40065236bb051c25b8df5d022830",
+        "post_change_evidence_hash_at_previous_location": "2f261468e42d1413df3a7281f55ff42273e5f736ed3aeae03fa7a82c2cecd418",
+        "runtime_oracle": false,
+        "verification": {
+          "method": "mimosa-posttool-static-rescan",
+          "finding_absent": true,
+          "runtime_oracle": false
+        }
+      }
+    }
+  ],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_900874f8-3a60-446b-8402-058bea0b7251-20260928T081616111Z-28784-a0a3c1089527.json",
+    "latest_report": ".mimosa/reports/task-review-sess_900874f8-3a60-446b-8402-058bea0b7251.json",
+    "history_summary": ".mimosa/history/run-20260928T081616111Z-28784-a0a3c1089527.json"
+  }
+}

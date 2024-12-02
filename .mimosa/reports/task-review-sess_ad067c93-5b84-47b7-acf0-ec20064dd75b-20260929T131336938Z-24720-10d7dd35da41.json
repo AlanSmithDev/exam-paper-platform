@@ -1,0 +1,552 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260929T131336938Z-24720-10d7dd35da41",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "candidate-select",
+      "target": "code/app/server/export/card.js",
+      "reason": "changed_file_unreadable: observed changed file no longer exists or cannot be read"
+    },
+    {
+      "stage": "baseline",
+      "target": ".",
+      "reason": "baseline_partial: baseline capture had enumeration or snapshot errors"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/routes/papers.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": false,
+      "captured_files": 350,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 6,
+      "compensated_target_count": 1
+    },
+    "change_tracking": {
+      "touched_observed": 2,
+      "touched_retained": 2,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 1,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 1,
+      "selected_files": 1,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 1,
+      "scanned_files": 0,
+      "skipped_files": 0,
+      "failed_files": 1,
+      "project_checks_required": 0,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "changed_file_unreadable": 1,
+      "baseline_partial": 1,
+      "scanner_failed": 1,
+      "project_check_failed": 3
+    },
+    "reasons": [
+      {
+        "code": "changed_file_unreadable",
+        "stage": "candidate-select",
+        "target": "code/app/server/export/card.js",
+        "detail": "observed changed file no longer exists or cannot be read",
+        "affects_completion": true
+      },
+      {
+        "code": "baseline_partial",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline capture had enumeration or snapshot errors",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/papers.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "candidate-select",
+        "target": "code/app/server/export/card.js",
+        "detail": "changed_file_unreadable: observed changed file no longer exists or cannot be read",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline_partial: baseline capture had enumeration or snapshot errors",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/papers.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-29T13:13:36.938Z",
+  "session_id": "sess_ad067c93-5b84-47b7-acf0-ec20064dd75b",
+  "target": ".",
+  "revision": "fbc905cde0bb204ff020f2b4c1b02d1ff4e94604",
+  "rules_version": "unavailable",
+  "diff_hash": "bb7506a3d75fccd05c2b343059182d53459ccae961f97fa565decd652d4043fb",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 1,
+    "changed_files": [
+      {
+        "file": "code/app/server/routes/papers.js",
+        "ranges": [
+          {
+            "start": 192,
+            "end": 196
+          },
+          {
+            "start": 208,
+            "end": 208
+          },
+          {
+            "start": 211,
+            "end": 270
+          },
+          {
+            "start": 272,
+            "end": 272
+          },
+          {
+            "start": 311,
+            "end": 311
+          },
+          {
+            "start": 319,
+            "end": 320
+          }
+        ],
+        "before_hash": "339cab47b066be085d3e2527399e5ffcf3a7272b1ef360198c88811ade1ae02b",
+        "after_hash": "e299928a97e0bf4abbaaa7ee1b185747aa43b0942627051ed241bc4e3c7cbede"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-29T13:13:33.795Z",
+    "completed_at": "2026-09-29T13:13:36.938Z",
+    "duration_ms": 3143,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 3143,
+    "peakMemoryBytes": 75530240,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 0,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [
+    {
+      "finding_id": "mimosa-fda8665fa858a3aa0320610e",
+      "file": "code/app/server/routes/papers.js",
+      "line": 209,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "XSS 跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:25:46.536Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "a2c6635e507a798c7c4a3d5d22ece02c7fcc42ce79f5f4f573b9abe4a0a29770",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-fda8665fa858a3aa0320610e",
+      "file": "code/app/server/routes/papers.js",
+      "line": 209,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:25:46.536Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "a2c6635e507a798c7c4a3d5d22ece02c7fcc42ce79f5f4f573b9abe4a0a29770",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-9adf97af0891c90ccc83154f",
+      "file": "code/app/server/routes/papers.js",
+      "line": 216,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "XSS 跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:28:35.076Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "410eb8d1ada2b147eec1af90c2eb356316e0d73e7a9f8f2843b62b224ddb11a8",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-9adf97af0891c90ccc83154f",
+      "file": "code/app/server/routes/papers.js",
+      "line": 216,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:28:35.076Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "410eb8d1ada2b147eec1af90c2eb356316e0d73e7a9f8f2843b62b224ddb11a8",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-86e505c632cf10ee0d507046",
+      "file": "code/app/server/routes/papers.js",
+      "line": 217,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "XSS 跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:30:23.824Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "899cfd37be6cd5fedb6137a6437fcffc0833053adfb3135a32404f9d5642bd64",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-86e505c632cf10ee0d507046",
+      "file": "code/app/server/routes/papers.js",
+      "line": 217,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:30:23.824Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "899cfd37be6cd5fedb6137a6437fcffc0833053adfb3135a32404f9d5642bd64",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-86e505c632cf10ee0d507046",
+      "file": "code/app/server/routes/papers.js",
+      "line": 269,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "XSS 跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:30:59.581Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "899cfd37be6cd5fedb6137a6437fcffc0833053adfb3135a32404f9d5642bd64",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-86e505c632cf10ee0d507046",
+      "file": "code/app/server/routes/papers.js",
+      "line": 269,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:30:59.581Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "899cfd37be6cd5fedb6137a6437fcffc0833053adfb3135a32404f9d5642bd64",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-86e505c632cf10ee0d507046",
+      "file": "code/app/server/routes/papers.js",
+      "line": 268,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "XSS 跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:32:46.534Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "899cfd37be6cd5fedb6137a6437fcffc0833053adfb3135a32404f9d5642bd64",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-86e505c632cf10ee0d507046",
+      "file": "code/app/server/routes/papers.js",
+      "line": 268,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:32:46.534Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "899cfd37be6cd5fedb6137a6437fcffc0833053adfb3135a32404f9d5642bd64",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-f5bcc6ddd1a1463a657a6715",
+      "file": "code/app/server/routes/papers.js",
+      "line": 216,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "XSS 跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:40:14.650Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "d8b9f4129c77cd48148e83cd931391a4d5acb3a8f9d3bceb1c070ffc4364d420",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-f5bcc6ddd1a1463a657a6715",
+      "file": "code/app/server/routes/papers.js",
+      "line": 216,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:40:14.650Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "d8b9f4129c77cd48148e83cd931391a4d5acb3a8f9d3bceb1c070ffc4364d420",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-86e505c632cf10ee0d507046",
+      "file": "code/app/server/routes/papers.js",
+      "line": 216,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "XSS 跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:44:07.531Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "899cfd37be6cd5fedb6137a6437fcffc0833053adfb3135a32404f9d5642bd64",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-86e505c632cf10ee0d507046",
+      "file": "code/app/server/routes/papers.js",
+      "line": 216,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:44:07.532Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "899cfd37be6cd5fedb6137a6437fcffc0833053adfb3135a32404f9d5642bd64",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-f5bcc6ddd1a1463a657a6715",
+      "file": "code/app/server/routes/papers.js",
+      "line": 215,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "XSS 跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:49:18.224Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "d8b9f4129c77cd48148e83cd931391a4d5acb3a8f9d3bceb1c070ffc4364d420",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-f5bcc6ddd1a1463a657a6715",
+      "file": "code/app/server/routes/papers.js",
+      "line": 215,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:49:18.224Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "d8b9f4129c77cd48148e83cd931391a4d5acb3a8f9d3bceb1c070ffc4364d420",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-954a583842aaa496f8613038",
+      "file": "code/app/server/routes/papers.js",
+      "line": 209,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "XSS 跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:51:00.492Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "939c738f1453902122229bb3b7be36fc8d3ff6b2ad45dac60a75b2138127d2c6",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-954a583842aaa496f8613038",
+      "file": "code/app/server/routes/papers.js",
+      "line": 209,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "跨站脚本",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-29T12:51:00.492Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "939c738f1453902122229bb3b7be36fc8d3ff6b2ad45dac60a75b2138127d2c6",
+        "runtime_oracle": false
+      }
+    }
+  ],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_ad067c93-5b84-47b7-acf0-ec20064dd75b-20260929T131336938Z-24720-10d7dd35da41.json",
+    "latest_report": ".mimosa/reports/task-review-sess_ad067c93-5b84-47b7-acf0-ec20064dd75b.json",
+    "history_summary": ".mimosa/history/run-20260929T131336938Z-24720-10d7dd35da41.json"
+  }
+}

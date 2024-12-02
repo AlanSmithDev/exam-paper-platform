@@ -1,0 +1,435 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260928T113901640Z-14848-9b732143c1b0",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "baseline-read",
+      "target": "code/app/server/export/word.js",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/ai.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/trade.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/routes/papers.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/routes/questions.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/app/server/export/word.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "supply-chain-check",
+      "target": ".",
+      "reason": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 173,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 6
+    },
+    "change_tracking": {
+      "touched_observed": 0,
+      "touched_retained": 0,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 7,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 7,
+      "selected_files": 7,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 5,
+      "scanned_files": 0,
+      "skipped_files": 0,
+      "failed_files": 5,
+      "project_checks_required": 1,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "baseline_snapshot_unreadable": 1,
+      "scanner_failed": 5,
+      "stop_budget_exhausted": 1,
+      "project_check_failed": 7
+    },
+    "reasons": [
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/app/server/export/word.js",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/ai.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/trade.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/papers.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/questions.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/app/server/export/word.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "stop_budget_exhausted",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/app/server/export/word.js",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/ai.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/trade.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/papers.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/routes/questions.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/app/server/export/word.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-28T11:39:01.640Z",
+  "session_id": "sess_900874f8-3a60-446b-8402-058bea0b7251",
+  "target": ".",
+  "revision": null,
+  "rules_version": "unavailable",
+  "diff_hash": "571a90e94f6c149de2f4a75f3354ac1ecceeddad253163b27efa6feee1e7a031",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 7,
+    "changed_files": [
+      {
+        "file": "code/app/package-lock.json",
+        "ranges": [
+          {
+            "start": 14,
+            "end": 14
+          },
+          {
+            "start": 16,
+            "end": 18
+          },
+          {
+            "start": 24,
+            "end": 32
+          },
+          {
+            "start": 243,
+            "end": 248
+          },
+          {
+            "start": 327,
+            "end": 343
+          },
+          {
+            "start": 615,
+            "end": 624
+          },
+          {
+            "start": 689,
+            "end": 694
+          },
+          {
+            "start": 716,
+            "end": 721
+          },
+          {
+            "start": 750,
+            "end": 791
+          },
+          {
+            "start": 813,
+            "end": 821
+          },
+          {
+            "start": 873,
+            "end": 878
+          },
+          {
+            "start": 951,
+            "end": 956
+          },
+          {
+            "start": 978,
+            "end": 995
+          },
+          {
+            "start": 1065,
+            "end": 1070
+          },
+          {
+            "start": 1112,
+            "end": 1117
+          },
+          {
+            "start": 1240,
+            "end": 1248
+          },
+          {
+            "start": 1306,
+            "end": 1311
+          },
+          {
+            "start": 1490,
+            "end": 1498
+          },
+          {
+            "start": 1533,
+            "end": 1538
+          },
+          {
+            "start": 1577,
+            "end": 1594
+          }
+        ],
+        "before_hash": "0642433b888bc088dbab3331a4a57bcfd97ed90608fb2ec2dc3064daba1e1b7f",
+        "after_hash": "8174b56ab0aefc89ff71a9760c7e18f693db7c18b5b6de171899c90c588cccea"
+      },
+      {
+        "file": "code/app/package.json",
+        "ranges": [
+          {
+            "start": 11,
+            "end": 13
+          },
+          {
+            "start": 18,
+            "end": 18
+          },
+          {
+            "start": 20,
+            "end": 22
+          }
+        ],
+        "before_hash": "63a7c3854181f6088e33b85537c8098bb091ac4776711051df563c02f6de52f0",
+        "after_hash": "d1648c16520245e9d3caa0e96754d25b66d1f0a4d4b4eba3e9b88426138d3d64"
+      },
+      {
+        "file": "code/app/server/ai.js",
+        "ranges": [
+          {
+            "start": 109,
+            "end": 109
+          },
+          {
+            "start": 119,
+            "end": 128
+          }
+        ],
+        "before_hash": "23ff953b4ba284a584e8af73ddb407e613a9bae44c881d90b5eb1282a3e3c4b4",
+        "after_hash": "c40a44aa5fc45b893d6a713bb0a6fabd07f9bc7cc596d32109d100c08a4354d1"
+      },
+      {
+        "file": "code/app/server/export/word.js",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 186
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "1d2b49a0de6994ed62a1946b9b8a168e993319defffe4b1b446e55ddb4434732"
+      },
+      {
+        "file": "code/app/server/routes/papers.js",
+        "ranges": [
+          {
+            "start": 174,
+            "end": 174
+          },
+          {
+            "start": 192,
+            "end": 193
+          },
+          {
+            "start": 199,
+            "end": 215
+          }
+        ],
+        "before_hash": "199889721695bf742f071a8a8597500215cfa63a5065d3882f616e6613a6f55a",
+        "after_hash": "f390ca4d2218b07a759323fa74b59c36bbfe855bb241f6c8610d6bde19021957"
+      },
+      {
+        "file": "code/app/server/routes/questions.js",
+        "ranges": [
+          {
+            "start": 86,
+            "end": 86
+          }
+        ],
+        "before_hash": "48baee03b682713159bcbc179474b8292088b43170bb38397c43ea9895ca4802",
+        "after_hash": "78486db20b8aa2424a7e0b27e96459fdb7dd7f3493fec94fe9e2b803b9ab13be"
+      },
+      {
+        "file": "code/app/server/trade.js",
+        "ranges": [
+          {
+            "start": 633,
+            "end": 633
+          },
+          {
+            "start": 635,
+            "end": 636
+          },
+          {
+            "start": 649,
+            "end": 657
+          }
+        ],
+        "before_hash": "ec3ea3d0a31c2a5dbd1602a0b5a53121ae5b916911df1e45156bbf67496cc18b",
+        "after_hash": "a836665dbf2e827d2819fd628e5eaed762d3e528521efcad1e0a933fdac1b513"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-28T11:38:58.623Z",
+    "completed_at": "2026-09-28T11:39:01.640Z",
+    "duration_ms": 3017,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 3017,
+    "peakMemoryBytes": 84488192,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 0,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_900874f8-3a60-446b-8402-058bea0b7251-20260928T113901640Z-14848-9b732143c1b0.json",
+    "latest_report": ".mimosa/reports/task-review-sess_900874f8-3a60-446b-8402-058bea0b7251.json",
+    "history_summary": ".mimosa/history/run-20260928T113901640Z-14848-9b732143c1b0.json"
+  }
+}

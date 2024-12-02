@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "mimosa-hook-status/v1",
+  "recordedAt": "2026-09-28T01:01:03.532Z",
+  "sessionId": "sess_fe32723a-1a3b-4b7f-8560-5058fcc393a8",
+  "event": "PostToolUse",
+  "toolName": "Edit",
+  "file": "题库/_meta/提示词包_二阶段爬取200万题.md",
+  "outcome": "clear",
+  "coverage": "complete",
+  "findingCount": 0,
+  "durationMs": 8,
+  "hostState": "hook_complete",
+  "reportHint": ".mimosa/reports/"
+}

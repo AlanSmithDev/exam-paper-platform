@@ -1,0 +1,465 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260929T141947719Z-10828-db5c561649ac",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "baseline-read",
+      "target": "crawlers/ingest_gaokao_updates.py",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "baseline-read",
+      "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/mapper/CreatorContractMapper.java",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "baseline-read",
+      "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/domain/CreatorContract.java",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "scan",
+      "target": "crawlers/ingest_gaokao_updates.py",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-resource/src/test/java/com/examforge/resource/logic/ResourceRulesTest.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/service/ResourceService.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/mapper/CreatorContractMapper.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/logic/ResourceRules.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/domain/CreatorContract.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/CreatorResourceController.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/ResourceAdminController.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 335,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 5
+    },
+    "change_tracking": {
+      "touched_observed": 0,
+      "touched_retained": 0,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 8,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 8,
+      "selected_files": 8,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 8,
+      "scanned_files": 0,
+      "skipped_files": 0,
+      "failed_files": 8,
+      "project_checks_required": 0,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "baseline_snapshot_unreadable": 3,
+      "scanner_failed": 8,
+      "project_check_failed": 11
+    },
+    "reasons": [
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "crawlers/ingest_gaokao_updates.py",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/mapper/CreatorContractMapper.java",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/domain/CreatorContract.java",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "crawlers/ingest_gaokao_updates.py",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/test/java/com/examforge/resource/logic/ResourceRulesTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/service/ResourceService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/mapper/CreatorContractMapper.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/logic/ResourceRules.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/domain/CreatorContract.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/CreatorResourceController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/ResourceAdminController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "crawlers/ingest_gaokao_updates.py",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/mapper/CreatorContractMapper.java",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/domain/CreatorContract.java",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "crawlers/ingest_gaokao_updates.py",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/test/java/com/examforge/resource/logic/ResourceRulesTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/service/ResourceService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/mapper/CreatorContractMapper.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/logic/ResourceRules.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/domain/CreatorContract.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/CreatorResourceController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/ResourceAdminController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-29T14:19:47.719Z",
+  "session_id": "sess_ad067c93-5b84-47b7-acf0-ec20064dd75b",
+  "target": ".",
+  "revision": "bf867000e3c9e47081a6ac61cb778deb7e2960d7",
+  "rules_version": "unavailable",
+  "diff_hash": "5bfe829ab42d6685da4cc1e2e6df7affe0a423d520df5ef5653610d36d295200",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 8,
+    "changed_files": [
+      {
+        "file": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/CreatorResourceController.java",
+        "ranges": [
+          {
+            "start": 5,
+            "end": 5
+          },
+          {
+            "start": 52,
+            "end": 57
+          }
+        ],
+        "before_hash": "7d27a7e023680d9e812ba64a24de2805346891a9e9382a4f5d96e69c39bb05d4",
+        "after_hash": "8fec444a45b3849c8d55b5025c439677e370688e4690d1b18ad0ef265afb28af"
+      },
+      {
+        "file": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/controller/ResourceAdminController.java",
+        "ranges": [
+          {
+            "start": 8,
+            "end": 8
+          },
+          {
+            "start": 105,
+            "end": 128
+          }
+        ],
+        "before_hash": "92e92bee9f5de6208f718999c8174fd1a6d49e3ed00c64d16a9c49541197e8b1",
+        "after_hash": "3ab6997795ce4d0c3ed7301b8834241d7dece7dd9458b5785541dd98aba62acc"
+      },
+      {
+        "file": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/domain/CreatorContract.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 24
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "ae1f7315196dc436f2bcefd50ff8f9037f7feabfb51323f63ef83b58358478d2"
+      },
+      {
+        "file": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/logic/ResourceRules.java",
+        "ranges": [
+          {
+            "start": 3,
+            "end": 3
+          },
+          {
+            "start": 21,
+            "end": 24
+          },
+          {
+            "start": 85,
+            "end": 104
+          }
+        ],
+        "before_hash": "e5dae67cf01e29be0e8d64552c147617e0d64717886876befcfe934a356e0388",
+        "after_hash": "c45a1b531ce7d7f94c1f025290de4ebe01d0602d3e073069576ac94da3d0f946"
+      },
+      {
+        "file": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/mapper/CreatorContractMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 17
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "198e96a3286e332a00545bf677badd23f95450a9715beb441dbdc64d0482703f"
+      },
+      {
+        "file": "code/enterprise/examforge-resource/src/main/java/com/examforge/resource/service/ResourceService.java",
+        "ranges": [
+          {
+            "start": 11,
+            "end": 11
+          },
+          {
+            "start": 19,
+            "end": 19
+          },
+          {
+            "start": 51,
+            "end": 51
+          },
+          {
+            "start": 157,
+            "end": 157
+          },
+          {
+            "start": 161,
+            "end": 162
+          },
+          {
+            "start": 170,
+            "end": 170
+          },
+          {
+            "start": 186,
+            "end": 196
+          },
+          {
+            "start": 327,
+            "end": 370
+          }
+        ],
+        "before_hash": "73437b5b769a8477c9c3d307522776bab9a9d10e793749ab04981b18b8b3b5a6",
+        "after_hash": "341ad5a35d829e73b2c7cd7e339dbee108e6fe54f1f4caf7c03f5370b90c12bb"
+      },
+      {
+        "file": "code/enterprise/examforge-resource/src/test/java/com/examforge/resource/logic/ResourceRulesTest.java",
+        "ranges": [
+          {
+            "start": 5,
+            "end": 5
+          },
+          {
+            "start": 84,
+            "end": 103
+          }
+        ],
+        "before_hash": "f0dc1d5152b61f38aaca6df99f986152ab28510dbcda69d68aab45194d17a470",
+        "after_hash": "11ac893639062a3ea9e925dea15b9181d250590f32beb6201fff0ed8d2568de1"
+      },
+      {
+        "file": "crawlers/ingest_gaokao_updates.py",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 167
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "b3375d6c9d97194cf608a4588a58f2a0b921bd764bb4bfb4e12305ef292ede5b"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-29T14:19:42.038Z",
+    "completed_at": "2026-09-29T14:19:47.719Z",
+    "duration_ms": 5681,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 5681,
+    "peakMemoryBytes": 75776000,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 0,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_ad067c93-5b84-47b7-acf0-ec20064dd75b-20260929T141947719Z-10828-db5c561649ac.json",
+    "latest_report": ".mimosa/reports/task-review-sess_ad067c93-5b84-47b7-acf0-ec20064dd75b.json",
+    "history_summary": ".mimosa/history/run-20260929T141947719Z-10828-db5c561649ac.json"
+  }
+}

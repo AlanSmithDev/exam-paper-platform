@@ -1,0 +1,642 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260930T024824063Z-12072-093ccf1886a3",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/SchoolApplication.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/School.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/SchoolMember.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMapper.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMemberMapper.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/logic/SchoolRules.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/test/java/com/examforge/school/logic/SchoolRulesTest.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/service/SchoolService.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolAdminController.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolController.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/InternalSchoolController.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-api/src/main/java/com/examforge/api/feign/SchoolClient.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/service/TradeService.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/frontend/src/router.js",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/TradeApplication.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "supply-chain-check",
+      "target": ".",
+      "reason": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 396,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 18
+    },
+    "change_tracking": {
+      "touched_observed": 17,
+      "touched_retained": 17,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 18,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 18,
+      "selected_files": 18,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 15,
+      "scanned_files": 0,
+      "skipped_files": 0,
+      "failed_files": 15,
+      "project_checks_required": 1,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "scanner_failed": 15,
+      "stop_budget_exhausted": 1,
+      "project_check_failed": 16
+    },
+    "reasons": [
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/SchoolApplication.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/School.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/SchoolMember.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMapper.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMemberMapper.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/logic/SchoolRules.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/test/java/com/examforge/school/logic/SchoolRulesTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/service/SchoolService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolAdminController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/InternalSchoolController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-api/src/main/java/com/examforge/api/feign/SchoolClient.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/service/TradeService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/router.js",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/TradeApplication.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "stop_budget_exhausted",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/SchoolApplication.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/School.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/SchoolMember.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMapper.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMemberMapper.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/logic/SchoolRules.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/test/java/com/examforge/school/logic/SchoolRulesTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/service/SchoolService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolAdminController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/InternalSchoolController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-api/src/main/java/com/examforge/api/feign/SchoolClient.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/service/TradeService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/frontend/src/router.js",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/TradeApplication.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-30T02:48:24.063Z",
+  "session_id": "sess_7218582e-ffd1-4250-97b1-3d59411c87f3",
+  "target": ".",
+  "revision": "f7dd2e9286ba1b802e8afec7fe120f9e006fb419",
+  "rules_version": "unavailable",
+  "diff_hash": "d8aeac73772f92acedb1d5c2844ca893d97e2115956f7571e0dd3a1e32feb31a",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 18,
+    "changed_files": [
+      {
+        "file": "code/enterprise/examforge-api/src/main/java/com/examforge/api/feign/SchoolClient.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 16
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "3b1fd52fd98c8a47af4b19cf837f6e09a8f91057d18f49108a72386ade426f98"
+      },
+      {
+        "file": "code/enterprise/examforge-school/pom.xml",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 61
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "93c32bc05c16484996759e77a1358c5028c46756905bbc05e679a8d2fe434bdd"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/InternalSchoolController.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 25
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "cd923d7db7e00f933f93268be7e5706449653f3f5cc156148b057974ebf0a5d6"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolAdminController.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 57
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "0bd36baf692e57672d951b2b56f33c0b8a948819a853a2b495e0ed61e704f98b"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/controller/SchoolController.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 47
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "e916401585c59e6fce0bb6d6ce444d0fa7e42e59d5ba4717cd6d29d52d5f9306"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/School.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 24
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "b85fcae24f4b3672d82851d87a80dd8a3242a749cf1838cc56921bf4f4951a36"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/domain/SchoolMember.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 22
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "04b96c1992ea79d7bb0b445cd1dbdfea03021e521aada155ae95afd1cedc6a40"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/logic/SchoolRules.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 54
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "bb7f21212180aff1791fcf2f8e5d457a8268d0f0f0dd83172c4168eaca26cb21"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "4c67c7594a5f406f4e685918a13f48148c16c5102551c1dd8a44e5725b9b3f12"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/mapper/SchoolMemberMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "8dbae51ab4f8af431680adc410122464ac73ea772ce13eea220bac13ee2bb0da"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/SchoolApplication.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 16
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "c7beac7399818ee009c37a178db28b7590e8224a31c2bf277e5ccbfed4c0bb20"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/main/java/com/examforge/school/service/SchoolService.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 218
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "d919cd7a239abd8d3e4768154a2934b69ae5ec2529718c089db75e2189b68ceb"
+      },
+      {
+        "file": "code/enterprise/examforge-school/src/test/java/com/examforge/school/logic/SchoolRulesTest.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 60
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "1dc82ddae7ffcae94af478455441d29bb1107c3873364b14fcc5e244aec5766e"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/pom.xml",
+        "ranges": [
+          {
+            "start": 18,
+            "end": 25
+          },
+          {
+            "start": 39,
+            "end": 42
+          }
+        ],
+        "before_hash": "4ac4659192a6c01041c49e9931b3115dbd21ff786cfda7f79838f84d5dd64b2a",
+        "after_hash": "f18332d5bbcc458b7f583e7184179eb21c4ea63980ccdff2d12f95873dd835b2"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/service/TradeService.java",
+        "ranges": [
+          {
+            "start": 37,
+            "end": 37
+          },
+          {
+            "start": 43,
+            "end": 54
+          },
+          {
+            "start": 62,
+            "end": 62
+          },
+          {
+            "start": 65,
+            "end": 66
+          }
+        ],
+        "before_hash": "60152e0018b31479b30fd7ee90310783bf2c33dae35e46cb63843f858231b453",
+        "after_hash": "809a6965f3f000e59be787f1ef1bb2e1b56bf7a377ea9ff22cab503ee6bd62d2"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/TradeApplication.java",
+        "ranges": [
+          {
+            "start": 6,
+            "end": 6
+          },
+          {
+            "start": 11,
+            "end": 11
+          }
+        ],
+        "before_hash": "b6a8349da21b0b3854cae7921620c560ece4cf96d6dccb45469548e50af6d6bd",
+        "after_hash": "7b7ddf997f0cc3a17e080bbb75c792be6fd9b541278849ae390302a5361d9301"
+      },
+      {
+        "file": "code/enterprise/frontend/src/router.js",
+        "ranges": [
+          {
+            "start": 19,
+            "end": 19
+          }
+        ],
+        "before_hash": "35bcede2d67fa7264143f1df732371b0188ea8156ba3fa224b7409706d059437",
+        "after_hash": "242068e88723e6fabceefb407d04834949d6d4d1218a5b8b48aefd63be6e6f4a"
+      },
+      {
+        "file": "code/enterprise/pom.xml",
+        "ranges": [
+          {
+            "start": 40,
+            "end": 40
+          }
+        ],
+        "before_hash": "5ade4b18318fe9fff1c88db6eeebb62e884d40a241133339fe7a574db0f585d0",
+        "after_hash": "364d26a4724f1308685129d214942997e6be3112346f0af1e8daa301f5df248a"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-30T02:48:20.208Z",
+    "completed_at": "2026-09-30T02:48:24.063Z",
+    "duration_ms": 3855,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 3855,
+    "peakMemoryBytes": 75350016,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 0,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20260930T024824063Z-12072-093ccf1886a3.json",
+    "latest_report": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3.json",
+    "history_summary": ".mimosa/history/run-20260930T024824063Z-12072-093ccf1886a3.json"
+  }
+}

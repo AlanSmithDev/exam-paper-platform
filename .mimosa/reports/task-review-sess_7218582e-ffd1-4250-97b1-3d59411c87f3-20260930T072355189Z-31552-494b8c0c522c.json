@@ -1,0 +1,629 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260930T072355189Z-31552-494b8c0c522c",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "baseline-read",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/AlipayProvider.java",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "baseline-read",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/PaymentController.java",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/domain/PaymentCallback.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/mapper/PaymentCallbackMapper.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/logic/PaymentRules.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/test/java/com/examforge/trade/logic/PaymentRulesTest.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/PaymentProvider.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/MockPaymentProvider.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/WechatPayProvider.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/test/java/com/examforge/trade/payment/PaymentServiceTest.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/service/PaymentService.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/AlipayProvider.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/PaymentController.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "supply-chain-check",
+      "target": ".",
+      "reason": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 407,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 12
+    },
+    "change_tracking": {
+      "touched_observed": 10,
+      "touched_retained": 10,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 14,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 14,
+      "selected_files": 14,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 11,
+      "scanned_files": 0,
+      "skipped_files": 0,
+      "failed_files": 11,
+      "project_checks_required": 1,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "baseline_snapshot_unreadable": 2,
+      "scanner_failed": 11,
+      "stop_budget_exhausted": 1,
+      "project_check_failed": 14
+    },
+    "reasons": [
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/AlipayProvider.java",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/PaymentController.java",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/domain/PaymentCallback.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/mapper/PaymentCallbackMapper.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/logic/PaymentRules.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/test/java/com/examforge/trade/logic/PaymentRulesTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/PaymentProvider.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/MockPaymentProvider.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/WechatPayProvider.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/test/java/com/examforge/trade/payment/PaymentServiceTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/service/PaymentService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/AlipayProvider.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/PaymentController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "stop_budget_exhausted",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/AlipayProvider.java",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/PaymentController.java",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/domain/PaymentCallback.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/mapper/PaymentCallbackMapper.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/logic/PaymentRules.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/test/java/com/examforge/trade/logic/PaymentRulesTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/PaymentProvider.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/MockPaymentProvider.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/WechatPayProvider.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/test/java/com/examforge/trade/payment/PaymentServiceTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/service/PaymentService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/AlipayProvider.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/PaymentController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-30T07:23:55.189Z",
+  "session_id": "sess_7218582e-ffd1-4250-97b1-3d59411c87f3",
+  "target": ".",
+  "revision": "fb9d6d8add1746eb6bb3220af31ac4f238aac556",
+  "rules_version": "unavailable",
+  "diff_hash": "bc47d3b1519643428ea67dadb53e9fca83de79a3598a4e8574c3898286912ed0",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 14,
+    "changed_files": [
+      {
+        "file": "code/enterprise/examforge-trade/pom.xml",
+        "ranges": [
+          {
+            "start": 43,
+            "end": 53
+          }
+        ],
+        "before_hash": "f18332d5bbcc458b7f583e7184179eb21c4ea63980ccdff2d12f95873dd835b2",
+        "after_hash": "1b63411ffb2f1485f1a801c3d78c4e9f916dea835bddb76ab6e530ee3065a56e"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/PaymentController.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 59
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "4fed5fee53478c795ea090137e1da1927591bf0924b2103c12835871abb2f6ff"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/domain/PaymentCallback.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 22
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "c621ad97954e11fa33d89dc0a39edb7173a4bdb14be9e11a7909e5728a25fc7d"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/logic/PaymentRules.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 59
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "04250904ebae7ba52d3066230bce949f2a198aa1e222e86820e1fbda8108b36d"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/mapper/PaymentCallbackMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "40a80dfcc25f25a67b12b1e7799cd3be804959d2a328605e44bce050fcf9c7e5"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/AlipayProvider.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 102
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "0813bd169313a68bfe8ed64fe42a93e99a58d2e6b7e30a5b923e1b15215f9c08"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/MockPaymentProvider.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 42
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "a34f1cf613906b1b200ab0d70d7530739dc40d2b17ce229243554fb021a35495"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/PaymentProvider.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 36
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "ab932d613ce1191a684a62240ab80442d2e47374078465ad8157683f7d3090fe"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/payment/WechatPayProvider.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 118
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "93036b63eb1d08aeb77eda923c3141d6d54350c0265d0ad7a292a68a5551d7f1"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/service/PaymentService.java",
+        "ranges": [
+          {
+            "start": 93,
+            "end": 93
+          },
+          {
+            "start": 95,
+            "end": 96
+          }
+        ],
+        "before_hash": "ecc52782deb03beea64577a151b4c29922eb41360c99f338c966ee9edb9a3984",
+        "after_hash": "6d4d5dc16efc8906e32282df04c8163ef74e3cbe599c7fab97a621ff0260af05"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/test/java/com/examforge/trade/logic/PaymentRulesTest.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 53
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "abaab28ff28638b2287b6f44431b4082107e14f2db9d1d13b40f887f1e031dae"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/test/java/com/examforge/trade/payment/PaymentServiceTest.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 142
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "9fe137678c00dbd4309867ba4b74604abcf9d4b557e5cfae16b3a2db582b17ba"
+      },
+      {
+        "file": "code/enterprise/frontend/package-lock.json",
+        "ranges": [
+          {
+            "start": 18,
+            "end": 18
+          },
+          {
+            "start": 1105,
+            "end": 1125
+          },
+          {
+            "start": 1150,
+            "end": 1221
+          },
+          {
+            "start": 1235,
+            "end": 1269
+          },
+          {
+            "start": 1333,
+            "end": 1341
+          },
+          {
+            "start": 1357,
+            "end": 1362
+          },
+          {
+            "start": 1403,
+            "end": 1408
+          },
+          {
+            "start": 1517,
+            "end": 1528
+          },
+          {
+            "start": 1602,
+            "end": 1610
+          },
+          {
+            "start": 1712,
+            "end": 1746
+          },
+          {
+            "start": 1781,
+            "end": 1793
+          },
+          {
+            "start": 1915,
+            "end": 1959
+          },
+          {
+            "start": 1988,
+            "end": 1996
+          },
+          {
+            "start": 2034,
+            "end": 2069
+          },
+          {
+            "start": 2122,
+            "end": 2127
+          },
+          {
+            "start": 2137,
+            "end": 2162
+          },
+          {
+            "start": 2305,
+            "end": 2358
+          }
+        ],
+        "before_hash": "e818df8a4b932b2c399aa8bb541c38a26178b4fbae79735d96a58f11f74f4830",
+        "after_hash": "159e26c2fe6d1541d2030ee7d3a4511f142c32f4318ab7ff9cf01e6f36e6ea0a"
+      },
+      {
+        "file": "code/enterprise/frontend/package.json",
+        "ranges": [
+          {
+            "start": 18,
+            "end": 18
+          }
+        ],
+        "before_hash": "a96752916fb810e3ffb08f82d8b2ff6a96b5d90ce5cc5a631c8f6c6f586733dc",
+        "after_hash": "8b7105e92d2fff8fc800f4ddd23cae9b8da7e068e238873aee95ab1a52a062db"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-30T07:23:51.789Z",
+    "completed_at": "2026-09-30T07:23:55.189Z",
+    "duration_ms": 3400,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 3400,
+    "peakMemoryBytes": 75116544,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 0,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [
+    {
+      "finding_id": "mimosa-3a2fe92209dec7e0e53ad57d",
+      "file": "code/enterprise/examforge-trade/src/test/java/com/examforge/trade/payment/WechatCallbackProtocolTest.java",
+      "line": 136,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "加密强度不足",
+      "status": "blocked",
+      "decision": "deny",
+      "at": "2026-09-30T07:01:31.605Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "996c035176653c6be879a19048dbe28f4ff047301f482335efd7f89ffe8445a1",
+        "runtime_oracle": false
+      }
+    }
+  ],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20260930T072355189Z-31552-494b8c0c522c.json",
+    "latest_report": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3.json",
+    "history_summary": ".mimosa/history/run-20260930T072355189Z-31552-494b8c0c522c.json"
+  }
+}

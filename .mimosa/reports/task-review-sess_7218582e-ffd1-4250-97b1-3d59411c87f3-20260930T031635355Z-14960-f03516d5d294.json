@@ -1,0 +1,382 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260930T031635355Z-14960-f03516d5d294",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-common/src/test/java/com/examforge/common/monitor/MonitoringConfigStructureTest.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/logic/ExportRules.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/service/ExportService.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/controller/ExportController.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-paper/src/test/java/com/examforge/paper/logic/ExportRulesTest.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "scan",
+      "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/TradeController.java",
+      "reason": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT"
+    },
+    {
+      "stage": "supply-chain-check",
+      "target": ".",
+      "reason": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 397,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 7
+    },
+    "change_tracking": {
+      "touched_observed": 6,
+      "touched_retained": 6,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 7,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 7,
+      "selected_files": 7,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 6,
+      "scanned_files": 0,
+      "skipped_files": 0,
+      "failed_files": 6,
+      "project_checks_required": 1,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "scanner_failed": 6,
+      "stop_budget_exhausted": 1,
+      "project_check_failed": 7
+    },
+    "reasons": [
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-common/src/test/java/com/examforge/common/monitor/MonitoringConfigStructureTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/logic/ExportRules.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/service/ExportService.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/controller/ExportController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-paper/src/test/java/com/examforge/paper/logic/ExportRulesTest.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "scanner_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/TradeController.java",
+        "detail": "spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "stop_budget_exhausted",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-common/src/test/java/com/examforge/common/monitor/MonitoringConfigStructureTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/logic/ExportRules.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/service/ExportService.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/controller/ExportController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-paper/src/test/java/com/examforge/paper/logic/ExportRulesTest.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "scan",
+        "target": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/TradeController.java",
+        "detail": "scanner_failed: spawnSync D:\\nodejs\\node.exe ETIMEDOUT",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "supply-chain-check",
+        "target": ".",
+        "detail": "stop_budget_exhausted: focused supply-chain check was not run before the gate budget",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-30T03:16:35.355Z",
+  "session_id": "sess_7218582e-ffd1-4250-97b1-3d59411c87f3",
+  "target": ".",
+  "revision": "f25f88fe6cef6f5cd1fcdfd6284b46fd8ffd446f",
+  "rules_version": "unavailable",
+  "diff_hash": "ac6006ad674ff0586f506c2de1607aeb750c4fe8d4f818ed890913c5fe029701",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 7,
+    "changed_files": [
+      {
+        "file": "code/enterprise/examforge-common/pom.xml",
+        "ranges": [
+          {
+            "start": 41,
+            "end": 54
+          }
+        ],
+        "before_hash": "493ba662970b19fe786467eaebab8372d64e09e2a54216c6c7bef6ffb7bf92c9",
+        "after_hash": "18bf429667cf4a97908561c3c3b28a8ce966defae6dbda0f88452c5472a340e1"
+      },
+      {
+        "file": "code/enterprise/examforge-common/src/test/java/com/examforge/common/monitor/MonitoringConfigStructureTest.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 47
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "7704d8d1ad7b7258cb1b2007d5eb440f5b7d9a6dccf8415dfa1cceaf531d200d"
+      },
+      {
+        "file": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/controller/ExportController.java",
+        "ranges": [
+          {
+            "start": 49,
+            "end": 50
+          },
+          {
+            "start": 53,
+            "end": 53
+          },
+          {
+            "start": 62,
+            "end": 64
+          },
+          {
+            "start": 81,
+            "end": 82
+          },
+          {
+            "start": 86,
+            "end": 87
+          }
+        ],
+        "before_hash": "1780ef6c3d924b5a7178e9e30fe20e240f78b9de316622038a25c16dd4ab7fc1",
+        "after_hash": "19214336b15929f00ab1ea7b15284265aad32dec9ecae6478d8cc4a119840fdf"
+      },
+      {
+        "file": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/logic/ExportRules.java",
+        "ranges": [
+          {
+            "start": 14,
+            "end": 18
+          },
+          {
+            "start": 60,
+            "end": 86
+          }
+        ],
+        "before_hash": "465370396d813e348dbaf504ac744ba3cd55fcc4dc6e01fd2e10033ed7919c73",
+        "after_hash": "03c5efebb4bec5c176f812ffb2612aff0a3028a7aed21e80eac7aa03353e43b6"
+      },
+      {
+        "file": "code/enterprise/examforge-paper/src/main/java/com/examforge/paper/service/ExportService.java",
+        "ranges": [
+          {
+            "start": 36,
+            "end": 36
+          },
+          {
+            "start": 42,
+            "end": 43
+          },
+          {
+            "start": 45,
+            "end": 46
+          },
+          {
+            "start": 58,
+            "end": 60
+          },
+          {
+            "start": 73,
+            "end": 73
+          },
+          {
+            "start": 85,
+            "end": 85
+          },
+          {
+            "start": 96,
+            "end": 96
+          },
+          {
+            "start": 100,
+            "end": 104
+          }
+        ],
+        "before_hash": "443f5ae4eab70c90286e0a097d0acf542412ebdbfc6837f54e46a57d381e0474",
+        "after_hash": "ff6e7212758fc3c1370b0f18f138c2874245853dcd0a1c6f393483cbb210abb6"
+      },
+      {
+        "file": "code/enterprise/examforge-paper/src/test/java/com/examforge/paper/logic/ExportRulesTest.java",
+        "ranges": [
+          {
+            "start": 74,
+            "end": 94
+          }
+        ],
+        "before_hash": "38cbb9a2921a8f11765841502f86378ffaf171d67fbca264d250d483d5d4eed9",
+        "after_hash": "58f5146b0eebce9e14755e5fb4d3e57c58f33245ce0428ace2f71c12fd83fc2d"
+      },
+      {
+        "file": "code/enterprise/examforge-trade/src/main/java/com/examforge/trade/controller/TradeController.java",
+        "ranges": [
+          {
+            "start": 31,
+            "end": 31
+          },
+          {
+            "start": 66,
+            "end": 75
+          }
+        ],
+        "before_hash": "bf20aab37161dda626cd90b002f530d9f6e837276e21778142a248c51909cfc2",
+        "after_hash": "c66ce16d5532d3211d424967f65274a5e0a84d5bf0e1cbedb3a774db1708b94d"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-30T03:16:31.427Z",
+    "completed_at": "2026-09-30T03:16:35.355Z",
+    "duration_ms": 3928,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 3928,
+    "peakMemoryBytes": 75149312,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 0,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3-20260930T031635355Z-14960-f03516d5d294.json",
+    "latest_report": ".mimosa/reports/task-review-sess_7218582e-ffd1-4250-97b1-3d59411c87f3.json",
+    "history_summary": ".mimosa/history/run-20260930T031635355Z-14960-f03516d5d294.json"
+  }
+}
