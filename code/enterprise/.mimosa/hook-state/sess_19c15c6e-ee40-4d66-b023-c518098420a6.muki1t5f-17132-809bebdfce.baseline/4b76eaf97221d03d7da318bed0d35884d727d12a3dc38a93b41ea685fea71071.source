@@ -1,0 +1,144 @@
+package com.zhijuan.ai.service;
+
+import com.zhijuan.ai.domain.AiLog;
+import com.zhijuan.ai.mapper.AiLogMapper;
+import com.zhijuan.ai.provider.AiProvider;
+import com.zhijuan.common.web.Result;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.Map;
+
+/** AI 服务：提示词模板 + Provider 路由 + 治理日志（docs/15 AI-2~AI-5） */
+@Slf4j
+@Service
+public class AiService {
+
+    private final AiProvider provider;
+    private final AiLogMapper aiLogMapper;
+    private final AiProvider fallback;
+
+    private final com.zhijuan.api.feign.TradeClient tradeClient;
+    private final com.zhijuan.api.feign.QuestionClient questionClient;
+    private final String quotaFree, quotaMember;
+
+    public AiService(com.zhijuan.ai.provider.OpenAiCompatProvider real,
+                     com.zhijuan.ai.provider.MockAiProvider mock,
+                     AiLogMapper aiLogMapper,
+                     com.zhijuan.api.feign.TradeClient tradeClient,
+                     com.zhijuan.api.feign.QuestionClient questionClient,
+                     @Value("${zhijuan.ai.provider:MOCK}") String configured,
+                     @Value("${zhijuan.ai.quota-free-per-day:20}") String quotaFree,
+                     @Value("${zhijuan.ai.quota-member-per-day:200}") String quotaMember) {
+        // 配置 MOCK 时直接用 MOCK；配置真实渠道时以真实 Provider 为主，失败降级 MOCK（AI-5）
+        this.provider = "MOCK".equalsIgnoreCase(configured) ? mock : real;
+        this.fallback = mock;
+        this.aiLogMapper = aiLogMapper;
+        this.tradeClient = tradeClient;
+        this.questionClient = questionClient;
+        this.quotaFree = quotaFree;
+        this.quotaMember = quotaMember;
+    }
+
+    /** AI-4 配额治理：免费 20 次/日、会员 200 次/日（按当日调用日志计数） */
+    private void checkQuota(Long userId) {
+        try {
+            Map<String, Object> ent = tradeClient.entitlement(String.valueOf(userId));
+            boolean member = Boolean.TRUE.equals(ent.get("memberActive"));
+            int limit = Integer.parseInt(member ? quotaMember : quotaFree);
+            long used = aiLogMapper.selectCount(new com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper<AiLog>()
+                    .eq(AiLog::getUserId, userId)
+                    .apply("DATE(created_at) = CURDATE()"));
+            if (used >= limit) {
+                throw new com.zhijuan.common.web.GlobalExceptionHandler.BizException(
+                        Result.TOO_MANY, "今日 AI 配额已用完（" + limit + " 次/日），升级会员可获得更高配额");
+            }
+        } catch (com.zhijuan.common.web.GlobalExceptionHandler.BizException e) {
+            throw e;
+        } catch (Exception e) {
+            log.warn("配额校验依赖不可用，放行（fail-open）: {}", e.getMessage());
+        }
+    }
+
+    /** AI-2 变式出题：生成同考点同题型草稿（aigc=1，进审核工作流） */
+    public Map<String, Object> generateVariant(Long userId, String stem, String meta) {
+        checkQuota(userId);
+        String system = "你是一名高中数学命题专家。基于给定题目生成一道同考点、同题型、同难度的变式题（改变情境与数据），" +
+                "严格输出 JSON：{stem, answer, analysis:{brief, solve, comment}, aigc:true}，不要输出 JSON 以外内容。";
+        String user = "原题：" + nvl(stem) + "\n题目元信息：" + nvl(meta) + "\n请生成一道变式题。";
+        Map<String, Object> out = run(userId, "VARIANT", system, user);
+        // 成功且未降级时，草稿自动进入题库审核队列（AI-2 × 审核工作流闭环）
+        if (Boolean.FALSE.equals(out.get("degraded"))) {
+            try {
+                var om = new com.fasterxml.jackson.databind.ObjectMapper();
+                var root = om.readTree(String.valueOf(out.get("raw")));
+                var dto = new com.zhijuan.api.dto.QuestionSummaryDTO();
+                dto.setStem(root.path("stem").asText(null));
+                dto.setAnswer(root.path("answer").asText(null));
+                dto.setAnalysis(root.path("analysis").toString());
+                dto.setAuthor("AI:" + provider.name());
+                if (dto.getStem() != null && dto.getAnswer() != null) {
+                    Long draftId = questionClient.createDraft(dto);
+                    out = new java.util.HashMap<>(out);
+                    out.put("draftQuestionId", draftId);
+                    out.put("auditStatus", "审核中（通过后上架并保留 AI 标识）");
+                }
+            } catch (Exception e) {
+                log.warn("变式草稿入库失败（原始返回仍可用）: {}", e.getMessage());
+            }
+        }
+        return out;
+    }
+
+    /** AI-3 分步讲题 */
+    public Map<String, Object> explain(Long userId, String stem, String answer) {
+        checkQuota(userId);
+        String system = "你是一名耐心的数学老师。按步骤讲解给定题目（苏格拉底式提问引导），严格输出 JSON：" +
+                "{steps:[{step,text,latex}], aigc:true}，不要输出 JSON 以外内容。";
+        String user = "题目：" + nvl(stem) + "\n参考答案：" + nvl(answer);
+        return run(userId, "EXPLAIN", system, user);
+    }
+
+    /** AI-3 SSE 流式讲题：解析步骤 JSON 后逐条输出（真实 Provider 的 token 级流式为 M2） */
+    public java.util.List<Map<String, Object>> explainSteps(String stem, String answer) {
+        String raw = explain(null, stem, answer).get("raw").toString();
+        java.util.List<Map<String, Object>> steps = new java.util.ArrayList<>();
+        try {
+            var root = new com.fasterxml.jackson.databind.ObjectMapper().readTree(raw);
+            if (root.has("steps") && root.get("steps").isArray()) {
+                for (var s : root.get("steps")) {
+                    steps.add(Map.of("step", s.path("step").asInt(), "text", s.path("text").asText(),
+                            "latex", s.path("latex").asText("")));
+                }
+            }
+        } catch (Exception ignored) { }
+        if (steps.isEmpty()) steps.add(Map.of("step", 1, "text", raw, "latex", ""));
+        return steps;
+    }
+
+    private Map<String, Object> run(Long userId, String scene, String system, String user) {
+        long start = System.currentTimeMillis();
+        boolean degraded = false;
+        String resp;
+        try {
+            resp = provider.chat(system, user);
+        } catch (Exception e) {
+            log.warn("AI 主通道失败，降级 MOCK: {}", e.getMessage());
+            resp = fallback.chat(system, user);
+            degraded = true;
+        }
+        long cost = System.currentTimeMillis() - start;
+        try {
+            AiLog l = new AiLog();
+            l.setUserId(userId); l.setScene(scene); l.setProvider(provider.name());
+            l.setModel(provider.name()); l.setPromptChars(user.length()); l.setRespChars(resp.length());
+            l.setCostMs((int) cost); l.setDegraded(degraded ? 1 : 0); l.setCreatedAt(LocalDateTime.now());
+            aiLogMapper.insert(l);
+        } catch (Exception ignored) { }
+        return Map.of("raw", resp, "degraded", degraded, "provider", provider.name(), "costMs", cost);
+    }
+
+    private String nvl(String s) { return s == null ? "" : s; }
+}
