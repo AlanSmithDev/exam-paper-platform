@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260928T001708097Z-21828-1857b55ccc6f",
+  "runId": "20260928T001708097Z-21828-1857b55ccc6f",
+  "runStatus": "completed",
+  "coverage": {
+    "status": "complete",
+    "reasons": []
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": null,
+  "diffHash": "82106aba3a48f1349f9dfdf19af2227851e4fe8ff93ceca275111b369205a659",
+  "rulesVersion": "unavailable",
+  "sessionHash": "bd8a2944b4dcdc7bee5168088826f5e849c084ebe7a267353e2a323244f5d075",
+  "reportRef": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260928T001708097Z-21828-1857b55ccc6f.json",
+  "events": [],
+  "observedFindingIds": [],
+  "verifiedFiles": [
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/job/OrderTimeoutScheduler.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-question/src/main/java/com/zhijuan/question/service/QuestionService.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-question/src/main/java/com/zhijuan/question/controller/QuestionAuditController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/service/PracticeService.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/controller/PracticeController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    }
+  ],
+  "recordedAt": "2026-09-28T00:17:08.604Z"
+}

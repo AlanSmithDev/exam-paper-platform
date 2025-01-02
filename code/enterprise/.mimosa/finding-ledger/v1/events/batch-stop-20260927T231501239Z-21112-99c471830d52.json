@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260927T231501239Z-21112-99c471830d52",
+  "runId": "20260927T231501239Z-21112-99c471830d52",
+  "runStatus": "inconclusive",
+  "coverage": {
+    "status": "partial",
+    "reasons": [
+      {
+        "code": "candidate_limit_exceeded",
+        "stage": "candidate-select",
+        "target": "zhijuan-ai/src/main/java/com/zhijuan/ai/mapper/AiLogMapper.java",
+        "detail": "6 changed reviewable file(s) were not scanned because the limit is 20",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "candidate-select",
+        "target": "zhijuan-ai/src/main/java/com/zhijuan/ai/mapper/AiLogMapper.java",
+        "detail": "candidate_limit_exceeded: 6 changed reviewable file(s) were not scanned because the limit is 20",
+        "affectsCompletion": true
+      }
+    ]
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": null,
+  "diffHash": "b05a0c2c7a46a7a5506cb00fe5bfe7dab2bfc9d30cae27fca9619584de86f9b8",
+  "rulesVersion": "unavailable",
+  "sessionHash": "bd8a2944b4dcdc7bee5168088826f5e849c084ebe7a267353e2a323244f5d075",
+  "reportRef": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260927T231501239Z-21112-99c471830d52.json",
+  "events": [],
+  "observedFindingIds": [],
+  "verifiedFiles": [
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/PracticeApplication.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/logic/AnswerGrader.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/domain/Practice.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/domain/PracticeAnswer.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/domain/WrongQuestion.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/mapper/PracticeMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/mapper/PracticeAnswerMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/mapper/WrongQuestionMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/service/PracticeService.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/controller/PracticeController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-practice/src/test/java/com/zhijuan/practice/logic/AnswerGraderTest.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-api/src/main/java/com/zhijuan/api/feign/QuestionClient.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-question/src/main/java/com/zhijuan/question/controller/InternalQuestionController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/AiApplication.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/provider/AiProvider.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/provider/MockAiProvider.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/provider/OpenAiCompatProvider.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/domain/AiLog.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    }
+  ],
+  "recordedAt": "2026-09-27T23:15:01.632Z"
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260927T230403716Z-19668-db3268d9774d",
+  "runId": "20260927T230403716Z-19668-db3268d9774d",
+  "runStatus": "completed",
+  "coverage": {
+    "status": "complete",
+    "reasons": [
+      {
+        "code": "baseline_partial",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline capture had enumeration or snapshot errors",
+        "affectsCompletion": false
+      }
+    ]
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": null,
+  "diffHash": "70ea1755821c8ad5009a1e99f351af910a910ce6511086754a24bf0f80fc27db",
+  "rulesVersion": "unavailable",
+  "sessionHash": "bd8a2944b4dcdc7bee5168088826f5e849c084ebe7a267353e2a323244f5d075",
+  "reportRef": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260927T230403716Z-19668-db3268d9774d.json",
+  "events": [],
+  "observedFindingIds": [
+    "mimosa-3a9f11250bf66e0979117e16"
+  ],
+  "verifiedFiles": [
+    {
+      "file": "zhijuan-paper/src/main/java/com/zhijuan/paper/controller/PaperController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-paper/src/test/java/com/zhijuan/paper/service/PaperGenerateEngineTest.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-admin/src/main/java/com/zhijuan/admin/controller/SettingNoticeController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-question/src/main/java/com/zhijuan/question/controller/QuestionAuditController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-paper/src/main/java/com/zhijuan/paper/controller/ExportController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/controller/TradeController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    }
+  ],
+  "recordedAt": "2026-09-27T23:04:04.168Z"
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "pretooluse-f2420ce0f520edb3fa5acec4c102c388",
+  "runId": null,
+  "runStatus": "completed",
+  "coverage": {
+    "status": "complete",
+    "reasons": []
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "PreToolUse"
+  },
+  "revision": null,
+  "diffHash": null,
+  "rulesVersion": null,
+  "sessionHash": "f0231b4f8f04239f010904c46e40129b17e06d302fad8b59c374fa1f355880b3",
+  "reportRef": null,
+  "events": [
+    {
+      "eventId": "hook-e157359eddb0a9911087e1ec0c6d05c2",
+      "findingId": "mimosa-3a8e295282ac2bf036609a21",
+      "type": "finding_blocked",
+      "at": "2026-09-30T06:57:41.318Z",
+      "identity": {
+        "projectRelativeFile": "examforge-trade/src/test/java/com/examforge/trade/payment/WechatCallbackProtocolTest.java",
+        "ruleId": "security",
+        "codeEvidenceHash": "996c035176653c6be879a19048dbe28f4ff047301f482335efd7f89ffe8445a1",
+        "confidence": "stable"
+      },
+      "scope": "direct",
+      "line": 134,
+      "endLine": 134,
+      "reasonCode": "deny",
+      "reportedToAgent": true,
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "evidenceHash": "996c035176653c6be879a19048dbe28f4ff047301f482335efd7f89ffe8445a1"
+      },
+      "sequence": 0
+    }
+  ],
+  "observedFindingIds": [],
+  "verifiedFiles": [],
+  "recordedAt": "2026-09-30T06:57:41.706Z"
+}

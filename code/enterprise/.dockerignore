@@ -1,0 +1,10 @@
+# 构建上下文瘦身：镜像构建只用 Java 源码与 pom
+frontend/node_modules
+frontend/dist
+frontend-admin/node_modules
+frontend-admin/dist
+**/.mimosa
+**/target
+*.log
+.dockerignore
+docker-compose.yml

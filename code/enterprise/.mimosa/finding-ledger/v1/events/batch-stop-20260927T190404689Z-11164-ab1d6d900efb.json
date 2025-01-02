@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260927T190404689Z-11164-ab1d6d900efb",
+  "runId": "20260927T190404689Z-11164-ab1d6d900efb",
+  "runStatus": "inconclusive",
+  "coverage": {
+    "status": "partial",
+    "reasons": [
+      {
+        "code": "baseline_partial",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline capture had enumeration or snapshot errors",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline",
+        "target": ".",
+        "detail": "baseline_partial: baseline capture had enumeration or snapshot errors",
+        "affectsCompletion": true
+      }
+    ]
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": null,
+  "diffHash": "611947e22ee91036a7aecd4d11bdd9a47c0550872c70a34fe89a139f0a27781e",
+  "rulesVersion": "unavailable",
+  "sessionHash": "bd8a2944b4dcdc7bee5168088826f5e849c084ebe7a267353e2a323244f5d075",
+  "reportRef": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260927T190404689Z-11164-ab1d6d900efb.json",
+  "events": [],
+  "observedFindingIds": [],
+  "verifiedFiles": [
+    {
+      "file": "zhijuan-paper/src/main/java/com/zhijuan/paper/controller/PaperController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-admin/src/main/java/com/zhijuan/admin/security/UrlSafetyChecker.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-admin/src/main/java/com/zhijuan/admin/controller/AdAdminController.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    }
+  ],
+  "recordedAt": "2026-09-27T19:04:05.463Z"
+}

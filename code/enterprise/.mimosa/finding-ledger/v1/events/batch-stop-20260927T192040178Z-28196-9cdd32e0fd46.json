@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-20260927T192040178Z-28196-9cdd32e0fd46",
+  "runId": "20260927T192040178Z-28196-9cdd32e0fd46",
+  "runStatus": "inconclusive",
+  "coverage": {
+    "status": "partial",
+    "reasons": [
+      {
+        "code": "candidate_limit_exceeded",
+        "stage": "candidate-select",
+        "target": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/PointLogMapper.java",
+        "detail": "5 changed reviewable file(s) were not scanned because the limit is 20",
+        "affectsCompletion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "candidate-select",
+        "target": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/PointLogMapper.java",
+        "detail": "candidate_limit_exceeded: 5 changed reviewable file(s) were not scanned because the limit is 20",
+        "affectsCompletion": true
+      }
+    ]
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "Stop"
+  },
+  "revision": null,
+  "diffHash": "d0a1e4b39d739c5ad725b0bdfe812b1a65b0e7cf753d3e47c5e780022258bf30",
+  "rulesVersion": "unavailable",
+  "sessionHash": "bd8a2944b4dcdc7bee5168088826f5e849c084ebe7a267353e2a323244f5d075",
+  "reportRef": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260927T192040178Z-28196-9cdd32e0fd46.json",
+  "events": [
+    {
+      "eventId": "hook-a8d4ba5685e675bd86a42af18112c87a",
+      "findingId": "mimosa-455309aff1b78e9924b95eef",
+      "type": "finding_observed",
+      "at": "2026-09-27T19:16:04.968Z",
+      "identity": {
+        "projectRelativeFile": "zhijuan-trade/src/main/java/com/zhijuan/trade/service/TradeService.java",
+        "ruleId": "security",
+        "codeEvidenceHash": "e99ea950e68f93ec4d85dc71737fb8ed33b22b51ee2295d123229086a1f423de",
+        "confidence": "stable"
+      },
+      "scope": "direct",
+      "line": 72,
+      "endLine": 72,
+      "reasonCode": "advisory",
+      "reportedToAgent": true,
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "evidenceHash": "e99ea950e68f93ec4d85dc71737fb8ed33b22b51ee2295d123229086a1f423de"
+      },
+      "sequence": 0
+    }
+  ],
+  "observedFindingIds": [],
+  "verifiedFiles": [
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/TradeApplication.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/logic/PriceCalculator.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/logic/OrderRules.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/MemberPlan.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/Member.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/PointAccount.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/CouponTemplate.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/UserCoupon.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/TradeOrder.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/DownloadRecord.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/MemberPlanMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/MemberMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/PointAccountMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/CouponTemplateMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/UserCouponMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/TradeOrderMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/DownloadRecordMapper.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/service/TradeService.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    },
+    {
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/PointLog.java",
+      "direct": "complete",
+      "projectContext": "partial"
+    }
+  ],
+  "recordedAt": "2026-09-27T19:20:40.555Z"
+}

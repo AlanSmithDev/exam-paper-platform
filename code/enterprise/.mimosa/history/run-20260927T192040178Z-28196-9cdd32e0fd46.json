@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "mimosa-finding-history/v1",
+  "runId": "20260927T192040178Z-28196-9cdd32e0fd46",
+  "runStatus": "inconclusive",
+  "errors": [
+    "candidate-select:zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/PointLogMapper.java: candidate_limit_exceeded: 5 changed reviewable file(s) were not scanned because the limit is 20"
+  ],
+  "target": ".",
+  "revision": null,
+  "diffHash": "d0a1e4b39d739c5ad725b0bdfe812b1a65b0e7cf753d3e47c5e780022258bf30",
+  "rulesVersion": "unavailable",
+  "recordedAt": "2026-09-27T19:20:40.178Z",
+  "timing": {
+    "startedAt": "2026-09-27T19:20:38.094Z",
+    "completedAt": "2026-09-27T19:20:40.178Z",
+    "durationMs": 2084
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "modelCalls": 0,
+    "measurement": "known-zero"
+  },
+  "findings": {
+    "total": 1,
+    "bySeverity": {
+      "high": 1
+    },
+    "byStatus": {
+      "candidate": 1
+    }
+  },
+  "coverage": {
+    "status": "partial",
+    "reasonCounts": {
+      "candidate_limit_exceeded": 1,
+      "project_check_failed": 1
+    }
+  },
+  "evidenceBoundary": "static_only",
+  "immutableReport": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260927T192040178Z-28196-9cdd32e0fd46.json"
+}
