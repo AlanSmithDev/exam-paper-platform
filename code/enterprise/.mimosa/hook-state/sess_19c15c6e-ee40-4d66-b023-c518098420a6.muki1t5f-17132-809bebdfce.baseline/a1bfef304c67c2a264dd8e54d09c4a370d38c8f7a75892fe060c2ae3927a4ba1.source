@@ -1,0 +1,259 @@
+package com.zhijuan.trade.service;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.zhijuan.common.web.GlobalExceptionHandler.BizException;
+import com.zhijuan.common.web.Result;
+import com.zhijuan.trade.domain.*;
+import com.zhijuan.trade.logic.OrderRules;
+import com.zhijuan.trade.logic.PriceCalculator;
+import com.zhijuan.trade.mapper.*;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.*;
+
+/** 交易域核心服务：会员/点数/优惠券/订单/计费（docs/14 全部规则编号见注释） */
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class TradeService {
+
+    private final MemberPlanMapper planMapper;
+    private final MemberMapper memberMapper;
+    private final PointAccountMapper pointMapper;
+    private final CouponTemplateMapper couponTemplateMapper;
+    private final UserCouponMapper userCouponMapper;
+    private final TradeOrderMapper orderMapper;
+    private final DownloadRecordMapper downloadMapper;
+
+    // ---------- M-3 权益判定（全站统一入口） ----------
+    public Map<String, Object> entitlement(Long uid) {
+        Member m = memberMapper.selectById(uid);
+        boolean memberActive = m != null && m.getExpireTime() != null && m.getExpireTime().isAfter(LocalDateTime.now());
+        PointAccount acc = pointMapper.selectById(uid);
+        int balance = acc == null ? 0 : acc.getBalance();
+        long freeUsed = downloadMapper.selectCount(new LambdaQueryWrapper<DownloadRecord>()
+                .eq(DownloadRecord::getUserId, uid)
+                .eq(DownloadRecord::getCharged, "FREE")
+                .apply("DATE(created_at) = CURDATE()"));
+        int freeLeft = Math.max(0, 3 - (int) freeUsed);   // D-1：每日 3 次免费
+        return Map.of("memberActive", memberActive,
+                "plan", memberActive && m != null ? m.getPlanId() : null,
+                "expireTime", memberActive && m != null ? m.getExpireTime() : null,
+                "pointBalance", balance, "freeDownloadsLeft", freeLeft);
+    }
+
+    // ---------- O-2 幂等下单 ----------
+    @Transactional
+    public Map<String, Object> createOrder(Long uid, String skuType, String skuRef, int quantity,
+                                           Long couponId, String idempotencyKey) {
+        TradeOrder exist = orderMapper.selectOne(new LambdaQueryWrapper<TradeOrder>()
+                .eq(TradeOrder::getIdempotencyKey, idempotencyKey));
+        if (exist != null) return Map.of("orderNo", exist.getOrderNo(), "duplicate", true);   // 幂等返回原单
+
+        int amount = priceOf(skuType, skuRef) * Math.max(1, quantity);
+        int discount = 0;
+        UserCoupon coupon = null;
+        if (couponId != null) {
+            coupon = userCouponMapper.selectById(couponId);
+            if (coupon == null || !coupon.getUserId().equals(uid) || coupon.getStatus() != 0)
+                throw new BizException(Result.BAD_REQUEST, "优惠券不可用");
+            CouponTemplate t = couponTemplateMapper.selectById(coupon.getTemplateId());
+            discount = amount - OrderRules.applyCoupon(amount, t.getType(), t.getDiscountCents(),
+                    t.getMinSpendCents(), t.getDiscountRate(), t.getRateCapCents());
+        }
+
+        TradeOrder o = new TradeOrder();
+        o.setOrderNo("ZJ" + System.currentTimeMillis() + String.format("%04d", new java.security.SecureRandom().nextInt(10000)));
+        o.setUserId(uid);
+        o.setSkuType(skuType);
+        o.setSkuRef(skuRef);
+        o.setQuantity(Math.max(1, quantity));
+        o.setAmountCents(amount);
+        o.setDiscountCents(discount);
+        o.setPayCents(amount - discount);
+        o.setCouponId(couponId);
+        o.setStatus(OrderRules.CREATED);
+        o.setIdempotencyKey(idempotencyKey);
+        try {
+            orderMapper.insert(o);
+        } catch (DuplicateKeyException e) {   // 并发幂等兜底
+            TradeOrder dup = orderMapper.selectOne(new LambdaQueryWrapper<TradeOrder>()
+                    .eq(TradeOrder::getIdempotencyKey, idempotencyKey));
+            return Map.of("orderNo", dup.getOrderNo(), "duplicate", true);
+        }
+        return Map.of("orderNo", o.getOrderNo(), "duplicate", false,
+                "amountCents", amount, "discountCents", discount, "payCents", o.getPayCents());
+    }
+
+    // ---------- O-4/O-5 支付回调（幂等）+ 履约同一事务 ----------
+    @Transactional
+    public Map<String, Object> payNotify(String orderNo) {
+        TradeOrder o = orderMapper.selectOne(new LambdaQueryWrapper<TradeOrder>()
+                .eq(TradeOrder::getOrderNo, orderNo));
+        if (o == null) throw new BizException(Result.NOT_FOUND, "订单不存在");
+        if (OrderRules.PAID.equals(o.getStatus())) {
+            return Map.of("orderNo", orderNo, "status", "PAID", "idempotent", true);   // 重复回调幂等
+        }
+        OrderRules.mustTransition(o.getStatus(), OrderRules.PAID);                       // 状态机校验
+        int changes = orderMapper.update(null, new LambdaUpdateWrapper<TradeOrder>()
+                .eq(TradeOrder::getId, o.getId()).eq(TradeOrder::getStatus, o.getStatus())
+                .set(TradeOrder::getStatus, OrderRules.PAID).set(TradeOrder::getPaidAt, LocalDateTime.now()));
+        if (changes == 0) return Map.of("orderNo", orderNo, "status", o.getStatus(), "idempotent", true);
+
+        if (o.getCouponId() != null) useCoupon(o.getCouponId(), orderNo);                // C-4 核销
+        fulfill(o);                                                                       // O-5 履约
+        log.info("订单已支付并履约: {} sku={} ref={}", orderNo, o.getSkuType(), o.getSkuRef());
+        return Map.of("orderNo", orderNo, "status", "PAID", "idempotent", false);
+    }
+
+    /** 履约：开会员（M-2 叠加续费）/ 点数充值（P-2 流水） */
+    private void fulfill(TradeOrder o) {
+        LocalDateTime now = LocalDateTime.now();
+        if ("MEMBER".equals(o.getSkuType())) {
+            MemberPlan plan = planMapper.selectById(o.getSkuRef());
+            int days = plan == null ? 30 : plan.getDurationDays();
+            Member m = memberMapper.selectById(o.getUserId());
+            LocalDateTime base = (m != null && m.getExpireTime() != null && m.getExpireTime().isAfter(now))
+                    ? m.getExpireTime() : now;
+            if (m == null) {
+                m = new Member();
+                m.setUserId(o.getUserId());
+                m.setPlanId(o.getSkuRef());
+                m.setExpireTime(base.plusDays(days));
+                memberMapper.insert(m);
+            } else {
+                m.setPlanId(o.getSkuRef());
+                m.setExpireTime(base.plusDays(days));
+                memberMapper.updateById(m);
+            }
+        } else if ("POINTS".equals(o.getSkuType())) {
+            int points = o.getAmountCents();   // 点数充值 1 分=1 点
+            ensurePointAccount(o.getUserId());
+            pointMapper.add(o.getUserId(), points);
+            addPointLog(o.getUserId(), points, "RECHARGE", o.getOrderNo());
+        }
+    }
+
+    // ---------- C-3 领取（限量 + 每人限领） ----------
+    @Transactional
+    public Long claimCoupon(Long uid, Long templateId) {
+        CouponTemplate t = couponTemplateMapper.selectById(templateId);
+        if (t == null || t.getStatus() != 1) throw new BizException(Result.BAD_REQUEST, "券不存在或已下架");
+        int granted = t.getGranted() == null ? 0 : t.getGranted();
+        int changes = couponTemplateMapper.update(null, new LambdaUpdateWrapper<CouponTemplate>()
+                .eq(CouponTemplate::getId, templateId)
+                .lt(CouponTemplate::getGranted, t.getTotal())
+                .setSql("granted = granted + 1"));
+        if (changes == 0) throw new BizException(Result.BAD_REQUEST, "优惠券已领完");
+        long mine = userCouponMapper.selectCount(new LambdaQueryWrapper<UserCoupon>()
+                .eq(UserCoupon::getUserId, uid).eq(UserCoupon::getTemplateId, templateId));
+        if (mine >= (t.getPerLimit() == null ? 1 : t.getPerLimit())) {
+            throw new BizException(Result.BAD_REQUEST, "已达每人限领次数");
+        }
+        UserCoupon c = new UserCoupon();
+        c.setTemplateId(templateId);
+        c.setUserId(uid);
+        c.setStatus(0);
+        c.setExpireTime(t.getValidDays() == null ? null : LocalDateTime.now().plusDays(t.getValidDays()));
+        userCouponMapper.insert(c);
+        return c.getId();
+    }
+
+    // ---------- C-4 核销（条件更新防并发重用） ----------
+    private void useCoupon(Long couponId, String orderNo) {
+        int changes = userCouponMapper.update(null, new LambdaUpdateWrapper<UserCoupon>()
+                .eq(UserCoupon::getId, couponId).eq(UserCoupon::getStatus, 0)
+                .set(UserCoupon::getStatus, 1).set(UserCoupon::getUsedOrder, orderNo));
+        if (changes == 0) throw new BizException(Result.BAD_REQUEST, "优惠券已被使用");
+    }
+
+    // ---------- P-2 点数 ----------
+    public void ensurePointAccount(Long uid) {
+        if (pointMapper.selectById(uid) == null) {
+            PointAccount a = new PointAccount();
+            a.setUserId(uid);
+            a.setBalance(0);
+            a.setVersion(0);
+            try { pointMapper.insert(a); } catch (DuplicateKeyException ignored) { }
+        }
+    }
+
+    public void addPointLog(Long uid, int change, String reason, String ref) {
+        var l = new com.zhijuan.trade.domain.PointLog();
+        l.setUserId(uid); l.setChangeVal(change); l.setReason(reason); l.setRef(ref);
+        l.setCreatedAt(LocalDateTime.now());
+        pointLogMapper.insert(l);
+    }
+
+    // ---------- K-3 签到积分（每日一次 +1 点，唯一索引防重复） ----------
+    @Transactional
+    public Map<String, Object> checkin(Long uid) {
+        ensurePointAccount(uid);
+        int inserted = signRecordMapper.insertIgnore(uid, java.time.LocalDate.now());
+        if (inserted == 0) throw new BizException(Result.BAD_REQUEST, "今日已签到");
+        pointMapper.add(uid, 1);
+        addPointLog(uid, 1, "CHECKIN", "daily");
+        return Map.of("ok", true, "rewardPoints", 1);
+    }
+
+    /** 纠错采纳等奖励发放（question 服务经 Feign 调用，docs/10） */
+    @Transactional
+    public Map<String, Object> reward(Long uid, int points, String reason, String ref) {
+        ensurePointAccount(uid);
+        pointMapper.add(uid, points);
+        addPointLog(uid, points, "REWARD", reason + ":" + ref);
+        return Map.of("ok", true, "points", points);
+    }
+
+    private final com.zhijuan.trade.mapper.SignRecordMapper signRecordMapper;
+
+    // ---------- D-1/D-2 下载计费 ----------
+    public Map<String, Object> billing(Long uid, int questionCount, String paperHash) {
+        var ent = entitlement(uid);
+        boolean repeat = !downloadMapper.selectList(new LambdaQueryWrapper<DownloadRecord>()
+                .eq(DownloadRecord::getUserId, uid).eq(DownloadRecord::getPaperHash, paperHash)
+                .apply("created_at > DATE_SUB(NOW(), INTERVAL 30 DAY)")).isEmpty();
+        PriceCalculator.Decision d = PriceCalculator.decide(repeat,
+                Boolean.TRUE.equals(ent.get("memberActive")),
+                (Integer) ent.get("freeDownloadsLeft"), (Integer) ent.get("pointBalance"), questionCount);
+        return Map.of("mode", d.mode(), "needPoints", d.needPoints(), "reason", d.reason());
+    }
+
+    @Transactional
+    public Map<String, Object> consumeDownload(Long uid, int questionCount, String paperHash, String mode) {
+        if ("POINTS".equals(mode)) {
+            ensurePointAccount(uid);
+            int price = PriceCalculator.paperPriceCents(questionCount);
+            if (pointMapper.deduct(uid, price) == 0) throw new BizException(Result.TOO_MANY, "点数不足");
+            addPointLog(uid, -price, "DOWNLOAD", paperHash);
+        }
+        DownloadRecord r = new DownloadRecord();
+        r.setUserId(uid);
+        r.setPaperHash(paperHash);
+        r.setQuestionCount(questionCount);
+        r.setCharged(mode);
+        r.setCreatedAt(LocalDateTime.now());
+        downloadMapper.insert(r);
+        return Map.of("charged", mode);
+    }
+
+    private int priceOf(String skuType, String skuRef) {
+        if ("MEMBER".equals(skuType)) {
+            MemberPlan p = planMapper.selectById(skuRef);
+            if (p == null || p.getStatus() != 1) throw new BizException(Result.BAD_REQUEST, "会员档位不存在");
+            return p.getPriceCents();
+        }
+        if ("POINTS".equals(skuType)) {
+            try { return Integer.parseInt(skuRef); } catch (Exception e) { throw new BizException(Result.BAD_REQUEST, "点数包非法"); }
+        }
+        throw new BizException(Result.BAD_REQUEST, "SKU 类型非法");
+    }
+
+    private final com.zhijuan.trade.mapper.PointLogMapper pointLogMapper;
+}

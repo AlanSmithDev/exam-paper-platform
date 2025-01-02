@@ -1,0 +1,108 @@
+package com.zhijuan.paper.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.zhijuan.api.dto.BillingDTO;
+import com.zhijuan.api.feign.TradeClient;
+import com.zhijuan.common.web.GlobalExceptionHandler.BizException;
+import com.zhijuan.common.web.Result;
+import com.zhijuan.paper.domain.Paper;
+import com.zhijuan.paper.domain.PaperQuestion;
+import com.zhijuan.paper.mapper.PaperMapper;
+import com.zhijuan.paper.mapper.PaperQuestionMapper;
+import com.zhijuan.paper.service.ExportService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+/**
+ * 导出管线（docs/14 §6 计费闭环）：
+ * 1) 判价 trade.billing（重复下载→会员→免费额度→点数）
+ * 2) 点数不足 429 拒绝；3) 生成打印就绪试卷；4) consume 落计费记录；5) 返回下载地址
+ */
+@RestController
+@RequestMapping("/api/v1/papers")
+@RequiredArgsConstructor
+public class ExportController {
+
+    private final PaperMapper paperMapper;
+    private final PaperQuestionMapper paperQuestionMapper;
+    private final ExportService exportService;
+    private final TradeClient tradeClient;
+
+    @PostMapping("/{id}/export")
+    public Result<Map<String, Object>> export(@RequestHeader("X-User-Id") String uid, @PathVariable Long id) {
+        Paper paper = paperMapper.selectById(id);
+        if (paper == null || !paper.getUserId().equals(Long.valueOf(uid))) {
+            return Result.fail(Result.NOT_FOUND, "试卷不存在");
+        }
+        List<PaperQuestion> rows = paperQuestionMapper.selectList(new LambdaQueryWrapper<PaperQuestion>()
+                .eq(PaperQuestion::getPaperId, id).orderByAsc(PaperQuestion::getSort));
+        if (rows.isEmpty()) return Result.fail(Result.BAD_REQUEST, "试卷为空");
+
+        String hash = exportService.paperHash(rows.stream().map(PaperQuestion::getQuestionId).toList());
+
+        // 1) 判价
+        BillingDTO billing = tradeClient.billing(uid, rows.size(), hash);
+        // 2) 点数不足拒绝（reason 由 PriceCalculator 生成）
+        if ("POINTS".equals(billing.getMode()) && billing.getReason().contains("不足")) {
+            return Result.fail(Result.TOO_MANY, billing.getReason());
+        }
+
+        // 3) 生成文件：配置 RENDER_URL（browserless/chromium）时输出 PDF，否则 HTML 兜底
+        String html = exportService.renderHtml(paper.getTitle(), exportService.toItems(rows));
+        String renderUrl = System.getenv("RENDER_URL");
+        boolean pdf = renderUrl != null && !renderUrl.isBlank();
+        String fileName = "paper-" + id + "-" + hash.substring(0, 8) + (pdf ? ".pdf" : ".html");
+        try {
+            Path dir = Path.of(System.getProperty("java.io.tmpdir"), "zhijuan-exports");
+            Files.createDirectories(dir);
+            if (pdf) {
+                byte[] pdfBytes = java.net.http.HttpClient.newHttpClient().send(
+                        java.net.http.HttpRequest.newBuilder(URI.create(renderUrl + "/pdf"))
+                                .header("Content-Type", "application/json")
+                                .POST(java.net.http.HttpRequest.BodyPublishers.ofString(
+                                        "{\"html\":" + com.fasterxml.jackson.databind.node.TextNode.valueOf(html).toString() + "}"))
+                                .build(),
+                        java.net.http.HttpResponse.BodyHandlers.ofByteArray()).body();
+                Files.write(dir.resolve(fileName), pdfBytes);
+            } else {
+                Files.writeString(dir.resolve(fileName), html);
+            }
+        } catch (BizException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new BizException(Result.SYSTEM, "导出文件生成失败");
+        }
+
+        // 4) 计费落账（FREE/MEMBER 记录、POINTS 扣点）
+        Map<String, Object> charged = tradeClient.consume(uid,
+                Map.of("questionCount", rows.size(), "paperHash", hash, "mode", billing.getMode()));
+
+        // 5) 下载地址
+        return Result.ok(Map.of("downloadUrl", "/api/v1/papers/export/download/" + fileName,
+                "mode", billing.getMode(), "reason", billing.getReason(), "charged", charged));
+    }
+
+    @GetMapping("/export/download/{file}")
+    public org.springframework.http.ResponseEntity<byte[]> download(@PathVariable String file) {
+        if (!file.matches("paper-\\d+-[a-f0-9]{8}\\.(html|pdf)")) {
+            return org.springframework.http.ResponseEntity.badRequest().build();
+        }
+        try {
+            Path p = Path.of(System.getProperty("java.io.tmpdir"), "zhijuan-exports", file);
+            byte[] body = Files.readAllBytes(p);
+            return org.springframework.http.ResponseEntity.ok()
+                    .header("Content-Disposition", "attachment; filename=\"" + file + "\"")
+                    .header("Content-Type", "text/html;charset=UTF-8")
+                    .body(body);
+        } catch (Exception e) {
+            return org.springframework.http.ResponseEntity.notFound().build();
+        }
+    }
+}
