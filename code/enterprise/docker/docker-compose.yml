@@ -1,0 +1,169 @@
+version: "3.9"
+
+# 智卷云全栈编排：数据层（MySQL/Redis/ES）+ 5 个微服务
+# 启动：docker compose up -d   健康检查：curl http://localhost:8080/api/v1/health
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root123456
+      MYSQL_USER: examforge
+      MYSQL_PASSWORD: examforge123
+      TZ: Asia/Shanghai
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ../sql:/docker-entrypoint-initdb.d:ro
+    # 宿主 3306 已被本机 MySQL 占用：容器网络内走 mysql:3306，调试用 docker exec（不映射宿主端口）
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    volumes: [redis-data:/data]
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    ports: ["9200:9200"]
+    volumes: [es-data:/usr/share/elasticsearch/data]
+
+  gateway:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-gateway } }
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-examforge-dev-secret-change-in-prod-0123456789abcdef}
+      # 路由目标（容器网络内服务名寻址；yml 缺省 localhost 供本机直跑）
+      GW_USER_URL: http://user:8101
+      GW_QUESTION_URL: http://question:8102
+      GW_PAPER_URL: http://paper:8103
+      GW_ADMIN_URL: http://admin:8104
+      GW_TRADE_URL: http://trade:8105
+      GW_PRACTICE_URL: http://practice:8106
+      GW_AI_URL: http://ai:8107
+      GW_RESOURCE_URL: http://resource:8108
+      GW_SCHOOL_URL: http://school:8109
+    ports: ["8081:8080"]   # 宿主 8080 被本机其他服务占用，联调网关映射 8081
+    depends_on: [ user, question, paper, admin ]
+
+  user:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-user } }
+    environment: &dbenv
+      MYSQL_HOST: mysql
+      MYSQL_USER: examforge
+      MYSQL_PASSWORD: examforge123
+      JWT_SECRET: ${JWT_SECRET:-examforge-dev-secret-change-in-prod-0123456789abcdef}
+      TRADE_URL: http://trade:8105
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  question:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-question } }
+    environment:
+      <<: *dbenv
+      # G2 分表开关：先执行 sql/13_sharding.sql（建分表+迁移+对账+RENAME），
+      # 再设 QUESTION_PROFILE=sharding 并重启本服务（docs/27 §9.2；默认空=单表，CI/开发零影响）
+      SPRING_PROFILES_ACTIVE: ${QUESTION_PROFILE:-}
+      REDIS_HOST: redis
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  paper:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-paper } }
+    environment:
+      <<: *dbenv
+      QUESTION_URL: http://question:8102
+      TRADE_URL: http://trade:8105
+      RENDER_URL: http://render:3000        # browserless：HTML→PDF 渲染管线（docs/03 render-svc）
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  # HTML→PDF 渲染管线（browserless 提供 /pdf API）
+  render:
+    image: ghcr.io/browserless/chromium:latest
+    environment: { TIMEOUT: "30000", CONCURRENT: "4" }
+    ports: ["3100:3000"]
+
+  admin:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-admin } }
+    environment:
+      <<: *dbenv
+      TRADE_URL: http://trade:8105
+      QUESTION_URL: http://question:8102
+      USER_URL: http://user:8101
+      PAPER_URL: http://paper:8103
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  trade:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-trade } }
+    environment:
+      <<: *dbenv
+      SCHOOL_URL: http://school:8109
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  practice:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-practice } }
+    environment:
+      <<: *dbenv
+      QUESTION_URL: http://question:8102
+      PAPER_URL: http://paper:8103
+      AI_URL: http://ai:8107
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  ai:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-ai } }
+    environment:
+      <<: *dbenv
+      AI_PROVIDER: ${AI_PROVIDER:-MOCK}
+      AI_API_KEY: ${AI_API_KEY:-}
+      QUESTION_URL: http://question:8102
+      REDIS_HOST: redis
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  resource:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-resource } }
+    environment:
+      <<: *dbenv
+      TRADE_URL: http://trade:8105
+      USER_URL: http://user:8101
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  school:
+    build: { context: .., dockerfile: docker/Dockerfile, args: { MODULE: examforge-school } }
+    environment:
+      <<: *dbenv
+      USER_URL: http://user:8101
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  # G3 监控告警栈（docs/19 §5）：指标抓取 + 告警规则 + 总览看板
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus-rules.yml:/etc/prometheus/rules.yml:ro
+    ports: ["9090:9090"]
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    environment: [ "GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin123}" ]
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports: ["3001:3000"]
+    depends_on: [prometheus]
+
+volumes:
+  mysql-data:
+  redis-data:
+  es-data:

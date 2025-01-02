@@ -1,0 +1,80 @@
+# G3 告警规则（阈值对齐 docs/19 §5 监控指标体系；severity=P0/P1/P2 对应处置等级）
+groups:
+  - name: examforge-availability
+    rules:
+      - alert: ExamforgeServiceDown
+        expr: up{job=~"examforge-.*"} == 0
+        for: 2m
+        labels:
+          severity: P0
+        annotations:
+          summary: "服务下线 {{ $labels.job }}（{{ $labels.instance }}）"
+          runbook: "docs/19 §5：摘除故障节点并重启；连续 3 次探测失败 P0"
+
+  - name: examforge-http
+    rules:
+      - alert: Http5xxHighP0
+        expr: >
+          sum by (application) (rate(http_server_requests_seconds_count{status=~"5..",application=~"examforge-.*"}[1m]))
+          / clamp_min(sum by (application) (rate(http_server_requests_seconds_count{application=~"examforge-.*"}[1m])), 0.001) > 0.02
+        for: 1m
+        labels:
+          severity: P0
+        annotations:
+          summary: "{{ $labels.application }} 5xx 错误率 >2%（1min）"
+          runbook: "docs/19 §5：>2%（1min）P0——摘节点，按 traceId 定位"
+      - alert: Http5xxHighP1
+        expr: >
+          sum by (application) (rate(http_server_requests_seconds_count{status=~"5..",application=~"examforge-.*"}[5m]))
+          / clamp_min(sum by (application) (rate(http_server_requests_seconds_count{application=~"examforge-.*"}[5m])), 0.001) > 0.005
+        for: 5m
+        labels:
+          severity: P1
+        annotations:
+          summary: "{{ $labels.application }} 5xx 错误率 >0.5%（5min）"
+          runbook: "docs/19 §5：>0.5%（5min）P1——看错误日志 traceId 定位"
+      - alert: GatewayP99High
+        expr: >
+          histogram_quantile(0.99, sum by (le) (rate(http_server_requests_seconds_bucket{application="examforge-gateway"}[5m]))) > 1
+        for: 5m
+        labels:
+          severity: P2
+        annotations:
+          summary: "网关 P99 延迟 >1s 持续 5min"
+          runbook: "docs/19 §5：看慢 SQL/连接池/渲染 worker 排队；>3s 升 P1 并限流非核心接口（docs/03 §4.3）"
+
+  - name: examforge-payment
+    rules:
+      - alert: PaymentSuccessRateLow
+        expr: >
+          sum(rate(examforge_payment_callback_total{result="SUCCESS"}[10m]))
+          / clamp_min(sum(rate(examforge_payment_callback_total[10m])), 0.001) < 0.999
+        for: 5m
+        labels:
+          severity: P0
+        annotations:
+          summary: "支付成功率 <99.9%（10min 窗口，回调样本 {{ $values | humanize }}）"
+          runbook: "docs/19 §5 P0：验签失败？渠道故障？白名单误拦？→ docs/19 §8.1/§9；必要时切 MOCK 供应商止血并公告"
+
+  - name: examforge-runtime
+    rules:
+      - alert: JvmHeapHigh
+        expr: >
+          jvm_memory_used_bytes{area="heap",application=~"examforge-.*"}
+          / clamp_min(jvm_memory_max_bytes{area="heap",application=~"examforge-.*"}, 1) > 0.8
+        for: 10m
+        labels:
+          severity: P2
+        annotations:
+          summary: "{{ $labels.application }} JVM 堆内存 >80% 持续 10min"
+          runbook: "docs/19 §5：排查泄漏/调 -Xmx；持续增长升级人工介入"
+      - alert: HikariPoolSaturated
+        expr: >
+          hikaricp_connections_active{application=~"examforge-.*"}
+          / clamp_min(hikaricp_connections_max{application=~"examforge-.*"}, 1) > 0.8
+        for: 10m
+        labels:
+          severity: P2
+        annotations:
+          summary: "{{ $labels.application }} MySQL 连接池使用率 >80% 持续 10min"
+          runbook: "docs/19 §5：排查慢查询/连接泄漏；超 95% 升 P1 临时扩 maxPool"

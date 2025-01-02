@@ -1,0 +1,8 @@
+# G3 看板自动装配
+apiVersion: 1
+providers:
+  - name: examforge
+    folder: 智卷云
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

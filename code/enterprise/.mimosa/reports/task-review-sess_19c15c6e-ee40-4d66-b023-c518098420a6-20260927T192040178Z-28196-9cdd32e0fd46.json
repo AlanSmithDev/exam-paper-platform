@@ -1,0 +1,378 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260927T192040178Z-28196-9cdd32e0fd46",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "candidate-select",
+      "target": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/PointLogMapper.java",
+      "reason": "candidate_limit_exceeded: 5 changed reviewable file(s) were not scanned because the limit is 20"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 74,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 25
+    },
+    "change_tracking": {
+      "touched_observed": 25,
+      "touched_retained": 25,
+      "truncated": false,
+      "bash_mutation": false,
+      "bash_discovered": 0,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 25,
+      "selected_files": 20,
+      "limit": 20,
+      "truncated": true
+    },
+    "scanning": {
+      "required_files": 19,
+      "scanned_files": 19,
+      "skipped_files": 0,
+      "failed_files": 0,
+      "project_checks_required": 1,
+      "project_checks_completed": 1
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "candidate_limit_exceeded": 1,
+      "project_check_failed": 1
+    },
+    "reasons": [
+      {
+        "code": "candidate_limit_exceeded",
+        "stage": "candidate-select",
+        "target": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/PointLogMapper.java",
+        "detail": "5 changed reviewable file(s) were not scanned because the limit is 20",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "candidate-select",
+        "target": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/PointLogMapper.java",
+        "detail": "candidate_limit_exceeded: 5 changed reviewable file(s) were not scanned because the limit is 20",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-27T19:20:40.178Z",
+  "session_id": "sess_19c15c6e-ee40-4d66-b023-c518098420a6",
+  "target": ".",
+  "revision": null,
+  "rules_version": "unavailable",
+  "diff_hash": "d0a1e4b39d739c5ad725b0bdfe812b1a65b0e7cf753d3e47c5e780022258bf30",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 20,
+    "changed_files": [
+      {
+        "file": "zhijuan-trade/pom.xml",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 54
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "f4169d57b154b11bd61a7b1a3c002103c78c7beef6834f373da4b44d3401431b"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/CouponTemplate.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 26
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "9fd33a2df63e3af5c9c742bc4e2c25cc6cdc6319e41f09c9c85102280c316a13"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/DownloadRecord.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 20
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "9ab4ee483ea04322a502033df38e73c0bea1a61ba2c924c2eb017aa8f8c0b57a"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/Member.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 18
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "cee562474bb8baf57a3c634062035e345b0bc32c545575b2ff960adbafc13a10"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/MemberPlan.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 20
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "39a88db6b09dadab540cdcf57a504b9e6232a7c7bce57639f1d386ac22fbd0e6"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/PointAccount.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 15
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "a8c9abfd0a208b4241ae5afffd8c3db810779f453e3608587f707baf34a89f80"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/PointLog.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 20
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "458b6b2bfad9c66a6ae5d8e262d0e3b5284247930e608e44116210e0eb9c94ea"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/TradeOrder.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 28
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "fb1b8f495e8439531dbd5b9b4bde62dc1c49682b93c1b7678780aa4f645a8a0c"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/domain/UserCoupon.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 21
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "a6505961a315d8290084ebe07680514ce4b23eb9199bd94014a8aa12b7f6cebd"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/logic/OrderRules.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 45
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "328652e84fc68c8ec1efabcbb5902df78e80b1d8bd9a87aafb01c262bb633b27"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/logic/PriceCalculator.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 37
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "e5e9e27bd9039f66c4d6322b7cdc8a9991259d8f38575f0884da22c948f85865"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/CouponTemplateMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "2ee6bed09fb742f4a81b7b12cb1aac55bdbd38a9fcd2cdff674e25d722c9ec74"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/DownloadRecordMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "fd09e4cbd89e320d3930d4621bc054070e9c7ba695b1e82da313fa566124c15b"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/MemberMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "45c60df94518bee147b7918713ad1be3dabd8cf63e217b440335ed6edf9ec6cf"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/MemberPlanMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "c298f5dc40e3f2a9183eaa369e4d384d7f7733f882c5f7b5ef0c9e1faff6ba04"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/PointAccountMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 17
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "bb67f4bbcd44a8d67b0286de6efb0ce08fc8c3933548036d4130dd8e91a5b949"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/TradeOrderMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "9de5f0e7a86e8539235df77f615a4e8fa6a07de84aa3ab85a923ec82a8a5d52c"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/mapper/UserCouponMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "9f85a0f0a40588dd4de67f11c5559c2e3a3b002ffe8236c05d58f9bcad8e80fe"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/service/TradeService.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 237
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "b9d634e6c12a574cf86a5f041c202cd7ee3fd399b5c66b5a51e8062e68a36b39"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/TradeApplication.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 15
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "5063ba5a04fd491a38d196fd1eb754477c15dfd501f10c301899538c15a0046e"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-27T19:20:38.094Z",
+    "completed_at": "2026-09-27T19:20:40.178Z",
+    "duration_ms": 2084,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 2084,
+    "peakMemoryBytes": 122884096,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 19,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [
+    {
+      "finding_id": "mimosa-455309aff1b78e9924b95eef",
+      "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/service/TradeService.java",
+      "line": 72,
+      "rule_id": "security",
+      "severity": "high",
+      "category": "弱随机数",
+      "status": "candidate",
+      "decision": "advisory",
+      "at": "2026-09-27T19:16:04.968Z",
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "e99ea950e68f93ec4d85dc71737fb8ed33b22b51ee2295d123229086a1f423de",
+        "runtime_oracle": false
+      }
+    }
+  ],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260927T192040178Z-28196-9cdd32e0fd46.json",
+    "latest_report": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6.json",
+    "history_summary": ".mimosa/history/run-20260927T192040178Z-28196-9cdd32e0fd46.json"
+  }
+}

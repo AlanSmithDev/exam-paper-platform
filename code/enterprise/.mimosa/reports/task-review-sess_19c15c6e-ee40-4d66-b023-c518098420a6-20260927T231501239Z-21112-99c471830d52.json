@@ -1,0 +1,358 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260927T231501239Z-21112-99c471830d52",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "candidate-select",
+      "target": "zhijuan-ai/src/main/java/com/zhijuan/ai/mapper/AiLogMapper.java",
+      "reason": "candidate_limit_exceeded: 6 changed reviewable file(s) were not scanned because the limit is 20"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 111,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 26
+    },
+    "change_tracking": {
+      "touched_observed": 26,
+      "touched_retained": 26,
+      "truncated": false,
+      "bash_mutation": false,
+      "bash_discovered": 0,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 26,
+      "selected_files": 20,
+      "limit": 20,
+      "truncated": true
+    },
+    "scanning": {
+      "required_files": 18,
+      "scanned_files": 18,
+      "skipped_files": 0,
+      "failed_files": 0,
+      "project_checks_required": 1,
+      "project_checks_completed": 1
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "candidate_limit_exceeded": 1,
+      "project_check_failed": 1
+    },
+    "reasons": [
+      {
+        "code": "candidate_limit_exceeded",
+        "stage": "candidate-select",
+        "target": "zhijuan-ai/src/main/java/com/zhijuan/ai/mapper/AiLogMapper.java",
+        "detail": "6 changed reviewable file(s) were not scanned because the limit is 20",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "candidate-select",
+        "target": "zhijuan-ai/src/main/java/com/zhijuan/ai/mapper/AiLogMapper.java",
+        "detail": "candidate_limit_exceeded: 6 changed reviewable file(s) were not scanned because the limit is 20",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-27T23:15:01.239Z",
+  "session_id": "sess_19c15c6e-ee40-4d66-b023-c518098420a6",
+  "target": ".",
+  "revision": null,
+  "rules_version": "unavailable",
+  "diff_hash": "b05a0c2c7a46a7a5506cb00fe5bfe7dab2bfc9d30cae27fca9619584de86f9b8",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 20,
+    "changed_files": [
+      {
+        "file": "zhijuan-ai/pom.xml",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 49
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "2aea436c766d06fa2ffd5885ad6efec526d875a9418e0b01df3ed0038428ceec"
+      },
+      {
+        "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/AiApplication.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 13
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "02e45a6bc9b2feffaac0ef07de57deddae150e7363e2937ae54d9b04568d31ab"
+      },
+      {
+        "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/domain/AiLog.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 24
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "766d673295a62c6c4bcc2b084aeac0e2aa507d29c71149641b318afd2ea9d7ee"
+      },
+      {
+        "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/provider/AiProvider.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 10
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "76807f432227000742103b645ef784ef56709ca34c41e93805c85d175a94e80a"
+      },
+      {
+        "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/provider/MockAiProvider.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 28
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "4cfdbfe6fbcba119177d2baa9f2095259e88bf5a0a6516b09978e18b59ad52a8"
+      },
+      {
+        "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/provider/OpenAiCompatProvider.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 83
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "710e495e6b32a05973a5f941f3372b575bf63f7a55934c03f7fce690242058e2"
+      },
+      {
+        "file": "zhijuan-api/src/main/java/com/zhijuan/api/feign/QuestionClient.java",
+        "ranges": [
+          {
+            "start": 23,
+            "end": 28
+          }
+        ],
+        "before_hash": "eadfecea45a3a344467bccb8cdaa877e3f8439a6c7748027936c53ff8bba4898",
+        "after_hash": "68eb3d51853333618d65bce4afe83b3836d94cdfb7fd27fc47d7e2a5ff515948"
+      },
+      {
+        "file": "zhijuan-practice/pom.xml",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 61
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "11a287bca16e61615270055e8221a175ca2292201c4bec601f8fab97eaf4d026"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/controller/PracticeController.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 57
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "859b69fb287f980ea561310bbac83c753f6714671b1c5e39daeca175a06b7803"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/domain/Practice.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 20
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "1911c984d829193dd903c70a80853133c9393767d6fb4e8fdf4385c5723ce5f6"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/domain/PracticeAnswer.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 21
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "94dba93492c636e8a5e5f1c64a41f7bb45d52d6ad67a86836a1cb08b8d6327cd"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/domain/WrongQuestion.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 21
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "a4bd3bf53484f855e8f28c51d8a8e864a7d1602ed54a925623f1cc8f00b7f940"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/logic/AnswerGrader.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 46
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "bfa33ec0dfe42e797c01c0aa0543edcfd993a5c231044290e7edea52b0f93999"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/mapper/PracticeAnswerMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "0056e8b611f747ebeeab3cbf0dc1d3c050c04214cbbc29d92776addecc40d07f"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/mapper/PracticeMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "482257ccdcbe31cf7c8046b155da8f9a4ff87c5d4c9d3bdfea3032aa4cdb04a2"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/mapper/WrongQuestionMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 15
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "39e48c523b181721e662f39678150c0cbcbfe591b7226c12325d1409de1ca879"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/PracticeApplication.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 15
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "8e280f3f6c2d61746a066aaf4c31a9382fab64c4905ba1f5d1ce16c3fa8585df"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/service/PracticeService.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 137
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "fa539a589c0d73a4130933e7f8aea499d52f249d33b41892e757143da33b16d9"
+      },
+      {
+        "file": "zhijuan-practice/src/test/java/com/zhijuan/practice/logic/AnswerGraderTest.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 44
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "72dc0feb5dfaaca3e72a30afbaa868e5544b99f1112a78ab09c7a44296fcbb0f"
+      },
+      {
+        "file": "zhijuan-question/src/main/java/com/zhijuan/question/controller/InternalQuestionController.java",
+        "ranges": [
+          {
+            "start": 32,
+            "end": 41
+          }
+        ],
+        "before_hash": "3fc3729915ad2f208279906753ccdf42d1d6dcfc33bef4e84b7a911dae8d8b65",
+        "after_hash": "501a4421d288eb2e58117a14074d7fee777bd3e7ff96d6a93c0dc51351c1675c"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-27T23:14:59.087Z",
+    "completed_at": "2026-09-27T23:15:01.239Z",
+    "duration_ms": 2152,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 2152,
+    "peakMemoryBytes": 119017472,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 18,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260927T231501239Z-21112-99c471830d52.json",
+    "latest_report": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6.json",
+    "history_summary": ".mimosa/history/run-20260927T231501239Z-21112-99c471830d52.json"
+  }
+}

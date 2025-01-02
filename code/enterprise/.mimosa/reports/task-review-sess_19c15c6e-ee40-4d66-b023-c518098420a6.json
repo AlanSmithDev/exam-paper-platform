@@ -1,0 +1,208 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260928T001708097Z-21828-1857b55ccc6f",
+  "run_status": "completed",
+  "errors": [],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "complete",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 119,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 6
+    },
+    "change_tracking": {
+      "touched_observed": 6,
+      "touched_retained": 6,
+      "truncated": false,
+      "bash_mutation": false,
+      "bash_discovered": 0,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 6,
+      "selected_files": 6,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 5,
+      "scanned_files": 5,
+      "skipped_files": 0,
+      "failed_files": 0,
+      "project_checks_required": 1,
+      "project_checks_completed": 1
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {},
+    "reasons": [],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-28T00:17:08.097Z",
+  "session_id": "sess_19c15c6e-ee40-4d66-b023-c518098420a6",
+  "target": ".",
+  "revision": null,
+  "rules_version": "unavailable",
+  "diff_hash": "82106aba3a48f1349f9dfdf19af2227851e4fe8ff93ceca275111b369205a659",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 6,
+    "changed_files": [
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/controller/PracticeController.java",
+        "ranges": [
+          {
+            "start": 29,
+            "end": 39
+          }
+        ],
+        "before_hash": "859b69fb287f980ea561310bbac83c753f6714671b1c5e39daeca175a06b7803",
+        "after_hash": "05b49bf1185fe96dc0fe8711636a2bcd7932ae6ff9b2951ea64c8d49dd31d188"
+      },
+      {
+        "file": "zhijuan-practice/src/main/java/com/zhijuan/practice/service/PracticeService.java",
+        "ranges": [
+          {
+            "start": 51,
+            "end": 68
+          }
+        ],
+        "before_hash": "fa539a589c0d73a4130933e7f8aea499d52f249d33b41892e757143da33b16d9",
+        "after_hash": "f7ecf33b00ca4fd8e510714f714b4e3d2c028b9d6a25b62b430a21e774bb4730"
+      },
+      {
+        "file": "zhijuan-question/pom.xml",
+        "ranges": [
+          {
+            "start": 43,
+            "end": 46
+          }
+        ],
+        "before_hash": "ed4afaf97387053897e89ba904d78b7c0d2a84359238a846a5ab69c30ce3530b",
+        "after_hash": "728d1efafdd06f549f8cbb6777c565096eb7a44a182b1bfa90b3219e2bc71ac3"
+      },
+      {
+        "file": "zhijuan-question/src/main/java/com/zhijuan/question/controller/QuestionAuditController.java",
+        "ranges": [
+          {
+            "start": 28,
+            "end": 28
+          },
+          {
+            "start": 66,
+            "end": 66
+          }
+        ],
+        "before_hash": "0df08fb00f9396e03b9a468784177bfc622d2e483936563ba98d8983c42c8838",
+        "after_hash": "9783c1dd9d02e29ac68c27e08647f7a5591a82a14f2994f2f2a0546a2a52e0aa"
+      },
+      {
+        "file": "zhijuan-question/src/main/java/com/zhijuan/question/service/QuestionService.java",
+        "ranges": [
+          {
+            "start": 5,
+            "end": 5
+          },
+          {
+            "start": 9,
+            "end": 11
+          },
+          {
+            "start": 14,
+            "end": 14
+          },
+          {
+            "start": 17,
+            "end": 18
+          },
+          {
+            "start": 25,
+            "end": 31
+          },
+          {
+            "start": 77,
+            "end": 84
+          },
+          {
+            "start": 86,
+            "end": 99
+          }
+        ],
+        "before_hash": "13718e160366a28680589892e96159aade8036214e94ddaa9234b701926e7526",
+        "after_hash": "3f216e1dc7575d3b3108e7a10c90ff062df23846549f26e5a1a20dcf342efe34"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/job/OrderTimeoutScheduler.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 33
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "c5b7ea1f63c7606572d6e73ca6f80750e991b0bb9a3787e2d8db49aefa9c7f4f"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-28T00:17:05.534Z",
+    "completed_at": "2026-09-28T00:17:08.097Z",
+    "duration_ms": 2563,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "complete",
+    "latencyMs": 2563,
+    "peakMemoryBytes": 120467456,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 5,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260928T001708097Z-21828-1857b55ccc6f.json",
+    "latest_report": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6.json",
+    "history_summary": ".mimosa/history/run-20260928T001708097Z-21828-1857b55ccc6f.json"
+  }
+}

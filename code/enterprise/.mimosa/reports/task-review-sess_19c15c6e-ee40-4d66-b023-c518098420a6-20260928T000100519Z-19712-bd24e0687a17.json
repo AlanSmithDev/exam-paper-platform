@@ -1,0 +1,277 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20260928T000100519Z-19712-bd24e0687a17",
+  "run_status": "completed",
+  "errors": [],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "complete",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 118,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 13
+    },
+    "change_tracking": {
+      "touched_observed": 13,
+      "touched_retained": 13,
+      "truncated": false,
+      "bash_mutation": false,
+      "bash_discovered": 0,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 13,
+      "selected_files": 13,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 12,
+      "scanned_files": 12,
+      "skipped_files": 0,
+      "failed_files": 0,
+      "project_checks_required": 1,
+      "project_checks_completed": 1
+    },
+    "notification": {
+      "eligible_findings": 0,
+      "detailed_findings": 0,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {},
+    "reasons": [],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-09-28T00:01:00.519Z",
+  "session_id": "sess_19c15c6e-ee40-4d66-b023-c518098420a6",
+  "target": ".",
+  "revision": null,
+  "rules_version": "unavailable",
+  "diff_hash": "87d44dffc457c32b38c61387074316e46df12ffaada033b53dd03e35844d2fa0",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 13,
+    "changed_files": [
+      {
+        "file": "zhijuan-ai/src/main/java/com/zhijuan/ai/service/AiService.java",
+        "ranges": [
+          {
+            "start": 24,
+            "end": 24
+          },
+          {
+            "start": 31,
+            "end": 31
+          },
+          {
+            "start": 40,
+            "end": 40
+          },
+          {
+            "start": 71,
+            "end": 92
+          }
+        ],
+        "before_hash": "394229f71dc1b777adb04abbca6f456d7042c877dbe98bf79f4570e365d18d98",
+        "after_hash": "9ca023a11ecbf04c6ebaab3ab1a4c7ad61b7421c3b58652df944a4ba0546d769"
+      },
+      {
+        "file": "zhijuan-api/src/main/java/com/zhijuan/api/dto/QuestionSummaryDTO.java",
+        "ranges": [
+          {
+            "start": 17,
+            "end": 17
+          }
+        ],
+        "before_hash": "704614aa58898b404f42b6659725c980687f59d9777930af0a734581ee71b15a",
+        "after_hash": "3537b2f080058180e3a8ba425ad969fcbf0028bfb3e915044f4ba70d4f4820da"
+      },
+      {
+        "file": "zhijuan-api/src/main/java/com/zhijuan/api/feign/QuestionClient.java",
+        "ranges": [
+          {
+            "start": 7,
+            "end": 8
+          },
+          {
+            "start": 31,
+            "end": 34
+          }
+        ],
+        "before_hash": "68eb3d51853333618d65bce4afe83b3836d94cdfb7fd27fc47d7e2a5ff515948",
+        "after_hash": "a0170f98347e9093f40de6cc30149ada3a92b53070cf09d25ebfc5126a58c576"
+      },
+      {
+        "file": "zhijuan-api/src/main/java/com/zhijuan/api/feign/TradeClient.java",
+        "ranges": [
+          {
+            "start": 29,
+            "end": 33
+          }
+        ],
+        "before_hash": "839f4345ab90dee3e7d58b27b9d2bcaeb0600fcfe2b1cf8043065da2e10a631d",
+        "after_hash": "c5d8c3c9b2a698478d14e9175ac864a6aed9b2eca994cf43e8457d21c322c353"
+      },
+      {
+        "file": "zhijuan-question/pom.xml",
+        "ranges": [
+          {
+            "start": 31,
+            "end": 42
+          }
+        ],
+        "before_hash": "038c869f6cd7dca0fa05b932b02457da4870265206c4416973a1f4e7d9fc85a5",
+        "after_hash": "ed4afaf97387053897e89ba904d78b7c0d2a84359238a846a5ab69c30ce3530b"
+      },
+      {
+        "file": "zhijuan-question/src/main/java/com/zhijuan/question/controller/FeedbackController.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 99
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "8f08466b8050f92d1a97a48470da9b2e8e7be07e5faed85f7718da52b2438993"
+      },
+      {
+        "file": "zhijuan-question/src/main/java/com/zhijuan/question/controller/InternalQuestionController.java",
+        "ranges": [
+          {
+            "start": 42,
+            "end": 53
+          }
+        ],
+        "before_hash": "501a4421d288eb2e58117a14074d7fee777bd3e7ff96d6a93c0dc51351c1675c",
+        "after_hash": "78317ed374466d70db1a2158478e16fb0917d3fca640b0b9c0ac666cf40c37f1"
+      },
+      {
+        "file": "zhijuan-question/src/main/java/com/zhijuan/question/domain/Feedback.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 27
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "d346a41c3cc70b9c1b6cbff16b45b240cad69108cd9494780a1650af071eec82"
+      },
+      {
+        "file": "zhijuan-question/src/main/java/com/zhijuan/question/mapper/FeedbackMapper.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 7
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "ee33839771f1e1e5eaf814409fb9cd32a0e2ca48918f9378b8977d622043a9ae"
+      },
+      {
+        "file": "zhijuan-question/src/main/java/com/zhijuan/question/QuestionApplication.java",
+        "ranges": [
+          {
+            "start": 6,
+            "end": 6
+          },
+          {
+            "start": 10,
+            "end": 10
+          }
+        ],
+        "before_hash": "168dcc95b25bb7dc860f19d9d7432cea7241f37eebdff1c14ca84d7c3934cf3b",
+        "after_hash": "ded18c3b1528d20478b090e7af9814605051be4c04d97ec971211a27b34b8ca8"
+      },
+      {
+        "file": "zhijuan-question/src/main/java/com/zhijuan/question/service/QuestionService.java",
+        "ranges": [
+          {
+            "start": 68,
+            "end": 72
+          }
+        ],
+        "before_hash": "3f14081e4b7f0a92e32e18bee8e24c3c1b20fb36f077fc06434e441e32d5140a",
+        "after_hash": "13718e160366a28680589892e96159aade8036214e94ddaa9234b701926e7526"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/controller/InternalTradeController.java",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 28
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "ec8cb2d92001ba2e48664ff13e331d98eb18c0fc24b7603ffa735416df154049"
+      },
+      {
+        "file": "zhijuan-trade/src/main/java/com/zhijuan/trade/service/TradeService.java",
+        "ranges": [
+          {
+            "start": 205,
+            "end": 213
+          }
+        ],
+        "before_hash": "2e0f1b74728dad4d4e988a3abec4ef16a9b2e461f18e60422c1f722515b46465",
+        "after_hash": "d86031b436704986e29af6c15920d772c4b66b3c20ac86a8921d300907c2f5a1"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-09-28T00:00:58.290Z",
+    "completed_at": "2026-09-28T00:01:00.519Z",
+    "duration_ms": 2229,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "complete",
+    "latencyMs": 2229,
+    "peakMemoryBytes": 119328768,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 12,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 0,
+  "rewake_finding_count": 0,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [],
+  "findings": [],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6-20260928T000100519Z-19712-bd24e0687a17.json",
+    "latest_report": ".mimosa/reports/task-review-sess_19c15c6e-ee40-4d66-b023-c518098420a6.json",
+    "history_summary": ".mimosa/history/run-20260928T000100519Z-19712-bd24e0687a17.json"
+  }
+}
