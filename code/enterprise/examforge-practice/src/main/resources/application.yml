@@ -1,0 +1,40 @@
+server:
+  port: 8106
+
+spring:
+  application:
+    name: examforge-practice
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/examforge_practice?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_USER:examforge}
+    password: ${MYSQL_PASSWORD:examforge123}
+  servlet:
+    multipart:
+      max-file-size: 10MB      # 扫描件上限（ScanRules.MAX_SIZE_BYTES 同步）
+      max-request-size: 12MB
+  cloud:
+    openfeign:
+      client:
+        config:
+          examforge-question:
+            url: ${QUESTION_URL:http://localhost:8102}
+          examforge-paper:
+            url: ${PAPER_URL:http://localhost:8103}
+          examforge-ai:
+            url: ${AI_URL:http://localhost:8107}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+
+# G3 可观测性（docs/19 §5）：Prometheus 指标暴露（/actuator/prometheus，仅内网可达，不经网关路由）
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
