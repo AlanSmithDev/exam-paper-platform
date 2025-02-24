@@ -1,0 +1,13 @@
+package com.examforge.api.feign;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Map;
+
+/** 组卷服务内部统计 */
+@FeignClient(name = "examforge-paper", path = "/internal/papers", contextId = "paperStats")
+public interface PaperStatsClient {
+    @GetMapping("/stats")
+    Map<String, Object> stats();
+}

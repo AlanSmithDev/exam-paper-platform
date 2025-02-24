@@ -1,0 +1,66 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: examforge-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: user
+          uri: ${GW_USER_URL:http://localhost:8101}
+          predicates: [ "Path=/api/v1/auth/**,/api/v1/users/**" ]
+        - id: question
+          uri: ${GW_QUESTION_URL:http://localhost:8102}
+          predicates: [ "Path=/api/v1/questions/**,/api/v1/meta/**" ]
+        - id: paper
+          uri: ${GW_PAPER_URL:http://localhost:8103}
+          predicates: [ "Path=/api/v1/basket/**,/api/v1/papers/**,/api/v1/answer-sheet**" ]
+        - id: admin
+          uri: ${GW_ADMIN_URL:http://localhost:8104}
+          predicates: [ "Path=/api/v1/admin/**,/api/v1/ads/**,/api/v1/settings/**,/api/v1/notices/**" ]
+        - id: trade
+          uri: ${GW_TRADE_URL:http://localhost:8105}
+          predicates: [ "Path=/api/v1/member/**,/api/v1/coupons/**,/api/v1/trade/**,/api/v1/payments/**" ]
+        - id: practice
+          uri: ${GW_PRACTICE_URL:http://localhost:8106}
+          predicates: [ "Path=/api/v1/practices/**,/api/v1/assignments/**,/api/v1/wrong-questions/**,/api/v1/report/**" ]
+        - id: ai
+          uri: ${GW_AI_URL:http://localhost:8107}
+          predicates: [ "Path=/api/v1/ai/**" ]
+        - id: school
+          uri: ${GW_SCHOOL_URL:http://localhost:8109}
+          predicates: [ "Path=/api/v1/schools/**" ]
+        - id: resource
+          uri: ${GW_RESOURCE_URL:http://localhost:8108}
+          predicates: [ "Path=/api/v1/resources/**" ]
+
+examforge:
+  jwt:
+    secret: ${JWT_SECRET:examforge-dev-secret-change-in-prod-0123456789abcdef}
+    ttl-hours: 12
+  # 免鉴权白名单（其余 /api/** 必须携带有效 JWT；逗号分隔字符串——@Value List 注入口径）
+  # 注：/api/v1/resources 前缀不走白名单——列表与数字详情在 AuthGlobalFilter.resourcePublicRead 匿名放行，
+  #    资源篮/下载/创作者/申诉等须登录（JWT 校验后注入 X-User-Id）
+  # D14 渠道回调（无 JWT，渠道验签为唯一安全边界；MOCK 渠道下两入口由 provider 守卫 403）
+  whitelist: "/api/v1/auth/login,/api/v1/auth/register,/api/v1/auth/admin-login,/api/v1/meta,/api/v1/questions,/api/v1/questions/,/api/v1/ads,/api/v1/settings,/api/v1/notices,/api/v1/health,/api/v1/payments/wechat/notify,/api/v1/payments/alipay/notify"
+
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+
+# G3 可观测性（docs/19 §5）：Prometheus 指标暴露（/actuator/prometheus，仅内网可达，不经网关路由）
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
