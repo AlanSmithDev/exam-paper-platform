@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "mimosa-hook-status/v1",
+  "recordedAt": "2026-09-27T22:58:46.615Z",
+  "sessionId": "sess_19c15c6e-ee40-4d66-b023-c518098420a6",
+  "event": "PostToolUse",
+  "toolName": "Edit",
+  "file": "E:\\code\\business\\zujuan-platform\\code\\enterprise\\zhijuan-question\\src\\main\\java\\com\\zhijuan\\question\\controller\\QuestionAuditController.java",
+  "outcome": "inconclusive",
+  "coverage": "partial",
+  "findingCount": 0,
+  "durationMs": 15,
+  "hostState": "hook_complete",
+  "reportHint": ".mimosa/reports/"
+}

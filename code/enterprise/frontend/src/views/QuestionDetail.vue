@@ -1,0 +1,23 @@
+<template>
+  <div v-if="question" class="detail-page"><el-button :icon="ArrowLeft" text @click="$router.push('/questions')">返回题库</el-button><header class="detail-head"><div><p>{{question.source}}</p><h1>题目 {{question.id}}</h1><div class="detail-meta"><el-tag>{{question.type}}</el-tag><span>{{question.chapter}}</span><span>难度系数 {{question.coefficient}}</span></div></div><div class="actions"><el-button :icon="savedIds.includes(question.id)?StarFilled:Star" @click="toggleSaved(question.id)">{{savedIds.includes(question.id)?'已收藏':'收藏'}}</el-button><el-button type="primary" :disabled="inBasket" @click="addBasket">{{inBasket?'已在试题篮':'加入试题篮'}}</el-button></div></header><section class="question-body"><QuestionContent :question="question" answers analysis/></section><div class="detail-bottom"><span>原创演示题 · 尚未进入内容审核流程</span><el-button :icon="Warning" text @click="feedbackOpen=true">报告错误</el-button></div><section class="related"><h2>同知识点题目</h2><router-link v-for="q in related" :key="q.id" :to="'/questions/'+q.id">{{q.type}} · {{q.stem.replace(/\$/g,'')}}<el-icon><ArrowRight/></el-icon></router-link><el-empty v-if="!related.length" description="暂无更多样例题" :image-size="60"/></section></div><el-empty v-else description="题目不存在"/>
+  <el-dialog v-model="feedbackOpen" title="报告题目错误" width="min(440px,92vw)"><el-form label-position="top"><el-form-item label="错误类型"><el-select v-model="feedbackType" aria-label="错误类型"><el-option v-for="type in feedbackTypes" :key="type" :label="type" :value="type"/></el-select></el-form-item><el-form-item label="问题描述"><el-input v-model="feedbackDescription" type="textarea" :rows="4" maxlength="500" show-word-limit placeholder="请描述具体错误"/></el-form-item></el-form><el-alert v-if="!loggedIn" title="尚未登录，纠错暂不能提交" type="info" :closable="false"/><template #footer><el-button @click="feedbackOpen=false">取消</el-button><el-button type="primary" :loading="submitting" @click="submitFeedback">提交纠错</el-button></template></el-dialog>
+</template>
+<script setup>
+import { computed, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import { ArrowLeft, ArrowRight, Star, StarFilled, Warning } from '@element-plus/icons-vue'
+import { cloneQuestions } from '../mock'
+import { useWorkspace } from '../composables/workspace'
+import QuestionContent from '../components/QuestionContent.vue'
+import http from '../api/request'
+const route=useRoute(),all=cloneQuestions(),{basket,savedIds,addQuestions,toggleSaved}=useWorkspace()
+const question=computed(()=>all.find(q=>String(q.id)===String(route.params.id))),inBasket=computed(()=>basket.value.some(q=>q.id===question.value?.id)),related=computed(()=>all.filter(q=>q.id!==question.value?.id&&q.chapter===question.value?.chapter))
+const loggedIn=!!localStorage.getItem('examforge_token'),feedbackOpen=ref(route.query.feedback==='1'),feedbackDescription=ref(''),feedbackType=ref('题干错误'),submitting=ref(false),feedbackTypes=['题干错误','属性错误','解析知识性错误','解析细节错误','其他错误']
+watch(()=>route.fullPath,()=>{feedbackOpen.value=route.query.feedback==='1';feedbackDescription.value=''})
+function addBasket(){if(addQuestions([question.value]))ElMessage.success('已加入试题篮')}
+async function submitFeedback(){if(feedbackDescription.value.trim().length<5){ElMessage.warning('请至少描述 5 个字');return}if(!loggedIn){ElMessage.warning('请先登录再提交纠错');return}submitting.value=true;try{const result=await http.post('/questions/'+question.value.id+'/feedback',{targetType:feedbackType.value,description:feedbackDescription.value.trim()});feedbackOpen.value=false;feedbackDescription.value='';ElMessage.success('纠错已提交'+(result?.ticketId?'，工单 '+result.ticketId:''))}catch{ElMessage.error('纠错未提交，请检查登录状态与服务连接')}finally{submitting.value=false}}
+</script>
+<style scoped>
+.detail-page{max-width:1100px;margin:auto}.detail-head{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0}.detail-head p{font-size:12px;color:var(--text-2)}.detail-head h1{font-size:22px;margin:10px 0 15px}.detail-meta{display:flex;align-items:center;gap:15px;font-size:12px;color:var(--text-2);flex-wrap:wrap}.question-body{background:white;border-block:1px solid var(--line);padding:28px}.detail-bottom{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:11px;color:var(--text-2);padding:15px 0}.related{margin-top:30px}.related h2{font-size:16px}.related a{display:flex;align-items:center;justify-content:space-between;gap:15px;color:#536b83;text-decoration:none;font-size:13px;padding:18px 0;border-bottom:1px solid var(--line);line-height:1.8}.related .el-icon{flex:none}@media(max-width:650px){.detail-head{flex-direction:column;align-items:flex-start}.question-body{padding:20px 15px}.detail-bottom{align-items:flex-start}}
+</style>

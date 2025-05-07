@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 250" role="img" aria-label="正方体及异面直线 AB 与 B1D">
+  <rect width="320" height="250" fill="white"/>
+  <g fill="none" stroke="#334155" stroke-width="1.8" stroke-linejoin="round">
+    <path d="M50 215H220V75H50ZM50 75L105 30H275V170L220 215M220 75L275 30"/>
+    <path d="M50 215L105 170H275M105 170V30" stroke-dasharray="5 4"/>
+    <path d="M220 75L105 170M50 215H220" stroke="#2675c5" stroke-width="2.5"/>
+  </g>
+  <g font-family="serif" font-size="17" fill="#1f2937"><text x="32" y="234">A</text><text x="223" y="235">B</text><text x="282" y="181">C</text><text x="85" y="170">D</text><text x="29" y="73">A₁</text><text x="218" y="67">B₁</text><text x="280" y="32">C₁</text><text x="85" y="24">D₁</text></g>
+</svg>
