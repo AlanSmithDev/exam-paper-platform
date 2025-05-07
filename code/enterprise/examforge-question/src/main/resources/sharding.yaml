@@ -1,0 +1,37 @@
+# G2 分表配置（docs/27 §9.2）：question 按 id % 8 路由到 question_0..7
+# 占位符语法为 ShardingSphere 5.5 原生 $${VAR::默认值}（反汇编 URLArgumentLine 验证，正则 \$\$\{(.+::.*)\}），
+# 与分片规则的单美元 ${0..7}/${id % 8} 天然不冲突；由 URL 参数 placeholder-type=environment 启用渲染。
+databaseName: examforge_question
+
+mode:
+  type: Standalone
+  repository:
+    type: JDBC
+
+dataSources:
+  ds0:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://$${MYSQL_HOST::localhost}:3306/examforge_question?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: $${MYSQL_USER::examforge}
+    password: $${MYSQL_PASSWORD::examforge123}
+    maximumPoolSize: 20
+    minimumIdle: 4
+
+rules:
+  - !SHARDING
+    tables:
+      question:
+        actualDataNodes: ds0.question_${0..7}
+        tableStrategy:
+          standard:
+            shardingColumn: id
+            shardingAlgorithmName: question-inline
+    shardingAlgorithms:
+      question-inline:
+        type: INLINE
+        props:
+          algorithm-expression: question_${id % 8}
+
+props:
+  sql-show: false

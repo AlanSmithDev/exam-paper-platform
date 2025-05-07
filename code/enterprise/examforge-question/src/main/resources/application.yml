@@ -1,0 +1,37 @@
+server:
+  port: 8102
+
+spring:
+  application:
+    name: examforge-question
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: 6379
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/examforge_question?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_USER:examforge}
+    password: ${MYSQL_PASSWORD:examforge123}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+
+examforge:
+  cache:
+    question-detail-ttl-seconds: 600   # 题目详情缓存 10 分钟，审核变更即剔除；Redis 不可用 fail-open 直查库
+  search:
+    engine: ${SEARCH_ENGINE:db}            # es=启用 Elasticsearch，db=数据库 LIKE
+    es-url: ${ES_URL:http://localhost:9200}
+
+# G3 可观测性（docs/19 §5）：Prometheus 指标暴露（/actuator/prometheus，仅内网可达，不经网关路由）
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}

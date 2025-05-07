@@ -1,0 +1,10 @@
+# G2 分表 profile（默认 profile 不加载本文件——CI 与开发环境行为零变化）
+# 启用步骤：1) 执行 sql/13_sharding.sql（建分表+迁移+对账+RENAME） 2) 环境变量 SPRING_PROFILES_ACTIVE=sharding 重启
+spring:
+  datasource:
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+    # URL 参数 placeholder-type=environment 启用 sharding.yaml 内 $${VAR::默认值} 环境变量渲染
+    # （5.5.0 实证：URL 模式仅 classpath/absolutepath 两种，占位符经 URLArgumentPlaceholderType.ENVIRONMENT 渲染）
+    url: jdbc:shardingsphere:classpath:sharding.yaml?placeholder-type=environment
+    username: ${MYSQL_USER:examforge}
+    password: ${MYSQL_PASSWORD:examforge123}
