@@ -1,0 +1,32 @@
+server:
+  port: 8109
+
+spring:
+  application:
+    name: examforge-school
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/examforge_school?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_USER:examforge}
+    password: ${MYSQL_PASSWORD:examforge123}
+  cloud:
+    openfeign:
+      client:
+        config:
+          examforge-user:
+            url: ${USER_URL:http://localhost:8101}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+
+# G3 可观测性（docs/19 §5）：Prometheus 指标暴露（/actuator/prometheus，仅内网可达，不经网关路由）
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
