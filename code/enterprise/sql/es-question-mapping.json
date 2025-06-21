@@ -1,0 +1,16 @@
+{
+  "settings": { "number_of_shards": 1, "number_of_replicas": 0 },
+  "mappings": {
+    "properties": {
+      "subjectId":  { "type": "integer" },
+      "type":       { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+      "difficulty": { "type": "integer" },
+      "scene":      { "type": "keyword" },
+      "category":   { "type": "keyword" },
+      "kpNames":    { "type": "text", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
+      "stem":       { "type": "text", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
+      "source":     { "type": "text" },
+      "updatedAt":  { "type": "date" }
+    }
+  }
+}
